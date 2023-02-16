@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* font-family: 'Poppins', sans-serif; */
+
+body {
+  font-family: "sans-serif";
+  overflow-x: hidden;
+  height: 100% !important;
+  background-image: url("/src/assets/images/back-bg.jpg");
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  /* backdrop-filter: blur(5px); */
+  background-position: center;
+  
+}
+
+/* add the backgrond image  */
+
+.App_Main {
+  /* background-color: #123752; */
+  /* background-color: #123752 !important; */
+ 
+  width: 100%;
+  /* height: auto; */
+  padding-bottom: 110px;
+}
+
+/* End add the backgrond image  */
+
+/* utils classes  */
+
+.containerFluid_padding {
+  padding-right: 9px !important;
+  padding-left: 9px !important;
+}
+
+/* End utils classes  */
