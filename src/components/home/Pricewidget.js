@@ -1,6 +1,6 @@
 import React from "react";
 
-const Pricewidget = () => {
+const Pricewidget = ({ nftpkg }) => {
   return (
     <>
       <div className="PricewidgetMain">
@@ -10,7 +10,7 @@ const Pricewidget = () => {
         </div>
         <div className="Pricewidget_img">
           <div className="priceChart">
-            <span>$10</span>
+            <span>${nftpkg}</span>
             <div className="slice">
               <div className="bar"></div>
               <div className="fill"></div>

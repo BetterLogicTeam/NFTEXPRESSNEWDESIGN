@@ -7,8 +7,8 @@ const AffiliateLeftWidget = () => {
   // const LeftCopyAddressRef = useRef(null);
   // const RightCopyAddressRef = useRef(null);
   const LeftCopyAddressHandler = () => {
-    // const text = LeftCopyAddressRef.current.value;
-    // navigator.clipboard.writeText(text);
+    const text = LeftCopyAddressRef.current.value;
+    navigator.clipboard.writeText(text);
     toast.success("Copied");
   };
   const RightCopyAddressHandler = () => {
@@ -19,34 +19,36 @@ const AffiliateLeftWidget = () => {
 
   const linkurl = (req, res, next) => {
 
-    window.open("https://nft-xpress-dashboard.pages.dev/","_self")
+    window.open(`https://nftxpress.club/Register_main?referrallink=${778899}&position=Left`)
+    // window.open(`https://nftxpress.club/Register_main?referrallink=${user}&position=Left`)
+
     next();
   };
-  
+
   return (
     <>
       <div className="AffiliateMain">
         <h6>Affiliate Link </h6>
 
         <div className="CopyText">
-       
-       <div className="flexbutton">
-          <button  onClick={linkurl} className="myreferal-link">  Left Referral Link 
+
+          <div className="flexbutton">
+            <button onClick={linkurl} className="myreferal-link">  Left Referral Link
             </button>
-            <button  onClick={LeftCopyAddressHandler} className="icon-copy"  style={{width:'50px',marginLeft:"0px" , background:"#130047"}}>  <Image   src={copyWhite} alt="Image description" fluid={true} /></button>
-            </div>
-         
-         
+            <button onClick={LeftCopyAddressHandler} className="icon-copy" style={{ width: '50px', marginLeft: "0px", background: "#130047" }}>  <Image src={copyWhite} alt="Image description" fluid={true} /></button>
+          </div>
 
 
 
 
-            <div className="flexbutton">
-          <button onClick={linkurl}  className="myreferal-link" >  Left Referral Link 
+
+
+          <div className="flexbutton">
+            <button onClick={linkurl} className="myreferal-link" >  Left Referral Link
             </button>
-            <button  onClick={LeftCopyAddressHandler} className="iconcopy" style={{width:'50px',marginLeft:"0px"  , background:"#130047"}}>  <Image  src={copyWhite} alt="Image description" fluid={true} /></button>
-            </div>
-     
+            <button onClick={LeftCopyAddressHandler} className="iconcopy" style={{ width: '50px', marginLeft: "0px", background: "#130047" }}>  <Image src={copyWhite} alt="Image description" fluid={true} /></button>
+          </div>
+
 
 
         </div>

@@ -2,7 +2,9 @@ import React from "react";
 import Countdown from "react-countdown";
 import RunningClock from "./RunningClock";
 
-const TimeWidget = () => {
+const TimeWidget = ({ timetoearn, timetoqualify }) => {
+  console.log('timetoearn', timetoearn)
+  console.log('timetoqualify', timetoqualify)
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
@@ -31,9 +33,11 @@ const TimeWidget = () => {
     }
   };
 
-  const date = new Date();
-  date.setHours(date.getHours() + 22);
-  date.setDate(date.getDate() + 10);
+
+
+  // const date = new Date();
+  // date.setHours(date.getHours() + 22);
+  // date.setDate(date.getDate() + 10);
 
   return (
     <>
@@ -44,14 +48,22 @@ const TimeWidget = () => {
             <h6>Time to Qualify</h6>
             <RunningClock />
             <div className="showTimer">
-              <Countdown format="D:H:M:S" date={date} renderer={renderer} />
+              <Countdown format="D:H:M:S"
+                date={
+                  Date.now() +
+                  (String(1676618567 * 1000) - Date.now())
+                }
+                renderer={renderer} />
             </div>
           </div>
           <div className="TimeWidgetRight">
             <h6>Time to Qualify</h6>
             <RunningClock />
             <div className="showTimer">
-              <Countdown date={date} renderer={renderer} />
+              <Countdown date={
+                Date.now() +
+                (String(1676618567 * 1000) - Date.now())
+              } renderer={renderer} />
             </div>
           </div>
         </div>

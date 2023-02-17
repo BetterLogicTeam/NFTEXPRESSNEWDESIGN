@@ -15,7 +15,9 @@ const AffiliateRightWidget = () => {
         <div className="CopyText">
           <input
             type="text"
-            value="https://demos.creative-ti"
+            value={`https://nftxpress.club/Register_main?referrallink=${778899}&position=Right`}
+            // value={`https://nftxpress.club/Register_main?referrallink=${user}&position=Right`}
+
             readOnly
             ref={CopyAddressRef}
           />

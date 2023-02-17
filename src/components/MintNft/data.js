@@ -17,7 +17,8 @@ export const nfts = [
     title: "Ring",
     dec: "Ring #mai",
     price: "0.40",
-    count: "500",
+    count: "100",
+    minting_counter: 1
   },
   {
     id: 2,
@@ -25,7 +26,9 @@ export const nfts = [
     title: "Ring",
     dec: "Ring #yea",
     price: "0.7",
-    count: "240",
+    count: "500",
+    minting_counter: 1
+
   },
   {
     id: 3,
@@ -33,7 +36,9 @@ export const nfts = [
     title: "Ring",
     dec: "Ring #GLEBA",
     price: "0.50",
-    count: "700",
+    count: "1000",
+    minting_counter: 1
+
   },
   {
     id: 4,
@@ -41,7 +46,9 @@ export const nfts = [
     title: "Ring",
     dec: "Ring #GLEBA",
     price: "0.10",
-    count: "400",
+    count: "2500",
+    minting_counter: 1
+
   },
   {
     id: 5,
@@ -49,7 +56,9 @@ export const nfts = [
     title: "Ring",
     dec: "Ring #GLEBA",
     price: "0.06",
-    count: "200",
+    count: "5000",
+    minting_counter: 1
+
   },
 ];
 export const CoupleNFTData = [
@@ -59,7 +68,9 @@ export const CoupleNFTData = [
     title: "Ring",
     dec: "Ring #mai",
     price: "0.40",
-    count: "500",
+    count: "200",
+    minting_counter: 2
+
   },
   {
     id: 2,
@@ -67,7 +78,9 @@ export const CoupleNFTData = [
     title: "Ring",
     dec: "Ring #yea",
     price: "0.7",
-    count: "240",
+    count: "1000",
+    minting_counter: 2
+
   },
   {
     id: 3,
@@ -75,7 +88,9 @@ export const CoupleNFTData = [
     title: "Ring",
     dec: "Ring #GLEBA",
     price: "0.50",
-    count: "700",
+    count: "2000",
+    minting_counter: 2
+
   },
   {
     id: 4,
@@ -83,7 +98,9 @@ export const CoupleNFTData = [
     title: "Ring",
     dec: "Ring #GLEBA",
     price: "0.10",
-    count: "400",
+    count: "5000",
+    minting_counter: 2
+
   },
   {
     id: 5,
@@ -91,6 +108,8 @@ export const CoupleNFTData = [
     title: "Ring",
     dec: "Ring #GLEBA",
     price: "0.06",
-    count: "200",
+    count: "10000",
+    minting_counter: 2
+
   },
 ];

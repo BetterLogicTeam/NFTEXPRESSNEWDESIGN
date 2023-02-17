@@ -7,7 +7,7 @@ import EditSquare from "../../assets/images/EditSquare.png";
 // import widgetchat from "../../assets/images/widgetchat.png";
 // import widgetpercantege from "../../assets/images/widgetpercantege.png";
 
-const MyReferralWidget = () => {
+const MyReferralWidget = ({ RightActiveDirect, RightDirect, LeftDirect, LeftActiveDirect }) => {
   return (
     <>
       <div className="TeamSizeWidgetMain MyReferralMain widthfix">
@@ -26,25 +26,25 @@ const MyReferralWidget = () => {
           <div className="ItemLeft">
             <div className="">
               <Image src={totalChart} alt="Image description" fluid={true} />
-              <span>Total : 123</span>
-             
+              <span>Total : {LeftDirect}</span>
+
             </div>
             <div>
               <Image src={EditSquare} alt="Image description" fluid={true} />
-              <span>Active : 123</span>
-             
+              <span>Active : {LeftActiveDirect}</span>
+
             </div>
           </div>
           <div className="ItemRight">
             <div>
               <Image src={totalChart} alt="Image description" fluid={true} />
-              <span>Total : 123</span>
-             
+              <span>Total : {RightDirect}</span>
+
             </div>
             <div className="">
               <Image src={EditSquare} alt="Image description" fluid={true} />
-              <span>Active : 123</span>
-             
+              <span>Active : {RightActiveDirect}</span>
+
             </div>
           </div>
         </div>

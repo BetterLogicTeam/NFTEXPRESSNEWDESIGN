@@ -7,7 +7,7 @@ const PublicRoute = ({ children }) => {
 
 
     if (isuser) {
-        return <Navigate to="mint_nft" />
+        return <Navigate to="/" />
     }
     return children
 

@@ -5,7 +5,7 @@ import rightSide from "../../assets/images/rightSide.png";
 import totalChart from "../../assets/images/totalChart.png";
 import EditSquare from "../../assets/images/EditSquare.png";
 
-const TeamSizeWidget = () => {
+const TeamSizeWidget = ({ RightActive, Right, Left, LeftActive }) => {
   return (
     <>
       <div className="TeamSizeWidgetMain">
@@ -24,21 +24,21 @@ const TeamSizeWidget = () => {
           <div className="ItemLeft">
             <div className="">
               <Image src={totalChart} alt="Image description" fluid={true} />
-              <span>Total : 123</span>
+              <span>Total : {Left}</span>
             </div>
             <div className="">
               <Image src={EditSquare} alt="Image description" fluid={true} />
-              <span>Active : 123</span>
+              <span>Active : {LeftActive}</span>
             </div>
           </div>
           <div className="ItemRight">
             <div className="">
               <Image src={totalChart} alt="Image description" fluid={true} />
-              <span>Total : 123</span>
+              <span>Total : {Right}</span>
             </div>
             <div className="">
               <Image src={EditSquare} alt="Image description" fluid={true} />
-              <span>Active : 123</span>
+              <span>Active : {RightActive}</span>
             </div>
           </div>
         </div>
