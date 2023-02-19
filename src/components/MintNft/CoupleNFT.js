@@ -51,8 +51,8 @@ const CoupleNFT = () => {
                       />
                     ) : (
                       <video controls className="CollectionCrdvid">
-                      <source src={nftvideo2} type="video/mp4" />
-                    </video>
+                        <source src={nftvideo2} type="video/mp4" />
+                      </video>
                     )}
                     {/* <h6>{value?.title}</h6>
                     <p>{value?.dec}</p> */}

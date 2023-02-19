@@ -1089,6 +1089,9 @@ height: 386px;
   font-family: "sans-serif";
   margin-left: 10px;
 }
+.AtHousreWidth{
+  width:"70%"
+}
 .LADChatText span {
   font-family: "sans-serif";
   font-style: normal;

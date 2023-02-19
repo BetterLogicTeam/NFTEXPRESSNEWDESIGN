@@ -42,7 +42,7 @@ import { loadWeb3 } from '../../apis/api'
 
 const CollectionNFT = () => {
   const singlenft = useSelector((state) => state.nft.SingleNFT);
-  // console.log("singlenft", singlenft);
+  console.log("singlenft", singlenft);
 
   useEffect(() => {
     const sr = scrollreveal({
@@ -279,20 +279,20 @@ const CollectionNFT = () => {
         const web3 = window.web3
         let nftContractOf
         let increment_each_data
-        if (singlenft.count == 100) {
+        if (singlenft.count == 100 || singlenft.count == 200) {
 
           nftContractOf = new web3.eth.Contract(GLABA_NFT_ABI, GLABA_NFT)
           increment_each_data = 0.00365946
-        } else if (singlenft.count == 500) {
+        } else if (singlenft.count == 500 || singlenft.count == 1000) {
           nftContractOf = new web3.eth.Contract(GLABA_NFT_ABI_500, GLABA_NFT_500)
           increment_each_data = 0.0109232
-        } else if (singlenft.count == 1000) {
+        } else if (singlenft.count == 1000 || singlenft.count == 2000) {
           nftContractOf = new web3.eth.Contract(GLABA_NFT_ABI_1000, GLABA_NFT_1000)
           increment_each_data = 0.0182093
-        } else if (singlenft.count == 2500) {
+        } else if (singlenft.count == 2500 || singlenft.count == 5000) {
           nftContractOf = new web3.eth.Contract(GLABA_NFT_ABI_2500, GLABA_NFT_2500)
           increment_each_data = 0
-        } else if (singlenft.count == 5000) {
+        } else if (singlenft.count == 5000 || singlenft.count == 10000) {
           nftContractOf = new web3.eth.Contract(GLABA_NFT_ABI_5000, GLABA_NFT_5000)
           increment_each_data = 0.0910139
         }
@@ -305,18 +305,22 @@ const CollectionNFT = () => {
         // mintingbnbPrice_Toke_1=mintingbnbPrice_Toke_1.Fixed(3)
         mintingbnbPrice_Toke_1 = Number(mintingbnbPrice_Toke_1) + increment_each_data
         mintingbnbPrice_Toke_1 = parseFloat(mintingbnbPrice_Toke_1).toFixed(4)
-
+        let arr
         if (singlenft.minting_counter == 1) {
           mintingbnbPrice_Toke_1 = mintingbnbPrice_Toke_1 * value
+          arr = [...PriceArray]
+          arr[0].price = mintingbnbPrice_Toke_1
 
-          setPriceArray(PriceArray => [...PriceArray, PriceArray[0].price = mintingbnbPrice_Toke_1]
-          )
+          setPriceArray(arr)
 
-          // setToken_Value_1(mintingbnbPrice_Toke_1)
-        } else if (singlenft.minting_counter == 2) {
-          // mintingbnbPrice_Toke_1 = mintingbnbPrice_Toke_1 * value
-          // setToken_Value_1(mintingbnbPrice_Toke_1 * 2)
-          setPriceArray([...PriceArray, PriceArray[0].price = mintingbnbPrice_Toke_1 * 2])
+        }
+        else if (singlenft.minting_counter == 2) {
+          console.log('singlenft.minting_counter', singlenft.minting_counter)
+          mintingbnbPrice_Toke_1 = mintingbnbPrice_Toke_1 * 2
+          arr = [...PriceArray]
+          arr[0].price = mintingbnbPrice_Toke_1
+
+          setPriceArray(arr)
 
         }
 
@@ -327,11 +331,18 @@ const CollectionNFT = () => {
         mintingbnbPrice_Toke_2 = parseFloat(mintingbnbPrice_Toke_2).toFixed(4)
         if (singlenft.minting_counter == 1) {
           mintingbnbPrice_Toke_2 = mintingbnbPrice_Toke_2 * value
-          setToken_Value_2(mintingbnbPrice_Toke_2)
-        } else if (singlenft.minting_counter == 2) {
-          // mintingbnbPrice_Toke_2 = mintingbnbPrice_Toke_2 * value
+          arr = [...PriceArray]
+          arr[1].price = mintingbnbPrice_Toke_2
 
-          setToken_Value_2(mintingbnbPrice_Toke_2 * 2)
+          setPriceArray(arr)
+          // setToken_Value_2(mintingbnbPrice_Toke_2)
+        } else if (singlenft.minting_counter == 2) {
+          mintingbnbPrice_Toke_2 = mintingbnbPrice_Toke_2 * 2
+          arr = [...PriceArray]
+          arr[1].price = mintingbnbPrice_Toke_2
+
+          setPriceArray(arr)
+          // setToken_Value_2(mintingbnbPrice_Toke_2 * 2)
         }
 
         let mintingbnbPrice_Toke_3 = await nftContractOf.methods.ValueinToken_single().call()
@@ -342,15 +353,15 @@ const CollectionNFT = () => {
         mintingbnbPrice_Toke_3 = parseFloat(mintingbnbPrice_Toke_3).toFixed(4)
         if (singlenft.minting_counter == 1) {
           mintingbnbPrice_Toke_3 = mintingbnbPrice_Toke_3 * value
-
-          setToken_Value_3(mintingbnbPrice_Toke_3)
-        } else if (singlenft.minting_counter == 2) {
-          // mintingbnbPrice_Toke_3 = mintingbnbPrice_Toke_3 * value
-          setToken_Value_3(mintingbnbPrice_Toke_3 * 2)
-        } else {
-          mintingbnbPrice_Toke_3 = mintingbnbPrice_Toke_3 * value
-
-          setToken_Value_3(mintingbnbPrice_Toke_3)
+          arr = [...PriceArray]
+          arr[2].price = mintingbnbPrice_Toke_3
+          // setToken_Value_3(mintingbnbPrice_Toke_3)
+        }
+        else if (singlenft.minting_counter == 2) {
+          mintingbnbPrice_Toke_3 = mintingbnbPrice_Toke_3 * 2
+          arr = [...PriceArray]
+          arr[2].price = mintingbnbPrice_Toke_3
+          // setToken_Value_3(mintingbnbPrice_Toke_3 * 2)
         }
 
         let mintingPriceBNB = await nftContractOf.methods.Valueinbnb().call()
@@ -366,19 +377,21 @@ const CollectionNFT = () => {
 
         if (singlenft.minting_counter == 1) {
           mintingPriceBNB = mintingPriceBNB * value
+          arr = [...PriceArray]
+          arr[3].price = mintingPriceBNB
           Mint_Value_WithOut_Wire = Mint_Value_WithOut_Wire * value
           //    console.log("Mint_Value_WithOut_Wire", Mint_Value_WithOut_Wire);
 
-          setToken_Value_BNB_Without_wire(Mint_Value_WithOut_Wire)
-          setToken_Value_BNB(mintingPriceBNB)
+          // setToken_Value_BNB_Without_wire(Mint_Value_WithOut_Wire)
+          // setToken_Value_BNB(mintingPriceBNB)
         } else if (singlenft.minting_counter == 2) {
-          setToken_Value_BNB(mintingPriceBNB * 2)
-          setToken_Value_BNB_Without_wire(Mint_Value_WithOut_Wire * 2)
-        } else {
-          Mint_Value_WithOut_Wire = Mint_Value_WithOut_Wire * value
-          setToken_Value_BNB_Without_wire(Mint_Value_WithOut_Wire)
-          mintingPriceBNB = mintingPriceBNB * value
-          setToken_Value_BNB(mintingPriceBNB)
+
+          mintingPriceBNB = mintingPriceBNB * 2
+          arr = [...PriceArray]
+          arr[3].price = mintingPriceBNB
+
+          // setToken_Value_BNB(mintingPriceBNB * 2)
+          // setToken_Value_BNB_Without_wire(Mint_Value_WithOut_Wire * 2)
         }
 
         let mintingPriceBUSD = await nftContractOf.methods.MinitngPricein_busd().call()
@@ -394,25 +407,19 @@ const CollectionNFT = () => {
 
         if (singlenft.minting_counter == 1) {
           mintingPriceBUSD = mintingPriceBUSD * value
-          Value_IN_BUSD = Value_IN_BUSD * value
+          arr = [...PriceArray]
+          arr[4].price = mintingPriceBUSD
+          // Value_IN_BUSD = Value_IN_BUSD * value
 
-          setToken_Value_BUSD_Without_wire(Value_IN_BUSD)
-          setToken_Value_BUSD(mintingPriceBUSD)
+          // setToken_Value_BUSD_Without_wire(Value_IN_BUSD)
+          // setToken_Value_BUSD(mintingPriceBUSD)
         } else if (singlenft.minting_counter == 2) {
-          // mintingPriceBUSD = mintingPriceBUSD * value
+          mintingPriceBUSD = mintingPriceBUSD * 2
           // console.log("mintingPriceBUSD", mintingPriceBUSD*2);
-          setToken_Value_BUSD_Without_wire(Value_IN_BUSD * 2)
-          setToken_Value_BUSD(mintingPriceBUSD * 2)
-        } else {
-          mintingPriceBUSD = mintingPriceBUSD * value
-          // mintingPriceBUSD=Number(mintingPriceBUSD)+
-
-          setToken_Value_BUSD(mintingPriceBUSD)
-
-          mintingPriceBUSD = mintingPriceBUSD * value
-          Value_IN_BUSD = Value_IN_BUSD * value
-
-          setToken_Value_BUSD_Without_wire(Value_IN_BUSD)
+          // setToken_Value_BUSD_Without_wire(Value_IN_BUSD * 2)
+          arr = [...PriceArray]
+          arr[4].price = mintingPriceBUSD
+          // setToken_Value_BUSD(mintingPriceBUSD * 2)
         }
       } catch (e) {
         console.log('Error while Get Vale ', e)
@@ -422,9 +429,9 @@ const CollectionNFT = () => {
 
 
   useEffect(() => {
-    // getVAlues()
+    getVAlues()
 
-  }, [singlenft.count])
+  }, [singlenft])
   console.log('price array', PriceArray);
   return (
     <>

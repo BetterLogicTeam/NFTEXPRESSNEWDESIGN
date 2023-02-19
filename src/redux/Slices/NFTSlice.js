@@ -9,6 +9,7 @@ export const NFTSlice = createSlice({
   initialState,
   reducers: {
     SetSingleNFT: (state, action) => {
+
       state.SingleNFT = action.payload;
     },
   },
