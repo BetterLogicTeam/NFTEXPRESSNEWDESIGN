@@ -44,7 +44,7 @@ import { toast } from "react-hot-toast";
 const CollectionNFT = () => {
   const singlenft = useSelector((state) => state.nft.SingleNFT);
   const userDetail = useSelector((state) => state.nft.userDetail);
-
+let user
   console.log("singlenft", singlenft);
 
   useEffect(() => {

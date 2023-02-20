@@ -85,7 +85,7 @@ const MyTeam = () => {
     try {
       const user = localStorage?.getItem("user");
       let responceRight = await API?.post('/MyLeftDownline', {
-        "uid": 778899,
+        "uid": user,
         "position": positionfilter,
         "status": StatusFilter,
         "fdate": fromdatefilter,

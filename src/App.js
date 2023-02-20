@@ -45,16 +45,54 @@ import PrivateRoutes from './utils/PrivateRoutes'
 import Login from "./pages/Login";
 import MyLogin from "./pages/Login";
 import PublicRoute from "./utils/PublicRoute";
+import Index_main from "./components/Index_main";
+import About_main from './components/Landing_Page/About/About'
+import Explore_main from './components/Landing_Page/Explore/Explore'
+import How_to_play_main from './components/Landing_Page/How_to_play/How_to_play'
+import Tokenomics_main from './components/Landing_Page/Tokenomics/Tokenomics'
+import Contact_main from "./components/Contact_main";
+import Register_main from "./components/Register_main";
+import Login_main from "./components/Login_main";
+// import Contact_main from './components/Landing_Page/'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import WellComePage from "./components/Welcom_page/wellComePage";
+import Wallet_Address_change from "./components/Landing_Page/Wallet_Address/Wallet_Address_change";
+import Forgat_Password from "./components/Landing_Page/Forgat_Password/Forgat_Password";
+import Get_Password_result from "./components/Landing_Page/OTP_varify_forget_password/Get_Password_result";
+import OTP from "./components/Landing_Page/Varify-OTP/OTP";
+import Varify_forget_Password from "./components/Landing_Page/OTP_varify_forget_password copy/Varify_forget_Password";
+
 
 function App() {
   return (
     <BrowserRouter>
+
       <div className="App_Main"  >
+      <ToastContainer />
         <Toaster position="top-center" reverseOrder={false} />
         <Routes>
+          <Route path="/" element={<Index_main />} />
+          <Route path="/About_main" element={<About_main />} />
+          <Route path="/Explore_main" element={<Explore_main />} />
+          <Route path="/How_to_play_main" element={<How_to_play_main />} />
+          <Route path="/Tokenomics_main" element={<Tokenomics_main />} />
+          <Route path="/Contact_main" element={<Contact_main />} />
+          <Route path="Login_main" element={<Login_main />} />
+          <Route path="Register_main" element={<Register_main />} />
+          <Route path="welComePage/:email" element={<WellComePage />} />
+          <Route path="Wallet_Address_change" element={<Wallet_Address_change />} />
+          <Route path='Forgat_Password' element={<Forgat_Password />} />
+          <Route path='Forget_Password_Result' element={<Get_Password_result />} />
+
+          <Route path='OTP/:email' element={<OTP />} />
+          <Route path='Varify_forget_Password/:email' element={<Varify_forget_Password />} />
+
+
           <Route element={<PrivateRoutes />}>
             <Route path="/mint_nft" element={<MintNft />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Home />} />
             <Route path="/collection" element={<Collection />} />
             <Route path="/matching_tree" element={<MintingHistory />} />
             <Route path="/lar_token" element={<LARToken />} />

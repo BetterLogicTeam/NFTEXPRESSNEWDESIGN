@@ -86,10 +86,10 @@ const MyReferral = () => {
   const referral_API = async () => {
     try {
 
-      // const user = localStorage?.getItem("user");
+      const user = localStorage?.getItem("user");
 
       let responce = await API?.post('/Direct', {
-        "uid": 778899,
+        "uid": user,
         "position": positionfilter,
         "status": StatusFilter,
         "fdate": fromdatefilter,

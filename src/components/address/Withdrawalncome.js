@@ -53,7 +53,7 @@ const Withdrawalncome = () => {
       console.log("Uswerr", user);
 
 
-      let responce = await API?.get(`/RewardIncome?id=${778899}`)
+      let responce = await API?.get(`/RewardIncome?id=${user}`)
       responce = responce.data.data;
 
       console.log("responce", responce);

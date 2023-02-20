@@ -60,7 +60,7 @@ const LevelDetails = () => {
       const user = localStorage?.getItem("user");
 
       let responce = await API.post('/level_details', {
-        "uid": 778899,
+        "uid": user,
         "level": LevelFilter,
         "position": positionfilter,
         "status": StatusFilter

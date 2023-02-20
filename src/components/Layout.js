@@ -22,7 +22,7 @@ const Layout = (props) => {
             {props.children}
           </Col>
         </Row>
-        {location.pathname === "/" ? (
+        {location.pathname === "/dashboard" ? (
           <>
             <HorseProgress />
             <UserDetailsAllIncome />

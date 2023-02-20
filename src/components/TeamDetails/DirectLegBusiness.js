@@ -37,7 +37,7 @@ const DirectLegBusiness = () => {
   const referral_API = async () => {
     try {
       const user = localStorage?.getItem("user");
-      let responce = await API?.get(`/directlegbussiness_report?id=${778899}`);
+      let responce = await API?.get(`/directlegbussiness_report?id=${user}`);
       responce = responce?.data?.data;
       let arr = [];
       responce.forEach((item, index) => {

@@ -61,7 +61,7 @@ const AddressLAGToken = () => {
       // let ress = JSON?.parse(user);
       // let uId = ress?.uid;
 
-      let responce = await API?.get(`/ROIIncome?id=${778899}`)
+      let responce = await API?.get(`/ROIIncome?id=${user}`)
       responce = responce?.data?.data;
 
       console.log("Res", responce);

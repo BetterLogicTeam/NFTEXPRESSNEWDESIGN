@@ -49,7 +49,7 @@ const QuickStarterBonus = () => {
       const user = localStorage?.getItem("user");
 
       let responce = await API?.post("/QuickStarterBonus", {
-        "uid": 778899
+        "uid": user
       })
       responce = responce?.data?.data?.recordset;
 

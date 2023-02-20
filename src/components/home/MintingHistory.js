@@ -41,7 +41,7 @@ const MintingHistory = () => {
       // let ress = JSON.parse(user);
       // let uId = ress?.uid;
 
-      let responce = await API?.get(`buynfttoken_history?id=${778899}`)
+      let responce = await API?.get(`buynfttoken_history?id=${user}`)
       responce = responce.data.data;
       console.log("responceresponce", responce);
 

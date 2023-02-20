@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import toast from "react-hot-toast";
 import { Image } from "react-bootstrap";
 import copyWhite from "../../assets/images/copyWhite.png";
 
 const AffiliateLeftWidget = () => {
-  // const LeftCopyAddressRef = useRef(null);
+  const LeftCopyAddressRef = useRef(null);
   // const RightCopyAddressRef = useRef(null);
   const LeftCopyAddressHandler = () => {
     const text = LeftCopyAddressRef.current.value;

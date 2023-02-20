@@ -64,7 +64,7 @@ const MatchingLevelIncome = () => {
       const user = localStorage?.getItem("user");
 
       let responce = await API?.post("/MatchingLevel", {
-        "uid": 778899,
+        "uid": user,
         "level": levelFilter
       })
       responce = responce?.data?.data?.recordset;

@@ -58,7 +58,7 @@ const ReferralIncome = () => {
       const user = localStorage?.getItem("user");
 
       let responce = await API?.post("/DirectIncome", {
-        "uid": 778899
+        "uid": user
       })
       responce = responce?.data?.data?.recordset;
       let arr = []
