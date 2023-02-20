@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 
@@ -30,17 +31,34 @@ const columns = [
     sort: false,
   },
 ];
-const dataArray = [
-  {
-    Number: 213213,
-    UserId: 222,
-    SelfInvestment: "demo",
-    TeamBusiness: 233,
-    TotalBusiness: "15",
-  },
-];
 
 const DirectLegBusiness = () => {
+  const [dataArray, setdataArray] = useState([]);
+  const referral_API = async () => {
+    try {
+      const user = localStorage?.getItem("user");
+      let responce = await API?.get(`/directlegbussiness_report?id=${778899}`);
+      responce = responce?.data?.data;
+      let arr = [];
+      responce.forEach((item, index) => {
+        arr.push({
+          Number: index + 1,
+          UserId: `${item?.uid} `,
+          SelfInvestment: `${item?.investment} USD `,
+          TeamBusiness: `${item?.teambusiness} `,
+          TotalBusiness: item.gbv,
+        });
+      });
+
+      setdataArray(arr);
+    } catch (e) {
+      console.log("Error While calling Referrer API", e);
+    }
+  };
+  useEffect(() => {
+    referral_API();
+  }, []);
+
   return (
     <>
       <BgLayout>

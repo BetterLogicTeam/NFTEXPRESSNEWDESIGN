@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 
 const LAGAirdropHistory = () => {
+  const [dataArray, setdataArray] = useState([]);
+
   const columns = [
     {
       dataField: "Number",
@@ -20,14 +22,32 @@ const LAGAirdropHistory = () => {
       sort: false,
     },
   ];
-  const dataArray = [
-    {
-      Number: 213213,
-      PackageAmount: 222,
-      DateTime: "12/3/2022",
-    },
-  ];
 
+  const referral_API = async () => {
+    try {
+      const user = localStorage?.getItem("user");
+
+      let responce = await API?.get(`lagStakingHistory?uid=${778899}`);
+      responce = responce.data.data;
+
+      let arr = [];
+      responce.forEach((item, index) => {
+        arr.push({
+          Number: item?.row,
+          PackageAmount: item?.packageamount,
+          DateTime: item?.dd,
+        });
+      });
+
+      setdataArray(arr);
+    } catch (e) {
+      console.log("Error While calling Referrer API", e);
+    }
+  };
+
+  useEffect(() => {
+    referral_API();
+  }, []);
   return (
     <>
       <BgLayout>

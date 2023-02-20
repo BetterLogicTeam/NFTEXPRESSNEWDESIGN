@@ -1,14 +1,17 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Image } from "react-bootstrap";
 import BgLayout from "../sharecomponent/BgLayout";
 import copytext from "../../assets/images/copytext.png";
 import toast from "react-hot-toast";
+import { API } from "../../API/Api";
+import { useSelector } from "react-redux";
 
 const SelfComp = () => {
   const CopyAddressRef = useRef(null);
+  const userDetail = useSelector((state) => state.nft.userDetail);
 
   const CopyAddressHandler = () => {
-    const text = CopyAddressRef.current.innerText;
+    const text = `https://bscscan.com/address/${userDetail.address}`;
     navigator.clipboard.writeText(text);
     toast.success("Copied");
   };
@@ -22,7 +25,7 @@ const SelfComp = () => {
         <div className="CopyAddressMain">
           <span>Self Address:</span>
           <span className="addressText" ref={CopyAddressRef}>
-            0x84bF8BcDE152B33bbA6852E488d0C884898F17Dc
+            {userDetail.address}
           </span>
           <Image
             src={copytext}

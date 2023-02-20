@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   SingleNFT: {},
+  userDetail:{},
 };
 
 export const NFTSlice = createSlice({
@@ -12,9 +13,13 @@ export const NFTSlice = createSlice({
 
       state.SingleNFT = action.payload;
     },
+    userDetailed: (state, action) => {
+
+      state.userDetail = action.payload;
+    },
   },
 });
 
-export const { SetSingleNFT } = NFTSlice.actions;
+export const { SetSingleNFT,userDetailed } = NFTSlice.actions;
 
 export default NFTSlice.reducer;

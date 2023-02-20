@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 
@@ -64,6 +65,48 @@ const dataArray = [
 ];
 
 const LARTokenHistory = () => {
+
+  const [dataArray, setdataArray] = useState([])
+
+
+  const referral_API = async () => {
+    try {
+      const user = localStorage?.getItem("user");
+
+
+      let responce = await API?.get(`/LarWithdrawalHistory?id=${778899}`)
+      responce = responce?.data?.data;
+
+      console.log("Res", responce);
+      let arr = []
+      responce.forEach((item, index) => {
+
+        arr.push({
+          Number: item.row,
+          UserId: item.uid,
+          withdrawal_token: `${item?.tokenvalue} `,
+          TXN: <><a href={`https://bscscan.com/tx/${item?.txn}`} target="_blank" className='text-white'>View Txn</a></>,
+          DateTime: `${item?.rdate} `,
+          WithdrawalAmount: item.Request_amount,
+          WithdrawalFees: item.admincharge,
+          tds: item.tds,
+          NetAmount: item.amountusd
+        });
+      })
+
+      setdataArray(arr)
+
+    } catch (e) {
+      console.log("Error While calling Referrer API", e);
+    }
+  }
+
+
+  useEffect(() => {
+    referral_API()
+
+  }, [])
+
   return (
     <>
       <BgLayout>

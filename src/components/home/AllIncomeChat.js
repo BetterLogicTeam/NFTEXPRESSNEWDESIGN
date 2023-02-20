@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
+import { useSelector } from "react-redux";
 import { API } from "../../API/Api";
 
 const AllIncomeChat = () => {
@@ -7,37 +8,40 @@ const AllIncomeChat = () => {
   const [chartText, setChartText] = useState();
 
 
-  const [userDetail, setUserDetail] = useState({})
-
-  const DashboardAPI = async () => {
-
-    try {
-
-      // let res = await API.get(`/getDashboardValues?id=${user}`)
-      let res = await API.get(`/getDashboardValues?id=778899`)
-
-      res = res.data.data[0]
-      setUserDetail(res)
-      // console.log("res", res);
+  // const [userDetail, setUserDetail] = useState({})
+  const userDetail = useSelector((state) => state.nft.userDetail);
 
 
+  // const DashboardAPI = async () => {
 
+  //   try {
+  //     const userDetail = useSelector((state) => state.nft.userDetail);
+  //     console.log("userDetail", userDetail);
 
+  //     // let res = await API.get(`/getDashboardValues?id=${user}`)
+  //     // let res = await API.get(`/getDashboardValues?id=778899`)
 
-    } catch (e) {
-      console.log("Error While Fatch Dashboard API", e);
-    }
-  }
-  useEffect(() => {
-
-
-
-    DashboardAPI()
+  //     res = res.data.data[0]
+  //     setUserDetail(res)
 
 
 
 
-  }, []);
+
+  //   } catch (e) {
+  //     console.log("Error While Fatch Dashboard API", e);
+  //   }
+  // }
+  // useEffect(() => {
+
+
+
+  //   DashboardAPI()
+
+
+
+
+  // }, []);
 
 
 

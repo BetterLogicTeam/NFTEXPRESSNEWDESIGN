@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 
@@ -41,6 +42,45 @@ const dataArray = [
 ];
 
 const TeamBonus = () => {
+
+
+  const [dataArray, setdataArray] = useState([])
+
+
+  const referral_API = async () => {
+    try {
+
+      const user = localStorage?.getItem("user");
+
+      let responce = await API?.post("/MatchingBonus", {
+        "uid": 778899
+      })
+      responce = responce?.data?.data?.recordset;
+      console.log('response', responce)
+      let arr = []
+      responce.forEach(item => {
+        arr.push(
+          {
+            Number: item.RowNumber,
+            UserId: String(item.user_id).substring(0, 4) + "..." + String(item.user_id).substring(item.user_id.length - 4),
+            MatchingBusiness: item.paidpv,
+            NetIncome: item.netincome,
+            DateTime: item.dd,
+          },
+        )
+      });
+      setdataArray(arr)
+
+    } catch (e) {
+      console.log("Error While calling Referrer API", e);
+    }
+  }
+
+
+  useEffect(() => {
+    referral_API()
+  }, [])
+
   return (
     <>
       <BgLayout>

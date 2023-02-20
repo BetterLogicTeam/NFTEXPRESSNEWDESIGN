@@ -1,4 +1,6 @@
-import React from "react";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 
@@ -32,16 +34,55 @@ const NFTStakingHistory = () => {
       sort: false,
     },
   ];
-  const dataArray = [
-    {
-      Number: 213213,
-      PackageAmount: 222,
-      TokenID: 458,
-      Txn: "test",
-      DateTime: "12/3/2022",
-    },
-  ];
 
+  const [dataArray, setdataArray] = useState([])
+
+
+  const referral_API = async () => {
+    try {
+
+      const user = localStorage?.getItem("user");
+      console.log("Uswerr", user);
+      // let ress = JSON.parse(user);
+      // let uId = ress?.uid;
+
+      let responce = await API?.get(`nft_Staking_history?id=${778899}`)
+      responce = responce.data.data;
+      console.log("responce", responce);
+
+      let arr = []
+      responce.forEach((item, index) => {
+
+        arr.push({
+          Number: index + 1,
+          PackageAmount: item?.usdvalue,
+          TokenID: item?.tokenid,
+          Txn: <><a href={`https://bscscan.com/tx/${item?.txn}`} target="_blank" className='text-white'>View Txn</a></>,
+          DateTime: moment(item?.edate).format("DD/MM/YYYY h:m:s A")
+        });
+
+
+
+      }
+      )
+      console.log("responce", arr);
+
+
+      setdataArray(arr)
+
+
+
+
+
+    } catch (e) {
+      console.log("Error While calling Referrer API", e);
+    }
+  }
+
+
+  useEffect(() => {
+    referral_API()
+  }, [])
   return (
     <>
       <BgLayout>

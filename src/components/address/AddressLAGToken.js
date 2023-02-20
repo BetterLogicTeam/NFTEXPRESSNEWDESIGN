@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 
@@ -47,6 +48,49 @@ const dataArray = [
 ];
 
 const AddressLAGToken = () => {
+
+
+  const [dataArray, setdataArray] = useState([])
+  const [currentPage, setcurrentPage] = useState(1)
+  const [listPerpage, setlistPerpage] = useState(10)
+
+  const referral_API = async () => {
+    try {
+
+      const user = localStorage?.getItem("user");
+      // let ress = JSON?.parse(user);
+      // let uId = ress?.uid;
+
+      let responce = await API?.get(`/ROIIncome?id=${778899}`)
+      responce = responce?.data?.data;
+
+      console.log("Res", responce);
+      let arr = []
+      responce.forEach((item, index) => {
+
+        arr.push({
+          Number: index + 1,
+          Id: `${item?.uid} `,
+          Package: `$ ${item?.packageamount} `,
+          DateTime: `${item.dd}`,
+          ReceivedLAGToken: item.amounttoken,
+          TotalLAGToken: `${item?.token}`
+
+        });
+
+
+      })
+      setdataArray(arr)
+
+
+    } catch (e) {
+      console.log("Error While calling Referrer API", e);
+    }
+  }
+  useEffect(() => {
+    referral_API()
+  }, [])
+
   return (
     <>
       <BgLayout>

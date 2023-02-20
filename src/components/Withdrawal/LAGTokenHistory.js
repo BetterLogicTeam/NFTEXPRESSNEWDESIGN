@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 
@@ -34,18 +35,50 @@ const columns = [
     sort: false,
   },
 ];
-const dataArray = [
-  {
-    Number: 213213,
-    UserId: 222,
-    DateTime: "12/12/2020",
-    WithdrawalAmount: 121212,
-    WithdrawalToken: 7812,
-    TXN: 233,
-  },
-];
 
 const LAGTokenHistory = () => {
+  const [dataArray, setdataArray] = useState([]);
+
+  const referral_API = async () => {
+    try {
+      const user = localStorage?.getItem("user");
+
+      let responce = await API?.get(`/LagWithdrawalHistory?id=${user}`);
+      responce = responce?.data?.data;
+
+      console.log("Res", responce);
+      let arr = [];
+      responce.forEach((item, index) => {
+        arr.push({
+          Number: item.row,
+          UserId: item.uid,
+          WithdrawalToken: `${item?.tokenvalue} `,
+          TXN: (
+            <>
+              <a
+                href={`https://bscscan.com/tx/${item?.txn}`}
+                target="_blank"
+                className="text-white"
+              >
+                View Txn
+              </a>
+            </>
+          ),
+
+          DateTime: `${item?.rdate} `,
+          WithdrawalAmount: item.Request_amount,
+        });
+      });
+
+      setdataArray(arr);
+    } catch (e) {
+      console.log("Error While calling Referrer API", e);
+    }
+  };
+
+  useEffect(() => {
+    referral_API();
+  }, []);
   return (
     <>
       <BgLayout>

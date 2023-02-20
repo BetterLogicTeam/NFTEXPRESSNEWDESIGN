@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const GovernanceTokenCom = () => {
   const CopyAddressRef = useRef(null);
   const CopyAddressHandler = () => {
-    const text = CopyAddressRef.current.innerText;
+    const text = '0x052775cf897b3ec894f26b8d801c514123c305d1'
     navigator.clipboard.writeText(text);
     toast.success("Copied");
   };

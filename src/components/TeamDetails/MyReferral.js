@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 import Form from "react-bootstrap/Form";
+import { API } from "../../API/Api";
 
 const columns = [
   {
@@ -51,21 +52,82 @@ const columns = [
     sort: false,
   },
 ];
-const dataArray = [
-  {
-    Number: 213213,
-    UserId: 222,
-    Country: "US",
-    Package: "demo",
-    DateTime: "12/3/2022",
-    Status: "all",
-    Position: "Left",
-    ActivationDate: "12/3/2022",
-    TotalBusiness: "10",
-  },
-];
+// const dataArray = [
+//   {
+//     Number: 213213,
+//     UserId: 222,
+//     Country: "US",
+//     Package: "demo",
+//     DateTime: "12/3/2022",
+//     Status: "all",
+//     Position: "Left",
+//     ActivationDate: "12/3/2022",
+//     TotalBusiness: "10",
+//   },
+// ];
+
+
+
+
 
 const MyReferral = () => {
+
+  const [referralApi, setreferralApi] = useState([])
+  const [dataArray, setdataArray] = useState([])
+
+
+
+  const [positionfilter, setpositionfilter] = useState("0")
+  const [StatusFilter, setStatusFilter] = useState("2")
+  const [fromdatefilter, setfromdatefilter] = useState("")
+  const [todateFilter, settodateFilter] = useState("")
+
+  let arr = []
+  const referral_API = async () => {
+    try {
+
+      // const user = localStorage?.getItem("user");
+
+      let responce = await API?.post('/Direct', {
+        "uid": 778899,
+        "position": positionfilter,
+        "status": StatusFilter,
+        "fdate": fromdatefilter,
+        "tdate": todateFilter
+      })
+      responce = responce?.data?.data?.recordset;
+      console.log("responce", responce);
+      // setreferralApi([])
+
+      responce.forEach((item, index) => {
+        arr.push({
+          Number: index + 1,
+          UserId: `${item?.user_id} `,
+          Country: item.countryname,
+          Package: `$ ${item?.packageamount}  `,
+          DateTime: item?.ee,
+          Status: (<>{item.top_up == 1 ? (<>Active</>) : (<>InActive</>)}</>),
+          Position: item?.pos,
+          ActivationDate: item.dd ? item.dd : "Null",
+          TotalBusiness: `$ ${item?.packageamount}`,
+
+        })
+        setdataArray([...arr])
+
+
+      })
+
+
+    } catch (e) {
+      console.log("Error While calling Referrer API", e);
+    }
+  }
+
+
+  useEffect(() => {
+    referral_API()
+  }, [positionfilter, StatusFilter])
+
   return (
     <>
       <BgLayout>
@@ -75,7 +137,7 @@ const MyReferral = () => {
         <div className="LevelDetailsSelect">
           <div className="LevelDetailsInputs">
             <span>Select Status</span>
-            <Form.Select aria-label="Default select example">
+            <Form.Select aria-label="Default select example" onChange={(e) => setStatusFilter(e.target.value)}>
               <option>Select Status</option>
               <option value="0">All</option>
               <option value="1">Active</option>
@@ -84,7 +146,7 @@ const MyReferral = () => {
           </div>
           <div className="LevelDetailsInputs">
             <span>Position</span>
-            <Form.Select aria-label="Default select example">
+            <Form.Select aria-label="Default select example" onChange={(e) => setpositionfilter(e.target.value)}>
               <option>Select Position</option>
               <option value="0">All </option>
               <option value="1">Left</option>
@@ -93,14 +155,14 @@ const MyReferral = () => {
           </div>
           <div className="LevelDetailsInputs">
             <span>From Date</span>
-            <input type="date" />
+            <input type="date" onChange={(e) => setfromdatefilter(e.target.value)} />
           </div>
           <div className="LevelDetailsInputs">
             <span>To Date</span>
-            <input type="date" />
+            <input type="date" onChange={(e) => settodateFilter(e.target.value)} />
           </div>
           <div className="">
-            <button>Search</button>
+            <button onClick={referral_API}>Search</button>
           </div>
         </div>
         <div className="Share_tableMain">

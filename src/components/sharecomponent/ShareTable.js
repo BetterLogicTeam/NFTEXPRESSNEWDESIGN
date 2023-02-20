@@ -49,7 +49,7 @@ const ShareTable = ({ columns, Data }) => {
           columns={columns}
           wrapperClasses="table-responsive"
           pagination={paginationFactory({
-            sizePerPage: 2,
+            sizePerPage: 10,
             showTotal: false,
             showPageListOnly: true,
             sizePerPageRenderer,

@@ -3,38 +3,39 @@ import { Image } from "react-bootstrap";
 import progresshorse from "../../assets/images/progresshorse.png";
 import styled from "styled-components";
 import { API } from "../../API/Api";
+import { useSelector } from "react-redux";
 
 const HorseProgress = () => {
-  const [userDetail, setUserDetail] = useState({})
+  const userDetail = useSelector((state) => state.nft.userDetail);
 
-  const DashboardAPI = async () => {
+  // const DashboardAPI = async () => {
 
-    try {
+  //   try {
 
-      // let res = await API.get(`/getDashboardValues?id=${user}`)
-      let res = await API.get(`/getDashboardValues?id=778899`)
+  //     // let res = await API.get(`/getDashboardValues?id=${user}`)
+  //     let res = await API.get(`/getDashboardValues?id=778899`)
 
-      res = res.data.data[0]
-      setUserDetail(res)
-      console.log("res", res.RightDirect);
-
-
-
-
-    } catch (e) {
-      console.log("Error While Fatch Dashboard API", e);
-    }
-  }
-  useEffect(() => {
-
-
-
-    DashboardAPI()
+  //     res = res.data.data[0]
+  //     setUserDetail(res)
+  //     console.log("res", res.RightDirect);
 
 
 
 
-  }, []);
+  //   } catch (e) {
+  //     console.log("Error While Fatch Dashboard API", e);
+  //   }
+  // }
+  // useEffect(() => {
+
+
+
+  //   DashboardAPI()
+
+
+
+
+  // }, []);
 
 
 

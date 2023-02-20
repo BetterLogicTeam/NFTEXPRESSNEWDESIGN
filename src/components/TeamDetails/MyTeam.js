@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 import Form from "react-bootstrap/Form";
+import { API } from "../../API/Api";
 
 const columns = [
   {
@@ -51,23 +52,75 @@ const columns = [
     sort: false,
   },
 ];
-const dataArray = [
-  {
-    Number: 213213,
-    UserId: 222,
-    Country: "US",
-    Package: "demo",
-    DateTime: "12/3/2022",
-    Status: "all",
-    Position: "Left",
-    ActivationDate: "12/3/2022",
-    TotalBusiness: "10",
-  },
-];
 
 
 
 const MyTeam = () => {
+
+
+  const [dataArray, setdataArray] = useState([])
+
+  const [leftreferralApi, setleftreferralApi] = useState([])
+
+  const [currentPage, setcurrentPage] = useState(1)
+  const [listPerpage, setlistPerpage] = useState(10)
+  const [currentPage2, setcurrentPage2] = useState(1)
+  const [listPerpage2, setlistPerpage2] = useState(10)
+  const [getuerid, setgetuerid] = useState("")
+  const [filterValue, setFilterValue] = useState(2);
+  const [getuseriddata, setgetuseriddata] = useState("")
+
+  const [positionfilter, setpositionfilter] = useState("0")
+  const [StatusFilter, setStatusFilter] = useState("2")
+  const [fromdatefilter, setfromdatefilter] = useState("")
+  const [todateFilter, settodateFilter] = useState("")
+
+
+  // const [FilterRight, setFilterRight] = useState("")
+  let arr = []
+  let arrayLeft = []
+
+
+  const referral_API = async () => {
+    try {
+      const user = localStorage?.getItem("user");
+      let responceRight = await API?.post('/MyLeftDownline', {
+        "uid": 778899,
+        "position": positionfilter,
+        "status": StatusFilter,
+        "fdate": fromdatefilter,
+        "tdate": todateFilter
+      })
+      console.log("My_Team", responceRight?.data?.data?.recordset);
+      responceRight = responceRight?.data?.data?.recordset;
+      // setleftreferralApi([])
+
+
+      responceRight.forEach((item, index) => {
+        arrayLeft.push({
+          Number: index + 1,
+          UserId: `${item?.uid} `,
+          Position: item?.pos,
+          DateTime: `${item?.edate} `,
+          Status: (<>{item.top_update == null ? (<>InActive</>) : (<>Active</>)}</>),
+          ActivationDate: item.top_update || "Null",
+          TotalBusiness: `$ ${item.packageamount}`,
+          Country: item.countryname
+
+        })
+
+        setdataArray(arrayLeft)
+      })
+
+    } catch (e) {
+      console.log("Error While calling Myteam API", e);
+    }
+  }
+
+  useEffect(() => {
+    referral_API()
+  }, [positionfilter, StatusFilter])
+
   return (
     <>
       <BgLayout>
@@ -77,7 +130,7 @@ const MyTeam = () => {
         <div className="LevelDetailsSelect">
           <div className="LevelDetailsInputs">
             <span>Select Status</span>
-            <Form.Select aria-label="Default select example">
+            <Form.Select aria-label="Default select example" onChange={(e) => setStatusFilter(e.target.value)}>
               <option>Select Status</option>
               <option value="0">All</option>
               <option value="1">Active</option>
@@ -86,7 +139,7 @@ const MyTeam = () => {
           </div>
           <div className="LevelDetailsInputs">
             <span>Position</span>
-            <Form.Select aria-label="Default select example">
+            <Form.Select aria-label="Default select example" onChange={(e) => setpositionfilter(e.target.value)}>
               <option>Select Position</option>
               <option value="0">All</option>
               <option value="1">Left</option>
@@ -95,14 +148,14 @@ const MyTeam = () => {
           </div>
           <div className="LevelDetailsInputs">
             <span>From Date</span>
-            <input type="date" />
+            <input type="date" onChange={(e) => setfromdatefilter(e.target.value)} />
           </div>
           <div className="LevelDetailsInputs">
             <span>To Date</span>
-            <input type="date" />
+            <input type="date" onChange={(e) => settodateFilter(e.target.value)} />
           </div>
-{/* filter input */}
-<div className="LevelDetailsInputs">
+          {/* filter input */}
+          <div className="LevelDetailsInputs">
             <span>Rank</span>
             <Form.Select aria-label="Default select example">
               <option value="0">All </option>
@@ -120,9 +173,9 @@ const MyTeam = () => {
               <option value="12">Global President</option>
             </Form.Select>
           </div>
-{/* filtr input */}
+          {/* filtr input */}
           <div className="LevelDetailsInputs">
-            <button>Search</button>
+            <button onClick={referral_API}>Search</button>
           </div>
         </div>
         <div className="Share_tableMain">

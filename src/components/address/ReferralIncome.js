@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 
@@ -47,6 +48,45 @@ const dataArray = [
 ];
 
 const ReferralIncome = () => {
+
+  const [dataArray, setdataArray] = useState([])
+
+
+  const referral_API = async () => {
+    try {
+
+      const user = localStorage?.getItem("user");
+
+      let responce = await API?.post("/DirectIncome", {
+        "uid": 778899
+      })
+      responce = responce?.data?.data?.recordset;
+      let arr = []
+      responce.forEach(item => {
+        arr.push(
+          {
+            Number: item.RowNumber,
+            UserId: item.user_id,
+            FromID: item.from_id,
+            DateTime: item.dd,
+            Package: item.amount,
+            Income: item.income,
+          },
+        )
+      });
+      setdataArray(arr)
+
+    } catch (e) {
+      console.log("Error While calling Referrer API", e);
+    }
+  }
+
+
+  useEffect(() => {
+    referral_API()
+  }, [])
+
+
   return (
     <>
       <BgLayout>

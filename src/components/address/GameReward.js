@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const GameReward = () => {
   const CopyAddressRef = useRef(null);
   const CopyAddressHandler = () => {
-    const text = CopyAddressRef.current.innerText;
+    const text = '0x3a49e91e69e18d886f33155c4de23dd3819626e9';
     navigator.clipboard.writeText(text);
     toast.success("Copied");
   };

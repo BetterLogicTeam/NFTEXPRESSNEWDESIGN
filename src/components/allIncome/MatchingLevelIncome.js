@@ -1,61 +1,26 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Image, Form } from "react-bootstrap";
 import allincome from "../../assets/images/allincome.png";
 import ShareTable from "../sharecomponent/ShareTable";
 import BgLayout from "../sharecomponent/BgLayout";
 import tableimg from "../../assets/images/tableimg.png";
+import { API } from "../../API/Api";
+import moment from "moment";
 
-const dataArray = [
-  {
-    image: tableimg,
-    UserID: 121212,
-    FromID: 1212221212,
-    Level: "high",
-    Amount: 53663,
-    Income: 55,
-    Time: "121",
-  },
-  {
-    image: tableimg,
-    UserID: 121212,
-    FromID: 1212221212,
-    Level: "high",
-    Amount: 53663,
-    Income: 55,
-    Time: "121",
-  },
-  {
-    image: tableimg,
-    UserID: 121212,
-    FromID: 1212221212,
-    Level: "high",
-    Amount: 53663,
-    Income: 55,
-    Time: "121",
-  },
-  {
-    image: tableimg,
-    UserID: 1212,
-    FromID: 221212,
-    Level: "high",
-    Amount: 53663,
-    Income: 8798979,
-    Time: "12187989",
-  },
-];
+
 
 const columns = [
   {
-    dataField: "image",
+    dataField: "Number",
     text: "S. Number",
     sort: false,
-    formatter: (cell, row) => (
-      <img
-        alt={row.name}
-        style={{ width: "20px", height: "20px" }}
-        src={row.image}
-      />
-    ),
+    // formatter: (cell, row) => (
+    //   <img
+    //     alt={row.name}
+    //     style={{ width: "20px", height: "20px" }}
+    //     src={row.image}
+    //   />
+    // ),
   },
   {
     dataField: "UserID",
@@ -87,6 +52,51 @@ const columns = [
 const MatchingLevelIncome = () => {
   const FromDateref = useRef();
   const ToDateref = useRef();
+
+
+
+  const [dataArray, setdataArray] = useState([])
+
+  const [levelFilter, setLevelFilter] = useState(0);
+
+  const referral_API = async () => {
+    try {
+      const user = localStorage?.getItem("user");
+
+      let responce = await API?.post("/MatchingLevel", {
+        "uid": 778899,
+        "level": levelFilter
+      })
+      responce = responce?.data?.data?.recordset;
+
+      let arr = []
+      responce.forEach((item, index) => {
+
+        arr.push({
+          Number: index + 1,
+          FromID: item?.user_id,
+          UserID: item?.sid,
+
+          Level: `${item?.leveltype}`,
+          Amount: ` $ ${item?.package} `,
+          Income: `$ ${item?.level_income} `,
+          Time: moment(item?.edate).format("DD/MM/YYYY h:m:s A")
+        });
+
+      })
+
+      setdataArray(arr)
+
+    } catch (e) {
+      console.log("Error While calling Referrer API", e);
+    }
+  }
+
+
+  useEffect(() => {
+    referral_API()
+  }, [levelFilter])
+
   return (
     <>
       <BgLayout>
@@ -97,7 +107,7 @@ const MatchingLevelIncome = () => {
               <span>Matching Level Income</span>
             </div>
             <div className="Matching_Inputs">
-              <Form.Select aria-label="Default select example">
+              <Form.Select aria-label="Default select example" onChange={(e) => setLevelFilter(e.target.value)}>
                 <option>Select Level</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>

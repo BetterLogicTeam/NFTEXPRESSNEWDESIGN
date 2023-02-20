@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 import Form from "react-bootstrap/Form";
+import { API } from "../../API/Api";
 
 const columns = [
   {
@@ -46,20 +47,59 @@ const columns = [
     sort: false,
   },
 ];
-const dataArray = [
-  {
-    Number: 213213,
-    UserId: 222,
-    Level: "Level 1",
-    DateTime: "12/3/2022",
-    ActivationDate: "12/3/2022",
-    Status: "all",
-    Position: "Left",
-    Package: "demo",
-  },
-];
+
 
 const LevelDetails = () => {
+
+  const [dataArray, setdataArray] = useState([])
+  const [positionfilter, setpositionfilter] = useState("0")
+  const [StatusFilter, setStatusFilter] = useState("2")
+  const [LevelFilter, setLevelFilter] = useState("0")
+  const referral_API = async () => {
+    try {
+      const user = localStorage?.getItem("user");
+
+      let responce = await API.post('/level_details', {
+        "uid": 778899,
+        "level": LevelFilter,
+        "position": positionfilter,
+        "status": StatusFilter
+      })
+      responce = responce?.data?.data;
+
+      let arr = []
+      responce.forEach((item, index) => {
+        arr.push({
+          Number: item.row,
+          UserId: `${item?.user_id} `,
+          Level: item.Leveltype,
+          Package: `$ ${item?.pp}  `,
+          DateTime: `${item?.ee} `,
+          Status: (<>{item.top_update == null ? (<>InActive</>) : (<>Active</>)}</>),
+          ActivationDate: item.top_update || "Null",
+          reg_date: item.date1 || "Null",
+          Position: item.position
+        })
+
+        setdataArray(arr)
+
+      })
+
+
+
+    } catch (e) {
+      console.log("Error While calling Referrer API", e);
+    }
+  }
+
+
+  useEffect(() => {
+    referral_API()
+  }, [])
+  useEffect(() => {
+    referral_API()
+  }, [LevelFilter, positionfilter, StatusFilter])
+
   return (
     <>
       <BgLayout>
@@ -69,7 +109,7 @@ const LevelDetails = () => {
         <div className="LevelDetailsSelect">
           <div className="LevelDetailsInputs">
             <span>Select Level</span>
-            <Form.Select aria-label="Default select example">
+            <Form.Select aria-label="Default select example" onChange={(e) => setLevelFilter(e.target.value)}>
               <option>Select Level</option>
               <option value="0">All Level</option>
               <option value="1">Level 1</option>
@@ -84,7 +124,7 @@ const LevelDetails = () => {
           </div>
           <div className="LevelDetailsInputs">
             <span>Select Status</span>
-            <Form.Select aria-label="Default select example">
+            <Form.Select aria-label="Default select example" onChange={(e) => setStatusFilter(e.target.value)}>
               <option>Select Status</option>
               <option value="0">All</option>
               <option value="1">Active</option>
@@ -93,7 +133,7 @@ const LevelDetails = () => {
           </div>
           <div className="LevelDetailsInputs">
             <span>Position</span>
-            <Form.Select aria-label="Default select example">
+            <Form.Select aria-label="Default select example" onChange={(e) => setpositionfilter(e.target.value)}>
               <option>Select Position</option>
               <option value="0">All </option>
               <option value="1">Left</option>

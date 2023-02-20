@@ -11,27 +11,27 @@ const NftTokenComp = () => {
   const BRANNBILNFTRef = useRef(null);
   const FOUDRENFTRef = useRef(null);
   const GLEBANFTRefHandler = () => {
-    const text = GLEBANFTRef.current.innerText;
+    const text = '0x808a12C6ac73eC9AE53C9128C4b7196717E66E10'
     navigator.clipboard.writeText(text);
     toast.success("Copied");
   };
   const WASSERNFTRefHandler = () => {
-    const text = WASSERNFTRef.current.innerText;
+    const text = '0x25F20Dd10d40Dc7f209455eA98f3de559Fe3b067';
     navigator.clipboard.writeText(text);
     toast.success("Copied");
   };
   const ZRAKNFTRefHandler = () => {
-    const text = ZRAKNFTRef.current.innerText;
+    const text = '0x413b1891D69E1291aFA56f13ce2B2f44381BA227'
     navigator.clipboard.writeText(text);
     toast.success("Copied");
   };
   const BRANNBILNFTRefHandler = () => {
-    const text = BRANNBILNFTRef.current.innerText;
+    const text = '0x0e7a4fe65caA8E98aeFD2022eE5480338Edb7877'
     navigator.clipboard.writeText(text);
     toast.success("Copied");
   };
   const FOUDRENFTRefHandler = () => {
-    const text = FOUDRENFTRef.current.innerText;
+    const text = '0x4bda9aACF53A2dADddFDD8e2eF88f0CDd566480B'
     navigator.clipboard.writeText(text);
     toast.success("Copied");
   };

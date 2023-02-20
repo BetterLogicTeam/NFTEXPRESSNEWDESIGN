@@ -14,10 +14,12 @@ import AffiliateLeftWidget from "./AffiliateLeftWidget";
 import { Col, Row } from "react-bootstrap";
 import scrollreveal from "scrollreveal";
 import { API } from "../../API/Api";
+import { useDispatch } from "react-redux";
+import { userDetailed } from "../../redux/Slices/NFTSlice";
 
 const HomeCom = () => {
   const [userDetail, setUserDetail] = useState({})
-
+  const dispatch = useDispatch();
   const DashboardAPI = async () => {
 
     try {
@@ -27,7 +29,8 @@ const HomeCom = () => {
 
       res = res.data.data[0]
       setUserDetail(res)
-      console.log("res", res);
+      dispatch(userDetailed(res))
+      // console.log("res", res);
 
       // setTimer_data(res.Bonus7DayTimer)
       // localStorage.setItem("Timer1", res.Bonus7DayTimer);
