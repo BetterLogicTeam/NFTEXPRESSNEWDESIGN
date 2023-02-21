@@ -4,10 +4,11 @@ import { Navigate, useLocation } from "react-router-dom"
 
 const PublicRoute = ({ children }) => {
     const isuser = useSelector((state) => state.UserAuth.isAuth);
+    console.log('PublicRoute', isuser)
 
 
     if (isuser) {
-        return <Navigate to="/" />
+        return <Navigate to="/dashboard" />
     }
     return children
 

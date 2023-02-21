@@ -14,23 +14,23 @@ import AffiliateLeftWidget from "./AffiliateLeftWidget";
 import { Col, Row } from "react-bootstrap";
 import scrollreveal from "scrollreveal";
 import { API } from "../../API/Api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userDetailed } from "../../redux/Slices/NFTSlice";
 
 const HomeCom = () => {
   const [userDetail, setUserDetail] = useState({})
+  const user = useSelector((state) => state.UserAuth.userId);
+
   const dispatch = useDispatch();
   const DashboardAPI = async () => {
 
     try {
 
-      // let res = await API.get(`/getDashboardValues?id=${user}`)
-      let res = await API.get(`/getDashboardValues?id=778899`)
-
+      let res = await API.get(`/getDashboardValues?id=${user}`)
       res = res.data.data[0]
       setUserDetail(res)
       dispatch(userDetailed(res))
-     
+
 
     } catch (e) {
       console.log("Error While Fatch Dashboard API", e);
@@ -101,7 +101,7 @@ const HomeCom = () => {
           </Col>
 
           <Col xs={12} sm={12} md={12} lg={4} className="colMb mb-lg-0 mb-md-3">
-            <LADChatWidget />
+            <LADChatWidget ReceivedAirdropToken={userDetail.ReceivedAirdropToken}TotalAirdropToken={userDetail.TotalAirdropToken} />
           </Col>
         </Row>
       </div>

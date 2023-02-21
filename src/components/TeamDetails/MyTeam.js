@@ -3,6 +3,7 @@ import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 import Form from "react-bootstrap/Form";
 import { API } from "../../API/Api";
+import { useSelector } from "react-redux";
 
 const columns = [
   {
@@ -56,6 +57,7 @@ const columns = [
 
 
 const MyTeam = () => {
+  const user = useSelector((state) => state.UserAuth.userId);
 
 
   const [dataArray, setdataArray] = useState([])
@@ -83,7 +85,7 @@ const MyTeam = () => {
 
   const referral_API = async () => {
     try {
-      const user = localStorage?.getItem("user");
+
       let responceRight = await API?.post('/MyLeftDownline', {
         "uid": user,
         "position": positionfilter,

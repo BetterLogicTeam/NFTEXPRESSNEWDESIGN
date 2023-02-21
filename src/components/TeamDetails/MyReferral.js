@@ -3,6 +3,7 @@ import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 import Form from "react-bootstrap/Form";
 import { API } from "../../API/Api";
+import { useSelector } from "react-redux";
 
 const columns = [
   {
@@ -52,27 +53,11 @@ const columns = [
     sort: false,
   },
 ];
-// const dataArray = [
-//   {
-//     Number: 213213,
-//     UserId: 222,
-//     Country: "US",
-//     Package: "demo",
-//     DateTime: "12/3/2022",
-//     Status: "all",
-//     Position: "Left",
-//     ActivationDate: "12/3/2022",
-//     TotalBusiness: "10",
-//   },
-// ];
-
-
-
-
 
 const MyReferral = () => {
 
-  const [referralApi, setreferralApi] = useState([])
+  const user = useSelector((state) => state.UserAuth.userId);
+
   const [dataArray, setdataArray] = useState([])
 
 
@@ -85,8 +70,6 @@ const MyReferral = () => {
   let arr = []
   const referral_API = async () => {
     try {
-
-      const user = localStorage?.getItem("user");
 
       let responce = await API?.post('/Direct', {
         "uid": user,

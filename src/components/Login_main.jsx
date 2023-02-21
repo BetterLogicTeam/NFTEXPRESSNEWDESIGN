@@ -1,50 +1,55 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import loginimg from '../assets/images/login.png'
-import { toast } from 'react-toastify'
-import { API } from '../API/Api'
-import { useForm } from 'react-hook-form'
-import  Header  from '../components/Landing_Page/Header/Header'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import loginimg from "../assets/images/login.png";
+import { toast } from "react-toastify";
+import { API } from "../API/Api";
+import { useForm } from "react-hook-form";
+import Header from "../components/Landing_Page/Header/Header";
 
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
-import Web3 from 'web3'
-import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
-import './Login-main.css'
-import InputAdornment from '@mui/material/InputAdornment'
-import Visibility from '@mui/icons-material/Visibility'
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
-import OutlinedInput from '@mui/material/OutlinedInput'
-import IconButton from '@mui/material/IconButton'
-import Footer from './Landing_Page/Footer/Footer'
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import Web3 from "web3";
+import { MdOutlineVisibilityOff, MdOutlineVisibility } from "react-icons/md";
+import "./Login-main.css";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import IconButton from "@mui/material/IconButton";
+import Footer from "./Landing_Page/Footer/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { updateAuth } from "../redux/Slices/UserAuth";
 
 function Login_main() {
-  let navigate = useNavigate()
-  const [inputdata, setinputdata] = useState({ uid: '', password: '' })
-  const [Ip, setIP] = useState()
-  const [formError, setformError] = useState({})
-  const [isSubmit, setisSubmit] = useState(false)
-  const [checkbox, setcheckbox] = useState(false)
-  const [spinnerload, setspinnerload] = useState(false)
+  const userDetail = useSelector((state) => state.nft.userDetail);
+  const dispatch = useDispatch();
+
+  let navigate = useNavigate();
+  const [inputdata, setinputdata] = useState({ uid: "", password: "" });
+  const [Ip, setIP] = useState();
+  const [formError, setformError] = useState({});
+  const [isSubmit, setisSubmit] = useState(false);
+  const [checkbox, setcheckbox] = useState(false);
+  const [spinnerload, setspinnerload] = useState(false);
   const [values, setValues] = React.useState({
-    password: '',
+    password: "",
     showPassword: false,
-  })
+  });
 
   const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value })
-  }
+    setValues({ ...values, [prop]: event.target.value });
+  };
   const handleClickShowPassword = () => {
     setValues({
       ...values,
       showPassword: !values.showPassword,
-    })
-  }
+    });
+  };
   const schema = yup.object().shape({
-    uid: yup.string().required('Id is required'),
-    password: yup.string().required('Password is required'),
-  })
+    uid: yup.string().required("Id is required"),
+    password: yup.string().required("Password is required"),
+  });
 
   const {
     register,
@@ -53,38 +58,39 @@ function Login_main() {
     reset,
   } = useForm({
     resolver: yupResolver(schema),
-  })
+  });
 
   const onSubmitHandler = async (data) => {
-    setspinnerload(true)
+    setspinnerload(true);
     // let response = await axios.get('https://geolocation-db.com/json/')
     // console.log("response Geolocation",response.data.IPv4);
     // setIP(response.data.IPv4)
     // response = response.data.IPv4
-    let res = await API.post('/userlogin', {
+    let res = await API.post("/userlogin", {
       uid: data.uid,
       password: data.password,
-      ipaddress: '106.215.83.27',
-    })
-    let res_here = await API.get(`/getDashboardValues?id=${data.uid}`)
+      ipaddress: "106.215.83.27",
+    });
+    let res_here = await API.get(`/getDashboardValues?id=${data.uid}`);
     // console.log("Response",res_here.data.data.address);
-    console.log('Res', res_here.data.data[0].address)
-    if (res.data.data == 'Successfull') {
-      toast.success(`Login Successfull`)
-      localStorage.setItem('isAuthenticated', true)
-      localStorage.setItem('user', data.uid)
+    console.log("Res", res_here.data.data[0].address);
+    if (res.data.data == "Successfull") {
+      toast.success(`Login Successfull`);
+      dispatch(updateAuth({ isAuth: true, userId: data.uid }));
+      // localStorage.setItem("isAuthenticated", true);
+      // localStorage.setItem("user", data.uid);
       // if(res_here.data.data[0].address==""){
 
       //     history('/Wallet_Address_change')
       // }else{
-      navigate('/dashboard')
-      window.location.reload()
+      // navigate("/dashboard");
+      // window.location.reload();
     } else {
-      toast.error(`${res.data.data}`)
-      setspinnerload(false)
+      toast.error(`${res.data.data}`);
+      setspinnerload(false);
     }
-    setspinnerload(false)
-  }
+    setspinnerload(false);
+  };
 
   return (
     <div className="theme-orange main_div_her_login_red ">
@@ -176,7 +182,7 @@ function Login_main() {
                         
                 </section> */}
 
-      <section className='logginn' id="login">
+      <section className="logginn" id="login">
         <div className="login-text">
           <h1>
             SIGN IN YOUR
@@ -189,18 +195,18 @@ function Login_main() {
                 <input
                   type="text"
                   name="firstname"
-                  {...register('uid', { required: true })}
+                  {...register("uid", { required: true })}
                   placeholder="Login"
                   required
                 />
                 <p className="">{errors.uid?.message}</p>
-                <label className='lable-ip'>Login Id</label>
+                <label className="lable-ip">Login Id</label>
                 <input
                   name="lastname"
-                  type={values.showPassword ? 'text' : 'password'}
+                  type={values.showPassword ? "text" : "password"}
                   // value={values.password}
-                  {...register('password', { required: true })}
-                  onChange={handleChange('password')}
+                  {...register("password", { required: true })}
+                  onChange={handleChange("password")}
                   endAdornment={
                     <InputAdornment position="end">
                       <IconButton
@@ -209,7 +215,11 @@ function Login_main() {
                         // onMouseDown={handleMouseDownPassword}
                         edge="end"
                       >
-                        {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                        {values.showPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
                       </IconButton>
                     </InputAdornment>
                   }
@@ -217,7 +227,7 @@ function Login_main() {
                   required
                 />
                 <p className="p_tage">{errors.password?.message}</p>
-                <label className='lable-ip'>Password</label>
+                <label className="lable-ip">Password</label>
               </div>
               <div className="form-inputs-checkbox">
                 <input
@@ -226,17 +236,19 @@ function Login_main() {
                   name="phone"
                   checked={checkbox}
                   onChange={(e) => setcheckbox(e.target.checked)}
-                 
                 />
                 <p className="checkbox-p">
-                  Remember Me,{' '}
+                  Remember Me,{" "}
                   <Link className="signup-link lable-ip" to="/Forgat_Password">
                     Forgot Password?
                   </Link>
                 </p>
               </div>
               <div className="login-btn">
-                <button className="nav-btn nav-btn-1 active-btn-header signin-btnn" type="submit">
+                <button
+                  className="nav-btn nav-btn-1 active-btn-header signin-btnn"
+                  type="submit"
+                >
                   {spinnerload ? (
                     <>
                       <div className="spinner-border" role="status">
@@ -244,12 +256,12 @@ function Login_main() {
                       </div>
                     </>
                   ) : (
-                    'Sign In'
-                  )}{' '}
+                    "Sign In"
+                  )}{" "}
                 </button>
               </div>
               <p className="form-p">
-                Create An Account{' '}
+                Create An Account{" "}
                 <Link className="signup-link" to="/Register_main">
                   Sign Up
                 </Link>
@@ -264,7 +276,7 @@ function Login_main() {
       <Footer />
       {/* <Footer/> */}
     </div>
-  )
+  );
 }
 
-export default Login_main
+export default Login_main;

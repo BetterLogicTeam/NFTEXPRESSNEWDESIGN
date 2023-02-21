@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
@@ -36,26 +37,18 @@ const columns = [
     sort: false,
   },
 ];
-const dataArray = [
-  {
-    Number: 213213,
-    UserId: 222,
-    FromID: 121212,
-    DateTime: "12/12/2020",
-    Package: "high",
-    Income: 233,
-  },
-];
+
 
 const ReferralIncome = () => {
 
   const [dataArray, setdataArray] = useState([])
 
+  const user = useSelector((state) => state.UserAuth.userId);
 
   const referral_API = async () => {
     try {
 
-      const user = localStorage?.getItem("user");
+
 
       let responce = await API?.post("/DirectIncome", {
         "uid": user

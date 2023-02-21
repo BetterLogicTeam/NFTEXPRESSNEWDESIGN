@@ -70,24 +70,24 @@ function App() {
     <BrowserRouter>
 
       <div className="App_Main"  >
-      <ToastContainer />
+        <ToastContainer />
         <Toaster position="top-center" reverseOrder={false} />
         <Routes>
-          <Route path="/" element={<Index_main />} />
-          <Route path="/About_main" element={<About_main />} />
-          <Route path="/Explore_main" element={<Explore_main />} />
-          <Route path="/How_to_play_main" element={<How_to_play_main />} />
-          <Route path="/Tokenomics_main" element={<Tokenomics_main />} />
-          <Route path="/Contact_main" element={<Contact_main />} />
-          <Route path="Login_main" element={<Login_main />} />
-          <Route path="Register_main" element={<Register_main />} />
-          <Route path="welComePage/:email" element={<WellComePage />} />
-          <Route path="Wallet_Address_change" element={<Wallet_Address_change />} />
-          <Route path='Forgat_Password' element={<Forgat_Password />} />
-          <Route path='Forget_Password_Result' element={<Get_Password_result />} />
+          <Route path="/" element={<PublicRoute><Index_main /></PublicRoute>} />
+          <Route path="/About_main" element={<PublicRoute><About_main /></PublicRoute>} />
+          <Route path="/Explore_main" element={<PublicRoute><Explore_main /></PublicRoute>} />
+          <Route path="/How_to_play_main" element={<PublicRoute><How_to_play_main /></PublicRoute>} />
+          <Route path="/Tokenomics_main" element={<PublicRoute><Tokenomics_main /></PublicRoute>} />
+          <Route path="/Contact_main" element={<PublicRoute><Contact_main /></PublicRoute>} />
+          {/* <Route path="Login_main" element={<Login_main />} /> */}
+          <Route path="Register_main" element={<PublicRoute><Register_main /></PublicRoute>} />
+          <Route path="welComePage/:email" element={<PublicRoute><WellComePage /></PublicRoute>} />
+          <Route path="Wallet_Address_change" element={<PublicRoute><Wallet_Address_change /></PublicRoute>} />
+          <Route path='Forgat_Password' element={<PublicRoute><Forgat_Password /></PublicRoute>} />
+          <Route path='Forget_Password_Result' element={<PublicRoute><Get_Password_result /></PublicRoute>} />
 
           <Route path='OTP/:email' element={<OTP />} />
-          <Route path='Varify_forget_Password/:email' element={<Varify_forget_Password />} />
+          <Route path='Varify_forget_Password/:email' element={<PublicRoute><Varify_forget_Password /></PublicRoute>} />
 
 
           <Route element={<PrivateRoutes />}>
@@ -146,7 +146,7 @@ function App() {
             <Route path="/tutorial" element={<TutorialPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="/login" element={<PublicRoute><MyLogin /></PublicRoute>} />
+          <Route path="/Login_main" element={<PublicRoute><Login_main /></PublicRoute>} />
 
 
         </Routes>

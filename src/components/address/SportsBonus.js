@@ -2,6 +2,7 @@ import React from "react";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 import Form from "react-bootstrap/Form";
+import { useSelector } from "react-redux";
 
 const columns = [
   {
@@ -48,6 +49,8 @@ const dataArray = [
 ];
 
 const SportsBonus = () => {
+  const user = useSelector((state) => state.UserAuth.userId);
+
   return (
     <>
       <BgLayout>
@@ -55,7 +58,7 @@ const SportsBonus = () => {
           <h6>Sports Bonus</h6>
         </div>
 
-       
+
         <div className="SelectIncomeType">
           <form>
             <span>Select Income Type</span>
@@ -66,7 +69,7 @@ const SportsBonus = () => {
               <option value="3">Team Bonus</option>
               <option value="4">Matching Level Income</option>
               <option value="5">Withdrawal Share Bonus</option>
-     
+
             </Form.Select>
           </form>
         </div>

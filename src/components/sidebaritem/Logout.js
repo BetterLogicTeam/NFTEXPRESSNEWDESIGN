@@ -4,13 +4,13 @@ import Passwordicon from "../../assets/images/Passwordicon.png";
 
 import { Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateAuth } from "../../redux/Slices/UserAuth";
 const Logout = () => {
-  const history = useNavigate()
+  const dispatch = useDispatch();
   const LogoutHandler = (e) => {
-    localStorage.setItem("isAuthenticated", false);
-    localStorage.setItem("user", null);
-    history("/Login_main");
-    window.location.reload();
+    dispatch(updateAuth({ isAuth: false, userId: '' }));
+
   };
   return (
     <>

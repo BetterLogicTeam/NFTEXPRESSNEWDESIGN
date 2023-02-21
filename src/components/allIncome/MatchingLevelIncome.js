@@ -6,6 +6,7 @@ import BgLayout from "../sharecomponent/BgLayout";
 import tableimg from "../../assets/images/tableimg.png";
 import { API } from "../../API/Api";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 
 
@@ -53,6 +54,7 @@ const MatchingLevelIncome = () => {
   const FromDateref = useRef();
   const ToDateref = useRef();
 
+  const user = useSelector((state) => state.UserAuth.userId);
 
 
   const [dataArray, setdataArray] = useState([])
@@ -61,7 +63,7 @@ const MatchingLevelIncome = () => {
 
   const referral_API = async () => {
     try {
-      const user = localStorage?.getItem("user");
+      // const user = localStorage?.getItem("user");
 
       let responce = await API?.post("/MatchingLevel", {
         "uid": user,
@@ -91,7 +93,6 @@ const MatchingLevelIncome = () => {
       console.log("Error While calling Referrer API", e);
     }
   }
-
 
   useEffect(() => {
     referral_API()

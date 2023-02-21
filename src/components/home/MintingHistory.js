@@ -1,5 +1,6 @@
 import moment from "moment/moment";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
@@ -29,17 +30,13 @@ const columns = [
 
 
 const MintingHistory = () => {
+  const user = useSelector((state) => state.UserAuth.userId);
 
   const [dataArray, setdataArray] = useState([])
 
 
   const referral_API = async () => {
     try {
-
-      const user = localStorage?.getItem("user");
-      console.log("Uswerr", user);
-      // let ress = JSON.parse(user);
-      // let uId = ress?.uid;
 
       let responce = await API?.get(`buynfttoken_history?id=${user}`)
       responce = responce.data.data;

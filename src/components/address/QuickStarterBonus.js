@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
@@ -41,12 +42,13 @@ const columns = [
 const QuickStarterBonus = () => {
 
   const [dataArray, setdataArray] = useState([])
+  const user = useSelector((state) => state.UserAuth.userId);
 
 
   const referral_API = async () => {
     try {
 
-      const user = localStorage?.getItem("user");
+
 
       let responce = await API?.post("/QuickStarterBonus", {
         "uid": user

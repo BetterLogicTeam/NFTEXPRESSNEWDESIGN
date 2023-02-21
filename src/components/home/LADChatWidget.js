@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { AreaChart, Area, Tooltip } from "recharts";
 
 const data = [
@@ -46,7 +47,8 @@ const data = [
   },
 ];
 
-const LADChatWidget = () => {
+const LADChatWidget = ({ TotalAirdropToken, ReceivedAirdropToken }) => {
+
   return (
     <>
       <div className="LADChatWidgetMain">
@@ -55,8 +57,8 @@ const LADChatWidget = () => {
             <h6>LAG Token</h6>
           </div>
           <div className="">
-            <span>Total : 498</span>
-            <span>Received : 98</span>
+            <span>Total : {TotalAirdropToken}</span>
+            <span>Received :  {ReceivedAirdropToken}</span>
           </div>
         </div>
         <AreaChart

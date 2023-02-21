@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
@@ -22,18 +23,12 @@ const columns = [
 ];
 
 const NFTStakingIncome = () => {
-
+  const user = useSelector((state) => state.UserAuth.userId);
   const [dataArray, setdataArray] = useState([])
-
-
   const referral_API = async () => {
     try {
 
-      const user = localStorage?.getItem("user");
-      console.log("Uswerr", user);
-
-
-      let responce = await API?.get(`nftIncomeList?uid=${778899}`)
+      let responce = await API?.get(`nftIncomeList?uid=${user}`)
       responce = responce.data.data;
       console.log("responce", responce);
 

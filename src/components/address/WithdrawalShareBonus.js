@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 
@@ -41,6 +42,8 @@ const dataArray = [
 ];
 
 const WithdrawalShareBonus = () => {
+  const user = useSelector((state) => state.UserAuth.userId);
+
   return (
     <>
       <BgLayout>

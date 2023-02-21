@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
@@ -36,30 +37,16 @@ const columns = [
     sort: false,
   },
 ];
-const dataArray = [
-  {
-    Number: 213213,
-    Id: 222,
-    Package: "heigh",
-    TotalLAGToken: 4556,
-    ReceivedLAGToken: 212433,
-    DateTime: "12/12/2020",
-  },
-];
+
 
 const AddressLAGToken = () => {
 
 
   const [dataArray, setdataArray] = useState([])
-  const [currentPage, setcurrentPage] = useState(1)
-  const [listPerpage, setlistPerpage] = useState(10)
+  const user = useSelector((state) => state.UserAuth.userId);
 
   const referral_API = async () => {
     try {
-
-      const user = localStorage?.getItem("user");
-      // let ress = JSON?.parse(user);
-      // let uId = ress?.uid;
 
       let responce = await API?.get(`/ROIIncome?id=${user}`)
       responce = responce?.data?.data;

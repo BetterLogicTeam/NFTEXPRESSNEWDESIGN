@@ -3,6 +3,7 @@ import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 import Form from "react-bootstrap/Form";
 import { API } from "../../API/Api";
+import { useSelector } from "react-redux";
 
 const columns = [
   {
@@ -50,6 +51,7 @@ const columns = [
 
 
 const LevelDetails = () => {
+  const user = useSelector((state) => state.UserAuth.userId);
 
   const [dataArray, setdataArray] = useState([])
   const [positionfilter, setpositionfilter] = useState("0")
@@ -57,7 +59,6 @@ const LevelDetails = () => {
   const [LevelFilter, setLevelFilter] = useState("0")
   const referral_API = async () => {
     try {
-      const user = localStorage?.getItem("user");
 
       let responce = await API.post('/level_details', {
         "uid": user,

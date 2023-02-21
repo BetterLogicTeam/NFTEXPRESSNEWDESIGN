@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { API } from "../../API/Api";
 import BgLayout from "../sharecomponent/BgLayout";
 import ShareTable from "../sharecomponent/ShareTable";
 
 const LAGAirdropHistory = () => {
+  const user = useSelector((state) => state.UserAuth.userId);
+
   const [dataArray, setdataArray] = useState([]);
 
   const columns = [
@@ -26,9 +29,9 @@ const LAGAirdropHistory = () => {
 
   const referral_API = async () => {
     try {
-      const user = localStorage?.getItem("user");
 
-      let responce = await API?.get(`lagStakingHistory?uid=${778899}`);
+
+      let responce = await API?.get(`lagStakingHistory?uid=${user}`);
       responce = responce.data.data;
 
       let arr = [];
