@@ -17,6 +17,8 @@ import { UpdateMobileMenu } from "../redux/Slices/MobileSlice";
 const Sidebar = () => {
   const dispatch = useDispatch();
   const MobileMenuOpenState = useSelector((state) => state.mobile.OpenMenu);
+  const userDetail = useSelector((state) => state.nft.userDetail);
+
 
   const closeMobileMenu = (e) => {
     e.preventDefault();
@@ -38,7 +40,7 @@ const Sidebar = () => {
           />
         </div>
 
-        <Profile />
+        <Profile name={userDetail.f_name} />
         <DashboardIcon />
         <MenuList />
         <Logout />

@@ -14,7 +14,7 @@ export const nfts = [
   {
     id: 1,
     imageUrl: nft1,
-    title: "Ring",
+    title: "GLEBA",
     dec: "Ring #mai",
     price: "0.40",
     count: "100",
@@ -23,7 +23,7 @@ export const nfts = [
   {
     id: 2,
     imageUrl: nft2,
-    title: "Ring",
+    title: "WASSER",
     dec: "Ring #yea",
     price: "0.7",
     count: "500",
@@ -33,7 +33,7 @@ export const nfts = [
   {
     id: 3,
     imageUrl: nft3,
-    title: "Ring",
+    title: "ZRAK",
     dec: "Ring #GLEBA",
     price: "0.50",
     count: "1000",
@@ -43,7 +43,7 @@ export const nfts = [
   {
     id: 4,
     imageUrl: nft4,
-    title: "Ring",
+    title: "BRANNBIL",
     dec: "Ring #GLEBA",
     price: "0.10",
     count: "2500",
@@ -53,7 +53,7 @@ export const nfts = [
   {
     id: 5,
     videoUrl: nftvideo,
-    title: "Ring",
+    title: "FOUDRE",
     dec: "Ring #GLEBA",
     price: "0.06",
     count: "5000",
@@ -65,7 +65,7 @@ export const CoupleNFTData = [
   {
     id: 1,
     imageUrl: nft5,
-    title: "Ring",
+    title: "GLEBA",
     dec: "Ring #mai",
     price: "0.40",
     count: "200",
@@ -75,7 +75,7 @@ export const CoupleNFTData = [
   {
     id: 2,
     imageUrl: nft6,
-    title: "Ring",
+    title: "WASSER",
     dec: "Ring #yea",
     price: "0.7",
     count: "1000",
@@ -85,7 +85,7 @@ export const CoupleNFTData = [
   {
     id: 3,
     imageUrl: nft7,
-    title: "Ring",
+    title: "ZRAK",
     dec: "Ring #GLEBA",
     price: "0.50",
     count: "2000",
@@ -95,7 +95,7 @@ export const CoupleNFTData = [
   {
     id: 4,
     imageUrl: nft8,
-    title: "Ring",
+    title: "BRANNBIL",
     dec: "Ring #GLEBA",
     price: "0.10",
     count: "5000",
@@ -105,7 +105,7 @@ export const CoupleNFTData = [
   {
     id: 5,
     videoUrl: nftvideo2,
-    title: "Ring",
+    title: "FOUDRE",
     dec: "Ring #GLEBA",
     price: "0.06",
     count: "10000",

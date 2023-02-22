@@ -27,6 +27,7 @@ const HomeCom = () => {
     try {
 
       let res = await API.get(`/getDashboardValues?id=${user}`)
+      console.log('resresres', res)
       res = res.data.data[0]
       setUserDetail(res)
       dispatch(userDetailed(res))
@@ -101,7 +102,7 @@ const HomeCom = () => {
           </Col>
 
           <Col xs={12} sm={12} md={12} lg={4} className="colMb mb-lg-0 mb-md-3">
-            <LADChatWidget ReceivedAirdropToken={userDetail.ReceivedAirdropToken}TotalAirdropToken={userDetail.TotalAirdropToken} />
+            <LADChatWidget ReceivedAirdropToken={userDetail.ReceivedAirdropToken} TotalAirdropToken={userDetail.TotalAirdropToken} />
           </Col>
         </Row>
       </div>
