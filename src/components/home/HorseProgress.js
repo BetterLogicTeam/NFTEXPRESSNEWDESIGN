@@ -52,14 +52,14 @@ const HorseProgress = () => {
       border-radius: 4px;
       top: 0;
       left: 0;
-      width: ${() => ` ${userDetail.RightDirect}%`};
+      width: ${() => ` ${userDetail.MaxIncome}%`};
       height: 20px;
     }
   `;
   const MyStyledImage = styled(Image)`
     position: absolute;
     bottom: 100%;
-    left: ${() => ` ${userDetail.RightDirect}%`};  
+    left: ${() => ` ${userDetail.MaxIncome}%`};  
     z-index: 1;
   `;
   return (
@@ -74,7 +74,7 @@ const HorseProgress = () => {
           />
         </HorseProgressBg>
         <p>
-          You have earned a total $90 out of $800 (10% out of your total 100% of
+          You have earned a total ${userDetail.EarnAmount} out of ${userDetail.tt} ({userDetail.MaxIncome}% out of your total {userDetail.MaxPer}% of
           your investment)
         </p>
       </div>

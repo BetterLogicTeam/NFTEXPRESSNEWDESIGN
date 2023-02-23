@@ -22,7 +22,7 @@ const LAGAirdropHistory = () => {
     },
     {
       dataField: "DateTime",
-      text: "Date",
+      text: "Date & Time",
       sort: false,
     },
   ];

@@ -60,7 +60,7 @@ const HomeCom = () => {
         interval: 200,
       }
     );
-  }, []);
+  });
 
   return (
     <>

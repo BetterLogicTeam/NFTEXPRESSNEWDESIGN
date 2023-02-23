@@ -3,8 +3,11 @@ import { Image } from "react-bootstrap";
 // import userCover from '../../assets/images/userCover.png';
 import circulProfile from "../../assets/images/circulProfile.png";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const UserDetails = () => {
+  const userDetail = useSelector((state) => state.nft.userDetail);
+
   const LastSkillFill = styled.div`
     background: rgba(255, 255, 255, 0.46);
     border-radius: 11px;
@@ -37,8 +40,8 @@ const UserDetails = () => {
             </div>
             <div className="ProfileDetails">
               <h6> Current Rank</h6>
-              <h5>username</h5>
-              <h4>Rank Royalty $981</h4>
+              {/* <h5>username</h5> */}
+              <h4>{userDetail.currentrank} ${userDetail.currentbusiness}</h4>
             </div>
           </div>
 
@@ -48,8 +51,8 @@ const UserDetails = () => {
             </div>
             <div className="ProfileDetails">
               <h6> Next Rank</h6>
-              <h5>username</h5>
-              <h4>Rank Royalty $981</h4>
+              {/* <h5>username</h5> */}
+              <h4>{userDetail.nextrank} ${userDetail.nextbusiness}</h4>
             </div>
           </div>
         </div>

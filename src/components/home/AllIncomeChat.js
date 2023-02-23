@@ -51,7 +51,7 @@ const AllIncomeChat = () => {
     ["Task", "Hours per Day"],
     ["Staking reward", 10],
     ["ROI Income", 10],
-    ["Staking reward", 10],
+
 
     ["Matching Bonus", userDetail.levelincome / 100],
     ["Team Bonus", userDetail.binary / 100],
