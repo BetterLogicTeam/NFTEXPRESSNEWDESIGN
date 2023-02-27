@@ -4,6 +4,7 @@ import ShareTable from "../sharecomponent/ShareTable";
 import Form from "react-bootstrap/Form";
 import { API } from "../../API/Api";
 import { useSelector } from "react-redux";
+import moment from "moment";
 
 const columns = [
   {
@@ -67,6 +68,7 @@ const LevelDetails = () => {
         "status": StatusFilter
       })
       responce = responce?.data?.data;
+      console.log("Level", responce.date1);
 
       let arr = []
       responce.forEach((item, index) => {
@@ -75,7 +77,7 @@ const LevelDetails = () => {
           UserId: `${item?.user_id} `,
           Level: item.Leveltype,
           Package: `$ ${item?.pp}  `,
-          DateTime: `${item?.ee} `,
+          DateTime: item.date1 || "Null",
           Status: (<>{item.top_update == null ? (<>InActive</>) : (<>Active</>)}</>),
           ActivationDate: item.top_update || "Null",
           reg_date: item.date1 || "Null",
