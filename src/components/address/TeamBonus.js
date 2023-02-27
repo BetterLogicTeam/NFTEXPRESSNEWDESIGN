@@ -52,7 +52,7 @@ const TeamBonus = () => {
   const referral_API = async () => {
     try {
 
-      
+
 
       let responce = await API?.post("/MatchingBonus", {
         "uid": user
@@ -66,7 +66,7 @@ const TeamBonus = () => {
             Number: item.RowNumber,
             UserId: String(item.user_id).substring(0, 4) + "..." + String(item.user_id).substring(item.user_id.length - 4),
             MatchingBusiness: item.paidpv,
-            NetIncome: item.netincome,
+            NetIncome: `$ ${item.netincome}`,
             DateTime: item.dd,
           },
         )

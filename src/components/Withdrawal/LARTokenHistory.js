@@ -40,11 +40,11 @@ const columns = [
     text: "Net Amount",
     sort: false,
   },
-  // {
-  //   dataField: "WithdrawalToken",
-  //   text: "Withdrawal Token",
-  //   sort: false,
-  // },
+  {
+    dataField: "WithdrawalToken",
+    text: "Withdrawal Token",
+    sort: false,
+  },
   {
     dataField: "TXN",
     text: "TXN",
@@ -60,7 +60,7 @@ const dataArray = [
     // WithdrawalSharePool: 1212,
     WithdrawalFees: 1212,
     NetAmount: 1212,
-    // WithdrawalToken: 7812,
+    WithdrawalToken: 7812,
     TXN: 233,
   },
 ];
@@ -91,7 +91,9 @@ const LARTokenHistory = () => {
           WithdrawalAmount: item.Request_amount,
           WithdrawalFees: item.admincharge,
           tds: item.tds,
-          NetAmount: item.amountusd
+          NetAmount: item.amountusd,
+          WithdrawalToken: `${item?.tokenvalue} `,
+
         });
       })
 

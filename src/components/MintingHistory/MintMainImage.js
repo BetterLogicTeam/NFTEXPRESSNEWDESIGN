@@ -22,11 +22,11 @@ var bol = true;
 const MintMainImage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const GoToMAin = (e) => {
-    e.preventDefault();
-    navigate("/");
-    dispatch(UpdateMobileMenu(false));
-  };
+  // const GoToMAin = (e) => {
+  //   e.preventDefault();
+  //   navigate("/");
+  //   dispatch(UpdateMobileMenu(false));
+  // };
   const userDetail = useSelector((state) => state.nft.userDetail);
   const user = useSelector((state) => state.UserAuth.userId);
   const [Idnumer, setIdnumer] = useState(user);
@@ -384,12 +384,12 @@ const MintMainImage = () => {
               alt="Image description"
               fluid={true}
               className="mint_homeicn"
-              onClick={GoToMAin}
+              onClick={() => setIdnumer(user)}
             />
 
             <input type="text" className="idinput" defaultValue={Idnumer} onChange={(e) => (setgetValue(e.target.value))} />
             <button className="mintsibmit" onClick={() => (setIdnumer(getValue), addValue(getValue))}>Submit</button>
-            <button className="mintsibmit" onClick={GoToMAin}>
+            <button className="mintsibmit" onClick={() => setIdnumer(user)}>
               Home
             </button>
             <button className="mintsibmit" onClick={popoutvalue}>Back</button>

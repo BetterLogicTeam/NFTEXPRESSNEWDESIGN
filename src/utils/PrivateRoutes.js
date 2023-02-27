@@ -3,10 +3,15 @@ import { Outlet, Navigate } from 'react-router-dom'
 
 const PrivateRoutes = () => {
     const isuser = useSelector((state) => state.UserAuth.isAuth);
-console.log('PrivateRoutes',isuser)
+    console.log('PrivateRoutes', isuser)
 
     return (
-        !isuser ? <Navigate to="/Login_main" /> : <Outlet />
+        <div className='bg_Dashboar'>
+            {
+
+                !isuser ? <Navigate to="/Login_main" /> : <Outlet />
+            }
+        </div>
     )
 }
 
