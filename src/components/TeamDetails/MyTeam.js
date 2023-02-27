@@ -54,24 +54,9 @@ const columns = [
   },
 ];
 
-
-
 const MyTeam = () => {
   const user = useSelector((state) => state.UserAuth.userId);
-
-
   const [dataArray, setdataArray] = useState([])
-
-  const [leftreferralApi, setleftreferralApi] = useState([])
-
-  const [currentPage, setcurrentPage] = useState(1)
-  const [listPerpage, setlistPerpage] = useState(10)
-  const [currentPage2, setcurrentPage2] = useState(1)
-  const [listPerpage2, setlistPerpage2] = useState(10)
-  const [getuerid, setgetuerid] = useState("")
-  const [filterValue, setFilterValue] = useState(2);
-  const [getuseriddata, setgetuseriddata] = useState("")
-
   const [positionfilter, setpositionfilter] = useState("0")
   const [StatusFilter, setStatusFilter] = useState("2")
   const [fromdatefilter, setfromdatefilter] = useState("")
@@ -80,7 +65,6 @@ const MyTeam = () => {
 
   // const [FilterRight, setFilterRight] = useState("")
   let arr = []
-  let arrayLeft = []
 
 
   const referral_API = async () => {
@@ -99,7 +83,7 @@ const MyTeam = () => {
 
 
       responceRight.forEach((item, index) => {
-        arrayLeft.push({
+        arr.push({
           Number: index + 1,
           UserId: `${item?.uid} `,
           Position: item?.pos,
@@ -111,7 +95,7 @@ const MyTeam = () => {
 
         })
 
-        setdataArray(arrayLeft)
+        setdataArray([...arr])
       })
 
     } catch (e) {

@@ -82,7 +82,7 @@ const LevelDetails = () => {
           Position: item.position
         })
 
-        setdataArray(arr)
+        setdataArray([...arr])
 
       })
 

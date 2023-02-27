@@ -19,6 +19,10 @@ import { userDetailed } from "../../redux/Slices/NFTSlice";
 
 const HomeCom = () => {
   const [userDetail, setUserDetail] = useState({})
+  const [timeToQualify, settimeToQualify] = useState(0)
+  const [timeToEarn, settimeToEarn] = useState(0)
+
+
   const user = useSelector((state) => state.UserAuth.userId);
 
   const dispatch = useDispatch();
@@ -29,6 +33,33 @@ const HomeCom = () => {
       let res = await API.get(`/getDashboardValues?id=${user}`)
       console.log('resresres', res)
       res = res.data.data[0]
+      let time1
+
+      if (res.Bonus30DayTimer == 'Stop 30 Day Timer') {
+        time1 = new Date()
+        time1 = time1.getTime()
+        settimeToQualify(time1)
+      }
+      else {
+        time1 = new Date(res.Bonus30DayTimer)
+        time1 = time1.getTime()
+        settimeToQualify(time1)
+
+      }
+
+      let timetoEarn
+      if (res.Bonus7DayTimer == 'Stop 7 Day Timer') {
+        timetoEarn = new Date()
+        timetoEarn = timetoEarn.getTime()
+        settimeToEarn(timetoEarn)
+
+      }
+      else {
+        timetoEarn = new Date(res.Bonus7DayTimer)
+        timetoEarn = timetoEarn.getTime()
+        settimeToEarn(timetoEarn)
+      }
+
       setUserDetail(res)
       dispatch(userDetailed(res))
 
@@ -117,7 +148,7 @@ const HomeCom = () => {
             <AffiliateLeftWidget />
           </Col> */}
           <Col xs={12} sm={12} md={12} lg={6} className="colMb mx-auto">
-            <TimeWidget timetoqualify={userDetail.Bonus30DayTimer} timetoearn={userDetail.Bonus30DayTimer} />
+            <TimeWidget timeToQualify={timeToQualify} timetoearn={timeToEarn} />
           </Col>
         </Row>
       </div>
