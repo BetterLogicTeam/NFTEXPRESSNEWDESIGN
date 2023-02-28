@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BgLayout from "../../components/sharecomponent/BgLayout";
 import Form from "react-bootstrap/Form";
 import { useSelector } from "react-redux";
@@ -17,6 +17,17 @@ const StakingNFT = () => {
     lagairdroptokensselect: null
 
   });
+  const [projectlist, setprojectlist] = useState([
+    {
+      id: 1,
+      amount: 100
+    },
+    {
+      id: 2,
+      amount: 500
+    }
+  ])
+
   // console.log('form values', formValues)
   const handleForm = (e) => {
     const value = e.target.value;
@@ -228,6 +239,19 @@ const StakingNFT = () => {
       // setspinner(false)
     }
   }
+  const userPackageList = async () => {
+
+    let responce = await axios.get(`https://nftxpress-1.nakshtech.info/userPackageList?uid=${user}`)
+    responce = responce?.data?.data
+    console.log("data", responce);
+
+    setprojectlist(responce)
+
+  }
+  console.log('formvalues', formValues)
+  useEffect(() => {
+    userPackageList()
+  }, [])
   return (
     <BgLayout>
       <div className="BgLayout_Header">
@@ -241,12 +265,12 @@ const StakingNFT = () => {
               <label htmlFor="email">Staking Amount</label>
               <Form.Select aria-label="Default select example" name="stackingSelect" value={formValues.stackingSelect} onChange={handleForm}>
                 <option>Select Package</option>
-                <option value="100">100</option>
-                <option value="200"> 200</option>
-                <option value="500">500</option>
-                <option value="1000"> 1000</option>
-                <option value="2500"> 2500</option>
-                <option value="5000"> 5000</option>
+                {projectlist.map((projectlist) => (
+                  <option key={projectlist.id} data-key={projectlist.id} value={projectlist.amount}>
+                    {projectlist.amount}
+                  </option>
+                ))}
+
 
 
               </Form.Select>
@@ -274,12 +298,12 @@ const StakingNFT = () => {
               <label htmlFor="email">LAG Airdrop Tokens</label>
               <Form.Select aria-label="Default select example" name="lagairdroptokensselect" value={formValues.lagairdroptokensselect} onChange={handleForm}>
                 <option>Select Package</option>
-                <option value="100">100</option>
-                <option value="200"> 200</option>
-                <option value="500">500</option>
-                <option value="1000"> 1000</option>
-                <option value="2500"> 2500</option>
-                <option value="5000"> 5000</option>
+                {projectlist.map((projectlist) => (
+                  <option value={projectlist.id} key={projectlist.id}>
+                    {projectlist.amount}
+                  </option>
+                ))}
+
               </Form.Select>
             </div>
             <div className="lar_inputWrper">

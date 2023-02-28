@@ -49,15 +49,15 @@ const AllIncomeChat = () => {
 
   const data = [
     ["Task", "Hours per Day"],
-    ["Staking reward", 10],
-    ["ROI Income", 10],
+    ["ROI Income", userDetail.roiincomeNFT],
+    ["Matching Income", userDetail.levelincome],
+    ["Team Bonus", userDetail.binary],
+    ["Starter-Bonus", userDetail.TeamBonus],
+    ["Referral Income ", userDetail.directIncome],
+    ["Lag Token ", userDetail.roiincome],
+    ["Reward Income", userDetail.rewardIncome],
+    ["Withdrawl Bonous", userDetail.cto_income]
 
-
-    ["Matching Bonus", userDetail.levelincome / 100],
-    ["Team Bonus", userDetail.binary / 100],
-    ["Starter-Bonus", userDetail.TeamBonus / 100],
-    ["Referral Bonus ", userDetail.directIncome / 100],
-    ["Reward Income", 8]
 
   ];
   const options = {
@@ -81,6 +81,8 @@ const AllIncomeChat = () => {
       "#ECB62B",
       "#4C7F98",
       "#4638A3",
+      "#2BECA7",
+
     ],
 
   };

@@ -57,7 +57,7 @@ const CoupleNFT = () => {
                     {/* <h6>{value?.title}</h6>
                     <p>{value?.dec}</p> */}
                     <div className="nftsPrice">
-                      <span>${value?.price}</span>
+                      <span>{value?.title}</span>
                       <span>{value?.count} </span>
                     </div>
                   </div>

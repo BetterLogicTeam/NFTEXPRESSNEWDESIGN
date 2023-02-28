@@ -463,8 +463,8 @@ const MintMainImage = () => {
                   )}
                 />
                 <HoverTreeNode data={userdata[0]} />
-                <p className="mb-0">{userdata[0]?.name}</p>
-                <p>{userdata[0]?.id}</p>
+                <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[0]?.name}</p>
+                <p style={{ fontSize: "13px" }}>{userdata[0]?.id}</p>
               </StyledNode>
             }
           >
@@ -490,8 +490,8 @@ const MintMainImage = () => {
                   />
                   <p></p>
                   <HoverTreeNode data={userdata[1]} />
-                  <p className="mb-0">{userdata[1]?.name}</p>
-                  <p>{userdata[1]?.id}</p>
+                  <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[1]?.name}</p>
+                  <p style={{ fontSize: "13px" }}>{userdata[1]?.id}</p>
                 </StyledNode>
               }
             >
@@ -516,8 +516,8 @@ const MintMainImage = () => {
                       )}
                     />
                     <HoverTreeNode data={userdata[3]} />
-                    <p className="mb-0">{userdata[3]?.name}</p>
-                    <p>{userdata[3]?.id}</p>
+                    <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[3]?.name}</p>
+                    <p style={{ fontSize: "13px" }}>{userdata[3]?.id}</p>
                   </StyledNode>
                 }
               >
@@ -542,8 +542,8 @@ const MintMainImage = () => {
                         )}
                       />
                       <HoverTreeNode data={userdata[7]} />
-                      <p className="mb-0">{userdata[7]?.name}</p>
-                      <p>{userdata[7]?.id}</p>
+                      <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[7]?.name}</p>
+                      <p style={{ fontSize: "13px" }}>{userdata[7]?.id}</p>
                     </StyledNode>
                   }
                 />
@@ -568,8 +568,8 @@ const MintMainImage = () => {
                         )}
                       />
                       <HoverTreeNode data={userdata[8]} />
-                      <p className="mb-0">{userdata[8]?.name}</p>
-                      <p>{userdata[8]?.id}</p>
+                      <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[8]?.name}</p>
+                      <p style={{ fontSize: "13px" }}>{userdata[8]?.id}</p>
                     </StyledNode>
                   }
                 />
@@ -595,8 +595,8 @@ const MintMainImage = () => {
                       className="TreeNodeImage"
                     />
                     <HoverTreeNode data={userdata[4]} />
-                    <p className="mb-0">{userdata[4]?.name}</p>
-                    <p>{userdata[4]?.id}</p>
+                    <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[4]?.name}</p>
+                    <p style={{ fontSize: "13px" }}>{userdata[4]?.id}</p>
                   </StyledNode>
                 }
               >
@@ -621,8 +621,8 @@ const MintMainImage = () => {
                         )}
                       />
                       <HoverTreeNode data={userdata[9]} />
-                      <p className="mb-0">{userdata[9]?.name}</p>
-                      <p>{userdata[9]?.id}</p>
+                      <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[9]?.name}</p>
+                      <p style={{ fontSize: "13px" }}>{userdata[9]?.id}</p>
                     </StyledNode>
                   }
                 />
@@ -647,8 +647,8 @@ const MintMainImage = () => {
                         className="TreeNodeImage"
                       />
                       <HoverTreeNode data={userdata[10]} />
-                      <p className="mb-0">{userdata[10]?.name}</p>
-                      <p>{userdata[10]?.id}</p>
+                      <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[10]?.name}</p>
+                      <p style={{ fontSize: "13px" }}>{userdata[10]?.id}</p>
                     </StyledNode>
                   }
                 />
@@ -676,8 +676,8 @@ const MintMainImage = () => {
                     className="TreeNodeImage"
                   />
                   <HoverTreeNode data={userdata[2]} />
-                  <p className="mb-0">{userdata[2]?.name}</p>
-                  <p>{userdata[2]?.id}</p>
+                  <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[2]?.name}</p>
+                  <p style={{ fontSize: "13px" }}>{userdata[2]?.id}</p>
                 </StyledNode>
               }
             >
@@ -702,8 +702,8 @@ const MintMainImage = () => {
                       className="TreeNodeImage"
                     />
                     <HoverTreeNode data={userdata[5]} />
-                    <p className="mb-0">{userdata[5]?.name}</p>
-                    <p>{userdata[5]?.id}</p>
+                    <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[5]?.name}</p>
+                    <p style={{ fontSize: "13px" }}>{userdata[5]?.id}</p>
                   </StyledNode>
                 }
               >
@@ -728,8 +728,8 @@ const MintMainImage = () => {
                         className="TreeNodeImage"
                       />
                       <HoverTreeNode data={userdata[11]} />
-                      <p className="mb-0">{userdata[11]?.name}</p>
-                      <p>{userdata[11]?.id}</p>
+                      <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[11]?.name}</p>
+                      <p style={{ fontSize: "13px" }}>{userdata[11]?.id}</p>
                     </StyledNode>
                   }
                 />
@@ -754,8 +754,8 @@ const MintMainImage = () => {
                         className="TreeNodeImage"
                       />
                       <HoverTreeNode data={userdata[12]} />
-                      <p className="mb-0">{userdata[12]?.name}</p>
-                      <p>{userdata[12]?.id}</p>
+                      <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[12]?.name}</p>
+                      <p style={{ fontSize: "13px" }}>{userdata[12]?.id}</p>
                     </StyledNode>
                   }
                 />
@@ -781,8 +781,8 @@ const MintMainImage = () => {
                       className="TreeNodeImage"
                     />
                     <HoverTreeNode data={userdata[6]} />
-                    <p className="mb-0">{userdata[6]?.name}</p>
-                    <p>{userdata[6]?.id}</p>
+                    <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[6]?.name}</p>
+                    <p style={{ fontSize: "13px" }}>{userdata[6]?.id}</p>
                   </StyledNode>
                 }
               >
@@ -807,8 +807,8 @@ const MintMainImage = () => {
                         className="TreeNodeImage"
                       />
                       <HoverTreeNode data={userdata[13]} />
-                      <p className="mb-0">{userdata[13]?.name}</p>
-                      <p>{userdata[13]?.id}</p>
+                      <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[13]?.name}</p>
+                      <p style={{ fontSize: "13px" }}>{userdata[13]?.id}</p>
                     </StyledNode>
                   }
                 />
@@ -833,8 +833,8 @@ const MintMainImage = () => {
                         className="TreeNodeImage"
                       />
                       <HoverTreeNode data={userdata[14]} />
-                      <p className="mb-0">{userdata[14]?.name}</p>
-                      <p>{userdata[14]?.id}</p>
+                      <p className="mb-0" style={{ fontSize: "13px" }}>{userdata[14]?.name}</p>
+                      <p style={{ fontSize: "13px" }}>{userdata[14]?.id}</p>
                     </StyledNode>
                   }
                 />

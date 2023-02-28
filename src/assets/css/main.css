@@ -406,7 +406,7 @@ cursor: pointer;
   padding-left: 25px;
 }
 .TableMain thead tr {
-  background: #5350ef;
+  background: #5350ef !important;
 }
 .TableMain tbody tr {
   background: linear-gradient(
@@ -1449,6 +1449,23 @@ height: 386px;
   opacity: 1;
 }
 
+.heightcountryTable{
+  overflow-y: scroll;
+  height: 524px !important;
+}
+.heightcountryTable div::-webkit-scrollbar {
+  width: 10px;
+}
+
+.heightcountryTable div::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.heightcountryTable div::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  border-radius: 10px;
+}
 .SalesMain_table {
   background: #130047;
   

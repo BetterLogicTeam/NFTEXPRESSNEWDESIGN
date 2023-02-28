@@ -48,20 +48,20 @@ const TimeWidget = ({ timetoearn, timeToQualify }) => {
           <div className="TimeWidgetLeft">
             <h6>Time to Qualify</h6>
             <RunningClock />
-            {timeToQualify && <div className="showTimer">
+            {timetoearn && <div className="showTimer">
               <Countdown date={
                 Date.now() +
-                (parseInt(timeToQualify) - Date.now())
+                (parseInt(timetoearn) - Date.now())
               } renderer={renderer} />
             </div>}
           </div>
           <div className="TimeWidgetRight">
             <h6>Time to Earn</h6>
             <RunningClock />
-            {timetoearn && <div className="showTimer">
+            {timeToQualify && <div className="showTimer">
               <Countdown date={
                 Date.now() +
-                (parseInt(timetoearn) - Date.now())
+                (parseInt(timeToQualify) - Date.now())
               } renderer={renderer} />
             </div>}
           </div>

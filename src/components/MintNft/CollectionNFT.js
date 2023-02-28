@@ -1253,7 +1253,7 @@ const CollectionNFT = () => {
         }
         else if (singlenft.minting_counter == 2) {
           console.log('singlenft.minting_counter', singlenft.minting_counter)
-          mintingbnbPrice_Toke_1 = mintingbnbPrice_Toke_1 * 2
+          mintingbnbPrice_Toke_1 = mintingbnbPrice_Toke_1 * 2 * value
           arr = [...PriceArray]
           arr[0].price = mintingbnbPrice_Toke_1
           setSelectedValue({ ...selectedValue, price: mintingbnbPrice_Toke_1 })
@@ -1275,7 +1275,7 @@ const CollectionNFT = () => {
           setPriceArray(arr)
           // setToken_Value_2(mintingbnbPrice_Toke_2)
         } else if (singlenft.minting_counter == 2) {
-          mintingbnbPrice_Toke_2 = mintingbnbPrice_Toke_2 * 2
+          mintingbnbPrice_Toke_2 = mintingbnbPrice_Toke_2 * 2 * value
           arr = [...PriceArray]
           arr[1].price = mintingbnbPrice_Toke_2
 
@@ -1369,7 +1369,7 @@ const CollectionNFT = () => {
   useEffect(() => {
     getVAlues()
 
-  }, [singlenft])
+  }, [singlenft, value])
 
   return (
     <>
@@ -1406,7 +1406,7 @@ const CollectionNFT = () => {
               <div className="nftsPrice">
                 <span>
                   {singlenft && singlenft?.price
-                    ? `$${singlenft?.price}`
+                    ? `${singlenft?.title}`
                     : "$0.10"}
                 </span>
                 <span>
@@ -1449,12 +1449,12 @@ const CollectionNFT = () => {
               {/* <Button>
                 Buy NFT
               </Button> */}
-              <div className="NftArt_sharebtn">
+              {/* <div className="NftArt_sharebtn">
                 <button>
                   <Image src={share} alt="Image description" fluid={true} />
                   Share this NFT
                 </button>
-              </div>
+              </div> */}
             </div>
           </Col>
         </Row>

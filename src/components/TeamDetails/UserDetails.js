@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 // import userCover from '../../assets/images/userCover.png';
 import circulProfile from "../../assets/images/circulProfile.png";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import { API } from "../../API/Api";
 
 const UserDetails = () => {
   const userDetail = useSelector((state) => state.nft.userDetail);
+  const user = useSelector((state) => state.UserAuth.userId);
 
+  const [dataArray, setdataArray] = useState({});
+
+  const userDetailData = async () => {
+    let responce = await API.get(`https://nftxpress-1.nakshtech.info/DashboardRewarForUser?uid=${user}`,)
+    console.log('DashboardRewarForUser', responce.data.data[0])
+    setdataArray(responce.data.data[0])
+  }
+  useEffect(() => {
+    userDetailData()
+
+
+  }, []);
   const LastSkillFill = styled.div`
     background: rgba(255, 255, 255, 0.46);
     border-radius: 11px;
@@ -40,8 +54,9 @@ const UserDetails = () => {
             </div>
             <div className="ProfileDetails">
               <h6> Current Rank</h6>
+              <br></br>
               {/* <h5>username</h5> */}
-              <h4>{userDetail.currentrank} ${userDetail.currentbusiness}</h4>
+              <h4>{`${dataArray?.currentrankname || 'NA'}`} ${dataArray?.currentreward}</h4>
             </div>
           </div>
 
@@ -51,8 +66,10 @@ const UserDetails = () => {
             </div>
             <div className="ProfileDetails">
               <h6> Next Rank</h6>
+              <br></br>
+
               {/* <h5>username</h5> */}
-              <h4>{userDetail.nextrank} ${userDetail.nextbusiness}</h4>
+              <h4>{dataArray?.Nextrankname} ${dataArray?.Nextreward}</h4>
             </div>
           </div>
         </div>
@@ -60,20 +77,20 @@ const UserDetails = () => {
         <div className="userskil">
           <div className="userskilTit">
             <span>Completed</span>
-            <span>Required</span>
+            <span>Total</span>
           </div>
 
           <div className="userskilOne">
-            <div className="userskilFill">260</div>
-            <div className="userskilOneText">2000</div>
+            <div className="userskilFill">{dataArray?.totalnextrewardbusiness}</div>
+            <div className="userskilOneText">{dataArray?.Nextreqreward}</div>
           </div>
 
           <div className="LegOneSkill">
             <h6>Leg 1</h6>
             <div className="LegOneSkillProgress">
               <div className="userskilOne">
-                <div className="userskilFill">0</div>
-                <div className="userskilOneText">Max. 800</div>
+                <div className="userskilFill">{dataArray?.legbusiness1}</div>
+                {/* <div className="userskilOneText">Max. 800</div> */}
               </div>
             </div>
           </div>
@@ -81,8 +98,8 @@ const UserDetails = () => {
             <h6>Leg 2</h6>
             <div className="LegOneSkillProgress">
               <div className="userskilOne">
-                <div className="userskilFill">0</div>
-                <div className="userskilOneText">Max. 800</div>
+                <div className="userskilFill">{dataArray?.legbusiness2}</div>
+                {/* <div className="userskilOneText">Max. 800</div> */}
               </div>
             </div>
           </div>
@@ -90,14 +107,14 @@ const UserDetails = () => {
             <h6>others</h6>
             <div className="LegOneSkillProgress">
               <div className="userskilOne">
-                <div className="userskilFill">0</div>
-                <div className="userskilOneText">Max. 800</div>
+                <div className="userskilFill">{dataArray?.legbusinessother}</div>
+                {/* <div className="userskilOneText">Max. 800</div> */}
               </div>
             </div>
           </div>
           <div className="lastSkill">
             <LastSkillFill></LastSkillFill>
-            <LastSkillValue>40% Rule</LastSkillValue>
+            <LastSkillValue> {dataArray?.nextpercentrewrd}% Rule</LastSkillValue>
           </div>
         </div>
       </div>

@@ -79,7 +79,7 @@ const MyReferral = () => {
         "tdate": todateFilter
       })
       responce = responce?.data?.data?.recordset;
-      console.log("responce", responce);
+      console.log("myrefreal response", responce);
       // setreferralApi([])
 
       responce.forEach((item, index) => {
@@ -122,9 +122,9 @@ const MyReferral = () => {
             <span>Select Status</span>
             <Form.Select aria-label="Default select example" onChange={(e) => setStatusFilter(e.target.value)}>
               <option>Select Status</option>
-              <option value="0">All</option>
+              <option value="2">All</option>
               <option value="1">Active</option>
-              <option value="2">In-Active</option>
+              <option value="0">In-Active</option>
             </Form.Select>
           </div>
           <div className="LevelDetailsInputs">

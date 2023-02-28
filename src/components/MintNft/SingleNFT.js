@@ -52,14 +52,14 @@ const SingleNFT = () => {
                       />
                     ) : (
                       <video controls className="CollectionCrdvid">
-                      <source src={nftvideo2} type="video/mp4" />
-                    </video>
+                        <source src={nftvideo2} type="video/mp4" />
+                      </video>
                     )}
 
                     {/* <h6>{value?.title}</h6> */}
                     {/* <p>{value?.dec}</p> */}
                     <div className="nftsPrice">
-                      <span>${value?.price}</span>
+                      <span>{value?.title}</span>
                       <span>{value?.count} </span>
                     </div>
                   </div>
