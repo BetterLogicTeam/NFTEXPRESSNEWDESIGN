@@ -172,7 +172,7 @@
   flex-direction: column;
 }
 .BUSD_Mian button {
-  width: 298px;
+  width: 410px !important;
   height: 50px;
   background: linear-gradient(150.49deg, #5350ef -15.41%, #5e5e7b 133.55%);
   font-family: "sans-serif";
@@ -192,7 +192,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 28px;
-  width: 298px;
+  width: 410px !important;
   height: 50px;
   color: rgba(255, 255, 255, 0.93);
   display: flex;
