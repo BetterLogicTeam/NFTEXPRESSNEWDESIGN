@@ -285,7 +285,7 @@ const MintMainImage = () => {
         usersession_uid: user,
       });
       responce = responce?.data?.data?.recordset;
-      console.log("Res_API", responce);
+      console.log("Res_API activationdate", responce[0].activationdate);
       if (responce == undefined) {
         toast.error("User ID Not Found");
         setloader(false);
@@ -297,13 +297,13 @@ const MintMainImage = () => {
           arr.push({
             name: item.fname,
             id: item.uid,
-            registration_date: item?.activationdate,
+            registration_date: String(item?.activationdate).substring(0, 12),
             status: item.activationdate ? "Active" : "InActive",
             total_left: item.left_count,
             total_left_active: item.totalleft,
             left_business: item.lbv,
             package_amount: item.packageamount,
-            Activation_date: item.activationdate,
+            Activation_date: String(item.activationdate).substring(0, 12),
             package: item.package,
             total_right: item.right_count,
             total_right_active: item.totalright,

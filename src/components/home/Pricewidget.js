@@ -5,7 +5,7 @@ const Pricewidget = ({ nftpkg }) => {
     <>
       <div className="PricewidgetMain">
         <div className="Pricewidget_text">
-          <h6>My NFT Packages</h6>
+          <h6 style={{ fontSize: '20px' }}>My NFT Packages</h6>
           {/* <h5>Package charges</h5> */}
         </div>
         <div className="Pricewidget_img">

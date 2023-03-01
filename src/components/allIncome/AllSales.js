@@ -91,7 +91,7 @@ const AllSales = () => {
           <SalesItems /> */}
             {/* </div> */}
 
-            <div className="SalesMain_table  tableqa SalesMain_tableHeight">
+            <div className="SalesMain_table  tableqa ">
               <h6>Sales by Country</h6>
               <table className="TableMain ">
                 <tr className="TableMainTitleNew">

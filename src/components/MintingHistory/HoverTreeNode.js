@@ -5,7 +5,7 @@ const HoverTreeNode = ({ data }) => {
   const HoverNode = styled.div`
     display: none;
     position: absolute;
-    width: 400px;
+    width: 450px;
     border-radius: 5px;
     padding: 10px;
     background: rgba(19, 0, 71);

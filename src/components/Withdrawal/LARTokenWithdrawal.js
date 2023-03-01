@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { API } from "../../API/Api";
 import { loadWeb3 } from "../../apis/api";
+import { LAR_withdrowal, LAR_withdrowal_ABI } from "../../utilies/constant";
 
 const LARTokenWithdrawal = () => {
   const [inputValue, setInputValue] = useState({
@@ -12,11 +13,23 @@ const LARTokenWithdrawal = () => {
     netamount: "",
   });
 
-  function handleInputChange(event) {
-    setInputValue({
-      ...inputValue,
-      [event.target.name]: event.target.value,
-    });
+  const handleInputChange = async (event) => {
+    try {
+      console.log("LIve_Raterate", event.target.value);
+
+      let res = await API.get(`/live_rate_LAR`)
+      res = res.data.data[0].usdperunit
+      let value = event.target.value
+
+      setInputValue({ ...inputValue, [event.target.name]: value, token: (1 / res) * value })
+    } catch (e) {
+      console.log("Error Whole calling Live Rate API CAlling", e);
+    }
+
+    // setInputValue({
+    //   ...inputValue,
+    //   [event.target.name]: event.target.value,
+    // });
   }
 
   const submitHandler = (event) => {
@@ -100,7 +113,7 @@ const LARTokenWithdrawal = () => {
             let contractof = new web3.eth.Contract(LAR_withdrowal_ABI, LAR_withdrowal);
 
             return new Promise(async (resolve, reject) => {
-              contractof.methods.claimAirdrop(web3.utils.toWei(get_Value)).
+              contractof.methods.claimAirdrop(web3.utils.toWei((inputValue.usdamount).toString())).
                 send({ from: acc }).
                 on("transactionHash", async (hash) => {
                   console.log("transactionHash: ", hash);
@@ -111,8 +124,8 @@ const LARTokenWithdrawal = () => {
                   let saveResult = await API.post('/save_withdraw', {
                     "uid": user,
                     "useraddress": acc,
-                    "amount": get_Value,
-                    "tokenamount": LAR_live,
+                    "amount": inputValue.usdamount,
+                    "tokenamount": inputValue.token,
                     "txn": hash
                   })
                   saveResult = saveResult.data.data
@@ -146,15 +159,16 @@ const LARTokenWithdrawal = () => {
   useEffect(() => {
 
 
-    setInterval(() => {
-      Connect_Wallet()
-    }, 1000);
+    // setInterval(() => {
+    //   Connect_Wallet()
+    // }, 1000);
   }, [])
 
-  useEffect(() => {
-    Live_Rate_LAR()
+  useEffect(async () => {
+    await Live_Rate_LAR()
 
-  }, [inputValue.usdamount])
+  }, [])
+
   return (
     <>
       <div className="LARToken_Main">
@@ -176,14 +190,15 @@ const LARTokenWithdrawal = () => {
               />
             </div>
             <div className="lar_inputWrper">
-              <label htmlFor="USDAmount">Enter USD Amount</label>
+              <label htmlFor="usdamount">Enter USD Amount</label>
               <input
                 type="number"
-                id="USDAmount"
+
                 placeholder="$"
                 name="usdamount"
-                value={inputValue.usdamount}
-                onChange={handleInputChange}
+
+
+                onChange={(e) => handleInputChange(e)}
               />
             </div>
             {/* <div className="lar_inputWrper">

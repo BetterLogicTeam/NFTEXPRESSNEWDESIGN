@@ -395,7 +395,7 @@ cursor: pointer;
   font-family: "sans-serif";
   font-style: normal;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 16px !important;
   line-height: 18px;
   color: #ffffff;
   overflow: hidden;
@@ -1907,6 +1907,20 @@ height: 386px;
     color: #ffffff;
     /* margin-top: 5px; */
   }
+  .TableMain thead tr th {
+    border-style: none;
+    border-bottom-width: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: "sans-serif";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px !important;
+    line-height: 18px;
+    color: #ffffff;
+    overflow: hidden;
+    white-space: nowrap;
+}
   /* .usqa {
     position: absolute;
     left: 72px;

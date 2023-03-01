@@ -31,8 +31,9 @@ const HomeCom = () => {
     try {
 
       let res = await API.get(`/getDashboardValues?id=${user}`)
-      console.log('resresres', res)
       res = res.data.data[0]
+      console.log('response time', res)
+
       let time1
 
       if (res.Bonus30DayTimer == 'Stop 30 Day Timer') {

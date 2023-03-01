@@ -1411,7 +1411,7 @@ const CollectionNFT = () => {
                 </span>
                 <span>
                   <Image src={hart} alt="Image description" fluid={true} />
-                  {singlenft && singlenft?.count ? singlenft?.count : "200"}
+                  {singlenft && singlenft?.count ? <>${singlenft?.count}</> : "200"}
                 </span>
               </div>
             </div>
