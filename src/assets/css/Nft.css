@@ -191,11 +191,7 @@
   color: #fff;
   border-radius: 10px;
 }
-@media screen and (max-width: 800px) {
-  .BUSD_Mian button{
-    width: 100% !important;
-  }
-}
+
 .BUSD_text select {
   background: linear-gradient(150.49deg, #5350ef -15.41%, #5e5e7b 133.55%);
   border-radius: 6px;
@@ -219,6 +215,14 @@
   background-position-x: 96%;
   background-position-y: 16px;
   border-radius: 2px;
+}
+@media screen and (max-width: 800px) {
+  .BUSD_Mian button{
+    width: 100% !important;
+  }
+  .BUSD_text select{
+    width: 100% !important;
+  }
 }
 .BUSD_text select option {
   background: #5350ef;
