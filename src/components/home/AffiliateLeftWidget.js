@@ -23,8 +23,8 @@ const AffiliateLeftWidget = () => {
     toast.success("Copied");
   };
 
-  const linkurl = async (req, res, next, value) => {
-    // alert(value)
+  const linkurl = async (value, next) => {
+
     window.open(`https://nftxpress.club/Register_main?referrallink=${user}&position=${'left'}`)
     // window.open(`https://nftxpress.club/Register_main?referrallink=${user}&position=Left`)
 
@@ -39,9 +39,9 @@ const AffiliateLeftWidget = () => {
         <div className="CopyText">
 
           <div className="flexbutton">
-            <button onClick={() => linkurl('left')} className="myreferal-link">  Left Referral Link
-            </button>
-            <button onClick={LeftCopyAddressHandler} className="icon-copy" style={{ width: '50px', marginLeft: "0px", background: "#130047" }}>  <Image src={copyWhite} alt="Image description" fluid={true} /></button>
+            <a target='_blank' href={`https://nftxpress.club/Register_main?referrallink=${user}&position=${'left'}`} className="myreferal-link">  Left Referral Link
+            </a>
+            <button onClick={LeftCopyAddressHandler} className="icon-copy" style={{ width: '50px', marginLeft: "0px", background: "#130047", border: "none" }}>  <Image src={copyWhite} alt="Image description" fluid={true} /></button>
           </div>
 
 
@@ -50,9 +50,9 @@ const AffiliateLeftWidget = () => {
 
 
           <div className="flexbutton">
-            <button onClick={() => { linkurl('right') }} className="myreferal-link" >  Right Referral Link
-            </button>
-            <button onClick={RightCopyAddressHandler} className="iconcopy" style={{ width: '50px', marginLeft: "0px", background: "#130047" }}>  <Image src={copyWhite} alt="Image description" fluid={true} /></button>
+            <a target='_blank' href={`https://nftxpress.club/Register_main?referrallink=${user}&position=${'right'}`} className="myreferal-link" >  Right Referral Link
+            </a>
+            <button onClick={RightCopyAddressHandler} className="iconcopy" style={{ width: '50px', marginLeft: "0px", background: "#130047", border: "none" }}>  <Image src={copyWhite} alt="Image description" fluid={true} /></button>
           </div>
 
 

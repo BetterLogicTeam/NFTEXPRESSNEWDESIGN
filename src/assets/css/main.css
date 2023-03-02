@@ -980,7 +980,7 @@ cursor: pointer;
   box-shadow: none;
 }
 
-.AffiliateMain .CopyText button {
+.AffiliateMain .CopyText a {
   background: #5138ee;
   border-radius: 11px;
   font-family: "sans-serif";
@@ -997,7 +997,7 @@ cursor: pointer;
   justify-content: center;
   align-items: center;
 }
-.AffiliateMain .CopyText button img {
+.AffiliateMain .CopyText .flexbutton button img {
   width: 20px;
   margin-left: 10px;
 }
@@ -1867,7 +1867,8 @@ height: 386px;
 
 .TutorialVideoMain {
       display: flex;
-    justify-content: space-evenly;
+      flex-wrap: wrap;
+    /* justify-content: space-evenly; */
   margin-top: 20px;
   /* background: rgba(19, 0, 71, 0.5); */
   padding: 10px;
@@ -1995,6 +1996,23 @@ height: 386px;
 .TutorialVideoMain video{
   position: relative;
     left: 24px;
+}
+.AffiliateMain .CopyText button {
+  background: #5138ee;
+  border-radius: 11px;
+  font-family: "sans-serif";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 30px;
+  color: #ffffff;
+  padding: 3px;
+  border: none;
+  outline: none;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .cardmaina{
   margin-top: 16px;

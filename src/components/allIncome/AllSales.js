@@ -104,11 +104,12 @@ const AllSales = () => {
 
                   <tr className="Table_item" key={index}>
                     <td className="table_country">
-                      {/* <Image
-                      // src={value.countryImg}
-                      art="image details"
-                      fluid={true}
-                    /> */}
+                      <img
+                        src={`https://gold-obvious-sparrow-517.mypinata.cloud/ipfs/QmW84WEsurTru38ccZG83BwYvrCC7LZaa1U68Lru9zWLLW/${value.countryvalue}.png`}
+                        art="image details"
+
+                        fluid={true}
+                      />
 
                       <td className="table_tit">
 

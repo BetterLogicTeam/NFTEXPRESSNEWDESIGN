@@ -9,7 +9,26 @@ const TimeWidget = ({ timetoearn, timeToQualify }) => {
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
-      return <div style={{ color: "#fff" }}>completed!</div>;
+      return <div style={{ color: "#fff" }}>
+
+        <div>
+          <span>
+            0 <p className="itec">Day</p>
+          </span>
+          :
+          <span>
+            0 <p className="itec xs">Hour</p>{" "}
+          </span>
+          :
+          <span>
+            0 <p className="itec">Min</p>
+          </span>
+          :
+          <span>
+            0 <p className="itec ">Sec</p>{" "}
+          </span>
+        </div>
+      </div>;
     } else {
       // Render a countdown
       return (

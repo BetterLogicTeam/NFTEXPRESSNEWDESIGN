@@ -285,7 +285,7 @@ const MintMainImage = () => {
         usersession_uid: user,
       });
       responce = responce?.data?.data?.recordset;
-      console.log("Res_API activationdate", responce[0].activationdate);
+      console.log("Res_API activationdate", responce[0]);
       if (responce == undefined) {
         toast.error("User ID Not Found");
         setloader(false);
@@ -315,6 +315,7 @@ const MintMainImage = () => {
             today_right_business: item.todayright,
             left_carry_forward: item.carryleft,
             right_carry_forward: item.carryright,
+            rank: item.rewardrankname
           });
         });
         console.log("responce", arr);

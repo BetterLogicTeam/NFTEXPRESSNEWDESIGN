@@ -31,12 +31,13 @@ const HomeCom = () => {
     try {
 
       let res = await API.get(`/getDashboardValues?id=${user}`)
+      console.log('response time', res.data.data[0])
+
       res = res.data.data[0]
-      console.log('response time', res)
 
       let time1
 
-      if (res.Bonus30DayTimer == 'Stop 30 Day Timer') {
+      if (res.Bonus30DayTimer == 'Stop 30 Day Timer' || res.Bonus30DayTimer == '') {
         time1 = new Date()
         time1 = time1.getTime()
         settimeToQualify(time1)
@@ -49,7 +50,7 @@ const HomeCom = () => {
       }
 
       let timetoEarn
-      if (res.Bonus7DayTimer == 'Stop 7 Day Timer') {
+      if (res.Bonus7DayTimer == 'Stop 7 Day Timer' || res.Bonus7DayTimer == '') {
         timetoEarn = new Date()
         timetoEarn = timetoEarn.getTime()
         settimeToEarn(timetoEarn)
@@ -60,6 +61,7 @@ const HomeCom = () => {
         timetoEarn = timetoEarn.getTime()
         settimeToEarn(timetoEarn)
       }
+
 
       setUserDetail(res)
       dispatch(userDetailed(res))

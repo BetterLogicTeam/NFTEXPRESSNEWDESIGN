@@ -9,19 +9,95 @@ const Tutorial = () => {
           <h6>Tutorial</h6>
         </div>
 
-        <div className="TutorialVideoMain ">
-          <div className="Nft_cardMain cardmaina">
-            <video controls className="CollectionCrdvid">
-              <source src={nftvideo2} type="video/mp4" />
-            </video>
+        <div className="mt-3 ">
+          <div className="row">
+            <div className="col-lg-2 col-md-4">
+              <div className="Nft_cardMain cardmaina">
+                <video controls className="CollectionCrdvid">
+                  <source src={nftvideo2} type="video/mp4" />
+                </video>
 
-            <div className="nftsPrice">
-              <span>20$</span>
-              <span>500</span>
+                <div className="nftsPrice">
+                  <span>20$</span>
+                  <span>500</span>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-2 col-md-4">
+              <div className="Nft_cardMain cardmaina">
+                <video controls className="CollectionCrdvid">
+                  <source src={nftvideo2} type="video/mp4" />
+                </video>
+
+                <div className="nftsPrice">
+                  <span>20$</span>
+                  <span>500</span>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-2 col-md-4">
+              <div className="Nft_cardMain cardmaina">
+                <video controls className="CollectionCrdvid">
+                  <source src={nftvideo2} type="video/mp4" />
+                </video>
+
+                <div className="nftsPrice">
+                  <span>20$</span>
+                  <span>500</span>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-2 col-md-4">
+              <div className="Nft_cardMain cardmaina">
+                <video controls className="CollectionCrdvid">
+                  <source src={nftvideo2} type="video/mp4" />
+                </video>
+
+                <div className="nftsPrice">
+                  <span>20$</span>
+                  <span>500</span>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-2 col-md-4">
+              <div className="Nft_cardMain cardmaina">
+                <video controls className="CollectionCrdvid">
+                  <source src={nftvideo2} type="video/mp4" />
+                </video>
+
+                <div className="nftsPrice">
+                  <span>20$</span>
+                  <span>500</span>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-2 col-md-4">
+              <div className="Nft_cardMain cardmaina">
+                <video controls className="CollectionCrdvid">
+                  <source src={nftvideo2} type="video/mp4" />
+                </video>
+
+                <div className="nftsPrice">
+                  <span>20$</span>
+                  <span>500</span>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-2 col-md-4">
+              <div className="Nft_cardMain cardmaina">
+                <video controls className="CollectionCrdvid">
+                  <source src={nftvideo2} type="video/mp4" />
+                </video>
+
+                <div className="nftsPrice">
+                  <span>20$</span>
+                  <span>500</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="Nft_cardMain cardmaina">
+          {/* <div className="Nft_cardMain cardmaina">
             <video controls className="CollectionCrdvid">
               <source src={nftvideo2} type="video/mp4" />
             </video>
@@ -56,7 +132,7 @@ const Tutorial = () => {
               <span>20$</span>
               <span>500</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </BgLayout>
     </>

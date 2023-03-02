@@ -37,6 +37,7 @@
   border-radius: 12px;
   padding: 4px;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100%;
   /* background-image: radial-gradient( circle farthest-corner at 83.7% 4.3%, rgb(173 0 171 / 72%) 0%, rgb(13 60 113) 90% ); */
 }
 
@@ -96,7 +97,10 @@
 }
 .cardmaina{
   display: inline-block;
+  /* margin: 10px  !important; */
 }
+/* background-image: radial-gradient( circle farthest-corner at 83.7% 4.3%, rgb(173 0 171 / 72%) 0%, rgb(13 60 113) 90% ); */
+
 .nftsPrice span:last-child {
   font-family: "sans-serif";
   font-style: normal;
@@ -105,7 +109,7 @@
   line-height: 13px;
   text-align: center;
   letter-spacing: 0.066px;
-  color: rgba(235, 235, 245, 0.66);
+  color: white !important;
 }
 
 .CoupleNFT {
@@ -113,6 +117,9 @@
 }
 
 /* collection  */
+.Nft_cardMain{
+  margin-top: 1rem !important;
+}
 
 .CollectionMain .Nft_cardMain img:first-child {
   width: 100%;

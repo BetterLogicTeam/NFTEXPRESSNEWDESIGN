@@ -1,8 +1,27 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import nftuser from "../../assets/images/nftuser.jpeg";
 
 const LatestNews = () => {
+
+  const userDetail = useSelector((state) => state.nft.userDetail);
+  const user = useSelector((state) => state.UserAuth.userId);
+
+  const [newsArray, setnewsArray] = useState({ content: "" });
+
+  const userNewsData = async () => {
+    let responce = await axios.post(`https://nftxpress-1.nakshtech.info/news`,)
+    console.log('https://nftxpress-1.nakshtech.info/news', responce.data.data[0][0])
+    setnewsArray({ ...newsArray, content: responce.data.data[0][0].content })
+  }
+  useEffect(() => {
+    userNewsData()
+
+
+  }, []);
+
   return (
     <>
       <div className="MatchingLevelMain latestnewsmain">
@@ -18,17 +37,8 @@ const LatestNews = () => {
           <h6>Latest News</h6>
           <div className="LatestNewsDetails">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,
-              pariatur ea. Numquam, commodi voluptate. Perferendis omnis numquam
-              earum quod vitae veritatis, sit, voluptate quo reiciendis in
-              fugiat! Fuga, id animi? Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Vitae, pariatur ea. Numquam, commodi voluptate.
-              Perferendis omnis numquam earum quod vitae veritatis, sit,
-              voluptate quo reiciendis in fugiat! Fuga, id animi? Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. Vitae, pariatur ea.
-              Numquam, commodi voluptate. Perferendis omnis numquam earum quod
-              vitae veritatis, sit, voluptate quo reiciendis in fugiat! Fuga, id
-              animi?
+
+              {newsArray?.content}
             </p>
           </div>
         </div>

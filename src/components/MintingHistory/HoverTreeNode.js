@@ -5,7 +5,7 @@ const HoverTreeNode = ({ data }) => {
   const HoverNode = styled.div`
     display: none;
     position: absolute;
-    width: 450px;
+    width: 405px;
     border-radius: 5px;
     padding: 10px;
     background: rgba(19, 0, 71);
@@ -44,7 +44,7 @@ const HoverTreeNode = ({ data }) => {
                 Left Carry Forward : <span>{data?.left_carry_forward}</span>
               </h5>
               <h5>
-                Rank : <span>0</span>
+                Rank : <span>{data?.rank}</span>
               </h5>
               {/* <h5>
                  Rank : <span>0</span>
