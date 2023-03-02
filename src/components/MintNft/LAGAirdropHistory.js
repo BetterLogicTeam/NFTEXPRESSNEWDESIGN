@@ -62,6 +62,7 @@ const LAGAirdropHistory = () => {
           <ShareTable columns={columns} Data={dataArray} />
         </div>
       </BgLayout>
+      <div className="bg_usser_main"></div>
     </>
   );
 };

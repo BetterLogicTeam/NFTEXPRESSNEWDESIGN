@@ -1670,6 +1670,13 @@ height: 386px;
   margin-top: 5px;
 }
 
+
+@media screen and (max-width:800px) {
+  .country_Img{
+    display: none !important;
+  }
+}
+
 /* End tree chart  */
 
 .earningChartText {

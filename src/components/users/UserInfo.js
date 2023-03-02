@@ -137,6 +137,7 @@ function UserInfo() {
 
   console.log('formvalues', formValues)
   return (
+    <>
     <BgLayout className="bg_usser_main">
       <div className="bg_usser">
       <div className="BgLayout_Header">
@@ -220,6 +221,8 @@ function UserInfo() {
       </div>
       </div>
     </BgLayout>
+    <div className="bg_usser_main"></div>
+    </>
   );
 }
 

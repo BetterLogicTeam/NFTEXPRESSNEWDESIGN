@@ -35,6 +35,7 @@ const SelfComp = () => {
           />
         </div>
       </BgLayout>
+      <div className="bg_usser_main"></div>
     </>
   );
 };

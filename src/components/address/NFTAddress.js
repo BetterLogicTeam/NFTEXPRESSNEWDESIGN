@@ -67,6 +67,7 @@ const NFTAddress = () => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };

@@ -90,6 +90,7 @@ const ReferralIncome = () => {
           <ShareTable columns={columns} Data={dataArray} />
         </div>
       </BgLayout>
+      
     </>
   );
 };
