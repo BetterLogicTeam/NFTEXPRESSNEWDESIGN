@@ -3,15 +3,7 @@ import styled from "styled-components";
 const HoverTreeNode = ({ data }) => {
   // console.log('props', props)
   const HoverNode = styled.div`
-    display: none;
-    position: absolute;
-    width: 405px;
-    border-radius: 5px;
-    padding: 10px;
-    background: rgba(19, 0, 71);
-    margin-left: -270px;
-    z-index: 1;
-    margin-top: 5px;
+   
   `;
   return (
     <>

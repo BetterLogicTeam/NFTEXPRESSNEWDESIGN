@@ -31,6 +31,7 @@ const GovernanceTokenCom = () => {
           />
         </div>
       </BgLayout>
+      <div className="bg_usser_main"></div>
     </>
   );
 };

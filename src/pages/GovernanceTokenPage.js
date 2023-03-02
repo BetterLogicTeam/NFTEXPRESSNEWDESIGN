@@ -4,7 +4,7 @@ import { Layout, GovernanceTokenCom } from "../components";
 const GovernanceTokenPage = () => {
   return (
     <>
-      <Layout>
+      <Layout className="bg_usser_main">
         <GovernanceTokenCom />
       </Layout>
     </>

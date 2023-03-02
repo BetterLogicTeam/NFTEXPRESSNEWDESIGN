@@ -52,7 +52,7 @@ function UserInfo() {
   const sendOTP = async () => {
 
     if (formValues.walletAddress == "") {
-      console.log("showAddress", emailAddress);
+      // console.log("showAddress", emailAddress);
       setotpcheck(true)
       let res = await API.post('/verify_email_profile',
         {
@@ -62,7 +62,7 @@ function UserInfo() {
       toast.success('Email with verification code has been sent to you Successfully')
       // setspinnerload(false)
     } else if (formValues.email == "") {
-      console.log("showemail", emailAddress);
+      // console.log("showemail", emailAddress);
 
       setotpcheck(true)
       let res = await API.post('/verify_email_profile_oldid',
@@ -137,7 +137,8 @@ function UserInfo() {
 
   console.log('formvalues', formValues)
   return (
-    <BgLayout>
+    <BgLayout className="bg_usser_main">
+      <div className="bg_usser">
       <div className="BgLayout_Header">
         <h6>Profile</h6>
       </div>
@@ -216,6 +217,7 @@ function UserInfo() {
             <button onClick={onSubmitHandler}>SEND OTP</button>
           </div>
         </div>
+      </div>
       </div>
     </BgLayout>
   );

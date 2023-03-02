@@ -1643,6 +1643,33 @@ height: 386px;
   padding-left: 15px;
 }
 
+@media (min-width:800px) and (max-width:1400px) {
+  .HoverNodeItemMain{
+    display: none;
+    position: absolute;
+    width: 405px;
+    border-radius: 5px;
+    padding: 10px;
+    background: rgba(19, 0, 71);
+    margin-left: -315px !important;
+    z-index: 1;
+    margin-top: 5px;
+  }
+  
+}
+
+.HoverNodeItemMain{
+  display: none;
+  position: absolute;
+  width: 405px;
+  border-radius: 5px;
+  padding: 10px;
+  background: rgba(19, 0, 71);
+  margin-left: -270px ;
+  z-index: 1;
+  margin-top: 5px;
+}
+
 /* End tree chart  */
 
 .earningChartText {

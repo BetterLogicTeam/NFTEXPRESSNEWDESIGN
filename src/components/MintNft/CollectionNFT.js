@@ -163,7 +163,7 @@ const CollectionNFT = () => {
             const web3 = window.web3
             let approvetoken1 = new web3.eth.Contract(tokenAbi, tokenAddress)
             let approvetoken2 = new web3.eth.Contract(tokenAbi2, tokenAddress2)
-            let dummyvalue = BigInt(1000000000000000000000000000)
+            // let dummyvalue = BigInt(1000000000000000000000000000)
 
             let nftContractOf
             let increment_each_data
@@ -207,12 +207,12 @@ const CollectionNFT = () => {
               console.log('Change_price', totalMintingPriceToken_1)
               if (singlenft.minting_counter == 1) {
 
-                token1 = await BigInt(value * token1)
-                token2 = await BigInt(value * token2)
+                // token1 = await BigInt(value * token1)
+                // token2 = await BigInt(value * token2)
 
               } else if (singlenft.minting_counter == 2) {
-                token1 = await BigInt(value * token1 * 2)
-                token2 = await BigInt(value * token2 * 2)
+                // token1 = await BigInt(value * token1 * 2)
+                // token2 = await BigInt(value * token2 * 2)
 
 
               }
@@ -376,7 +376,7 @@ const CollectionNFT = () => {
             const web3 = window.web3
             let approvetoken1 = new web3.eth.Contract(BUSDTokenAbi, BUSDTokenAddress)
             // let approvetoken2 = new web3.eth.Contract(tokenAbi2, tokenAddress2)
-            let dummyvalue = BigInt(1000000000000000000000000000)
+            // let dummyvalue = BigInt(1000000000000000000000000000)
             // await approvetoken1.methods.approve(GLABA_NFT, dummyvalue).send({
             //   from: acc,
             // })
@@ -430,10 +430,10 @@ const CollectionNFT = () => {
 
               if (singlenft.minting_counter == 1) {
 
-                token1 = await BigInt(value * token1)
+                // token1 = await BigInt(value * token1)
                 // console.log()
               } else if (singlenft.minting_counter == 2) {
-                token1 = await BigInt(value * token1 * 2)
+                // token1 = await BigInt(value * token1 * 2)
 
 
               }
@@ -578,7 +578,7 @@ const CollectionNFT = () => {
             const web3 = window.web3
             let approvetoken1 = new web3.eth.Contract(tokenAbi, tokenAddress)
             // let approvetoken2 = new web3.eth.Contract(tokenAbi2, tokenAddress2)
-            let dummyvalue = BigInt(1000000000000000000000000000)
+            // let dummyvalue = BigInt(1000000000000000000000000000)
             // await approvetoken1.methods.approve(GLABA_NFT, dummyvalue).send({
             //   from: acc,
             // })
@@ -633,11 +633,11 @@ const CollectionNFT = () => {
 
               if (singlenft.minting_counter == 1) {
 
-                token1 = await BigInt(value * token1)
+                // token1 = await BigInt(value * token1)
 
 
               } else if (singlenft.minting_counter == 2) {
-                token1 = await BigInt(value * token1 * 2)
+                // token1 = await BigInt(value * token1 * 2)
 
 
 
@@ -783,7 +783,7 @@ const CollectionNFT = () => {
             const web3 = window.web3
             let approvetoken1 = new web3.eth.Contract(BUSDTokenAbi, BUSDTokenAddress)
             let approvetoken2 = new web3.eth.Contract(tokenAbi2, tokenAddress2)
-            let dummyvalue = BigInt(1000000000000000000000000000)
+            // let dummyvalue = BigInt(1000000000000000000000000000)
             // await approvetoken1.methods.approve(GLABA_NFT, dummyvalue).send({
             //   from: acc,
             // })
@@ -838,12 +838,12 @@ const CollectionNFT = () => {
 
               if (singlenft.minting_counter == 1) {
 
-                token1 = await BigInt(value * token1)
-                token2 = await BigInt(value * token2)
+                // token1 = await BigInt(value * token1)
+                // token2 = await BigInt(value * token2)
 
               } else if (singlenft.minting_counter == 2) {
-                token1 = await BigInt(value * token1 * 2)
-                token2 = await BigInt(value * token2 * 2)
+                // token1 = await BigInt(value * token1 * 2)
+                // token2 = await BigInt(value * token2 * 2)
 
 
               }
@@ -1000,7 +1000,7 @@ const CollectionNFT = () => {
             const web3 = window.web3
             let approvetoken1 = new web3.eth.Contract(tokenAbi, tokenAddress)
             let approvetoken2 = new web3.eth.Contract(tokenAbi2, tokenAddress2)
-            let dummyvalue = BigInt(1000000000000000000000000000)
+            // let dummyvalue = BigInt(1000000000000000000000000000)
             // await approvetoken1.methods.approve(GLABA_NFT, dummyvalue).send({
             //   from: acc,
             // })
@@ -1055,12 +1055,12 @@ const CollectionNFT = () => {
 
               if (singlenft.minting_counter == 1) {
 
-                token1 = await BigInt(value * token1)
-                token2 = await BigInt(value * token2)
+                // token1 = await BigInt(value * token1)
+                // token2 = await BigInt(value * token2)
 
               } else if (singlenft.minting_counter == 2) {
-                token1 = await BigInt(value * token1 * 2)
-                token2 = await BigInt(value * token2 * 2)
+                // token1 = await BigInt(value * token1 * 2)
+                // token2 = await BigInt(value * token2 * 2)
 
 
               }

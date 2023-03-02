@@ -229,7 +229,7 @@ const StakingNFT = () => {
           // setspinner1(false)
         } else {
           alert("Account Address mismatch !!")
-          setspinner1(false)
+          // setspinner1(false)
 
         }
       }

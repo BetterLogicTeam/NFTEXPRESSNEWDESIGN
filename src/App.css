@@ -15,9 +15,23 @@
   height: 100% !important;
   background-image: url("/src/assets/images/back-bg.jpg") !important;
   background-size: cover;
-
   background-position: center;
   
+}
+
+@media screen and (max-width: 600px) {
+    .bg_usser_main{
+        background-image: url("/src/assets/images/back-bg.jpg") !important;
+        height: 70vh !important;
+        opacity: .5;
+    }
+    .bg_usser{
+        margin-bottom: 20px !important;
+        margin-top: 20px;
+    }
+    .MatchingLevelMain{
+        background: rgb(19,0,71);
+    }
 }
 .front_ip {
   background: linear-gradient(180.09deg, #162660 -10.43%, #1E74B1 19.57%, #296acd 47.66%, #1E74B1 74.16%, #1E3E6E 103.48%) !important;
