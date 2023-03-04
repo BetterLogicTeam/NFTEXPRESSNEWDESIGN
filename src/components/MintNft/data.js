@@ -2,8 +2,11 @@ import nft1 from "../../assets/images/nft1.jpeg";
 import nft2 from "../../assets/images/nft2.jpeg";
 import nft3 from "../../assets/images/nft3.jpeg";
 import nft4 from "../../assets/images/nft4.jpeg";
-import nftvideo from "../../assets/images/nftvideo.mp4";
-import nftvideo2 from "../../assets/images/nftvideo2.mp4";
+// import nft5 from "../../assets/images/nft4.jpeg";
+import gif1 from "../../assets/images/5000foudre.gif";
+
+// import nftvideo from "../../assets/images/nftvideo.mp4";
+import gif2 from "../../assets/images/10000faudre.gif";
 
 import nft5 from "../../assets/images/nft5.jpg";
 import nft6 from "../../assets/images/nft6.jpg";
@@ -52,7 +55,9 @@ export const nfts = [
   },
   {
     id: 5,
-    videoUrl: nftvideo,
+    // videoUrl: nftvideo,
+    imageUrl: gif1,
+
     title: "FOUDRE",
     dec: "Ring #GLEBA",
     price: "0.06",
@@ -104,7 +109,9 @@ export const CoupleNFTData = [
   },
   {
     id: 5,
-    videoUrl: nftvideo2,
+    imageUrl: gif2,
+
+    // videoUrl: nftvideo2,
     title: "FOUDRE",
     dec: "Ring #GLEBA",
     price: "0.06",

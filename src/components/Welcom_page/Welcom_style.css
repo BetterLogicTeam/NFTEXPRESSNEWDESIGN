@@ -179,6 +179,12 @@
         background-color:#0B0B47;
         height: auto;
     }
+    .Tutorial_style{
+        height: 100vh;
+    }
+    .responce_div{
+        height: 100vh !important;
+    }
   
 }
 

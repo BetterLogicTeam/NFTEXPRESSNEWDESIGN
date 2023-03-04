@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import nftuser from "../../assets/images/nftuser.jpeg";
+import nftuser from "../../assets/images/Banner.jpeg";
 
 const LatestNews = () => {
 
@@ -39,6 +39,7 @@ const LatestNews = () => {
             <p>
 
               {newsArray?.content}
+
             </p>
           </div>
         </div>

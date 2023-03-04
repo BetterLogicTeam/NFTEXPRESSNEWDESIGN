@@ -109,7 +109,7 @@ const MyReferral = () => {
 
   useEffect(() => {
     referral_API()
-  }, [positionfilter, StatusFilter])
+  }, [positionfilter, StatusFilter,fromdatefilter,todateFilter])
 
   return (
     <>

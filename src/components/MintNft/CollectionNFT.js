@@ -118,21 +118,21 @@ const CollectionNFT = () => {
       toast.error('Wrong Newtwork please connect to Binance smart chain network')
     } else {
 
-      if (selectedValue?.name == PriceArray[4].name) {
+      if (selectedValue?.name == PriceArray[4]?.name) {
         // await MintwithBUSD()
         await BUSDAndIncome()
 
       }
-      else if (selectedValue?.name == PriceArray[3].name) {
+      else if (selectedValue?.name == PriceArray[3]?.name) {
         BUSDANDWIRE()
       }
-      else if (selectedValue?.name == PriceArray[2].name) {
+      else if (selectedValue?.name == PriceArray[2]?.name) {
         MINTWITHLAR()
       }
-      else if (selectedValue?.name == PriceArray[0].name) {
+      else if (selectedValue?.name == PriceArray[0]?.name) {
         MINTWITHLARANDWIRE()
       }
-      else if (selectedValue?.name == PriceArray[1].name) {
+      else if (selectedValue?.name == PriceArray[1]?.name) {
         MINTWITHBUSD()
       }
 
@@ -161,8 +161,8 @@ const CollectionNFT = () => {
           try {
             // setbtnFour('Please Wait While Processing')
             const web3 = window.web3
-            let approvetoken1 = new web3.eth.Contract(tokenAbi, tokenAddress)
-            let approvetoken2 = new web3.eth.Contract(tokenAbi2, tokenAddress2)
+            let nftTokenOf_La_Race = new web3.eth.Contract(LaRace_Governance_Token_ABI, LaRace_Governance_Token)
+            let nftTokenOf_Wire = new web3.eth.Contract(WIRE_Token_ABI, WIRE_Token)
             // let dummyvalue = BigInt(1000000000000000000000000000)
 
             let nftContractOf
@@ -193,6 +193,7 @@ const CollectionNFT = () => {
               token1 = token1 + 1000
               let token2 = await nftContractOf.methods.ValueinToken1().call()
               token2 = token2 + 1000
+
 
               let maxSupply = await nftContractOf.methods.maxsupply().call()
               let ttlSupply = await nftContractOf.methods.totalSupply().call()
@@ -229,78 +230,85 @@ const CollectionNFT = () => {
                 if (paused == false) {
                   if (value < parseInt(maxLimitprTransaction)) {
                     if ((singlenft.count == 100 && singlenft.minting_counter == 1) || (singlenft.count == 200 && singlenft.minting_counter == 2)) {
-                      await approvetoken1.methods.approve(GLABA_NFT, token1).send({
-                        from: acc,
-                      })
-                      await approvetoken2.methods.approve(GLABA_NFT, token2).send({
+                      await nftTokenOf_La_Race.methods.approve(GLABA_NFT, token1).send({
                         from: acc,
                       })
 
+                      toast.success('Approve Confirmed LaRace Governance Token')
+                      await nftTokenOf_Wire.methods.approve(GLABA_NFT, token2).send({
+                        from: acc,
+                      })
+                      toast.success('Approve Confirmed Wire Token')
 
-                      await nftContractOf.methods.mint_with_token(value).send({ from: acc })
+
+
                       // await nftTokenOf_BUSD.methods.approve(GLABA_NFT, totalMintingPriceToken_1).send({
                       //   from: acc,
                       // })
                     } else if ((singlenft.count == 500 && singlenft.minting_counter == 1) || (singlenft.count == 1000 && singlenft.minting_counter == 2)) {
-                      await approvetoken1.methods.approve(GLABA_NFT_500, token1).send({
+                      await nftTokenOf_La_Race.methods.approve(GLABA_NFT_500, token1).send({
                         from: acc,
                       })
-                      await approvetoken2.methods.approve(GLABA_NFT_500, token2).send({
+                      toast.success('Approve Confirmed LaRace Governance Token')
+
+                      await nftTokenOf_Wire.methods.approve(GLABA_NFT_500, token2).send({
                         from: acc,
                       })
+                      toast.success('Approve Confirmed Wire Token')
 
 
-                      await nftContractOf.methods.mint_with_token(value).send({ from: acc })
 
                       // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_500, totalMintingPriceToken_1).send({
                       //   from: acc,
                       // })
                     } else if ((singlenft.count == 1000 && singlenft.minting_counter == 1) || (singlenft.count == 2000 && singlenft.minting_counter == 2)) {
-                      await approvetoken1.methods.approve(GLABA_NFT_1000, token1).send({
+                      await nftTokenOf_La_Race.methods.approve(GLABA_NFT_1000, token1).send({
                         from: acc,
                       })
-                      await approvetoken2.methods.approve(GLABA_NFT_1000, token1).send({
+                      toast.success('Approve Confirmed LaRace Governance Token')
+
+                      await nftTokenOf_Wire.methods.approve(GLABA_NFT_1000, token1).send({
                         from: acc,
                       })
+                      toast.success('Approve Confirmed Wire Token')
 
 
-                      await nftContractOf.methods.mint_with_token(value).send({ from: acc })
                       // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_1000, totalMintingPriceToken_1).send({
                       //   from: acc,
                       // })
                     } else if ((singlenft.count == 2500 && singlenft.minting_counter == 1) || (singlenft.count == 5000 && singlenft.minting_counter == 2)) {
-                      await approvetoken1.methods.approve(GLABA_NFT_2500, token1).send({
+                      await nftTokenOf_La_Race.methods.approve(GLABA_NFT_2500, token1).send({
                         from: acc,
                       })
-                      await approvetoken2.methods.approve(GLABA_NFT_2500, token2).send({
+                      toast.success('Approve Confirmed LaRace Governance Token')
+
+                      await nftTokenOf_Wire.methods.approve(GLABA_NFT_2500, token2).send({
                         from: acc,
                       })
 
+                      toast.success('Approve Confirmed Wire Token')
 
-                      await nftContractOf.methods.mint_with_token(value).send({ from: acc })
                       // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_2500, totalMintingPriceToken_1).send({
                       //   from: acc,
                       // })
                     } else if ((singlenft.count == 5000 && singlenft.minting_counter == 1) || (singlenft.count == 10000 && singlenft.minting_counter == 2)) {
-                      await approvetoken1.methods.approve(GLABA_NFT_5000, token1).send({
+                      await nftTokenOf_La_Race.methods.approve(GLABA_NFT_5000, token1).send({
                         from: acc,
                       })
-                      await approvetoken2.methods.approve(GLABA_NFT_5000, token2).send({
+                      toast.success('Approve Confirmed LaRace Governance Token')
+
+                      await nftTokenOf_Wire.methods.approve(GLABA_NFT_5000, token2).send({
                         from: acc,
                       })
 
+                      toast.success('Approve Confirmed Wire Token')
 
-                      await nftContractOf.methods.mint_with_token(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_5000, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
+
                     }
 
-                    toast.success('Approve')
 
-                    let hash = await nftContractOf.methods.mint_with_BUSD_100(value).send({
-                      from: acc,
-                    })
+
+                    let hash = await nftContractOf.methods.mint_with_token(value, token1, token2).send({ from: acc })
                     // setbtnFour('Mint With BUSD')
                     hash = hash.transactionHash
                     // console.log("hash", hash);
@@ -374,7 +382,7 @@ const CollectionNFT = () => {
           try {
             // setbtnFour('Please Wait While Processing')
             const web3 = window.web3
-            let approvetoken1 = new web3.eth.Contract(BUSDTokenAbi, BUSDTokenAddress)
+            let approvetoken1 = new web3.eth.Contract(BUSD_Token_ABI, BUSD_Token)
             // let approvetoken2 = new web3.eth.Contract(tokenAbi2, tokenAddress2)
             // let dummyvalue = BigInt(1000000000000000000000000000)
             // await approvetoken1.methods.approve(GLABA_NFT, dummyvalue).send({
@@ -438,69 +446,42 @@ const CollectionNFT = () => {
 
               }
               totalMintingPriceToken_1 = web3.utils.toWei(totalMintingPriceToken_1.toString())
-
+              
               if (parseInt(ttlSupply) < parseInt(maxSupply)) {
                 if (paused == false) {
                   if (value < parseInt(maxLimitprTransaction)) {
                     if ((singlenft.count == 100 && singlenft.minting_counter == 1) || (singlenft.count == 200 && singlenft.minting_counter == 2)) {
-                      await approvetoken1.methods.approve(GLABA_NFT, token1).send({
+                     
+                      await approvetoken1.methods.approve(GLABA_NFT, totalMintingPriceToken_1).send({
                         from: acc,
                       })
 
-
-
-                      // await nftContractOf.methods.mint_with_BUSD_100(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
                     } else if ((singlenft.count == 500 && singlenft.minting_counter == 1) || (singlenft.count == 1000 && singlenft.minting_counter == 2)) {
-                      await approvetoken1.methods.approve(GLABA_NFT_500, token1).send({
+                      await approvetoken1.methods.approve(GLABA_NFT_500, totalMintingPriceToken_1).send({
                         from: acc,
                       })
 
-
-
-                      // await nftContractOf.methods.mint_with_BUSD_100(value).send({ from: acc })
-
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_500, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
                     } else if ((singlenft.count == 1000 && singlenft.minting_counter == 1) || (singlenft.count == 2000 && singlenft.minting_counter == 2)) {
-                      await approvetoken1.methods.approve(GLABA_NFT_1000, token1).send({
+                      await approvetoken1.methods.approve(GLABA_NFT_1000, totalMintingPriceToken_1).send({
                         from: acc,
                       })
 
-
-                      // await nftContractOf.methods.mint_with_BUSD_100(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_1000, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
                     } else if ((singlenft.count == 2500 && singlenft.minting_counter == 1) || (singlenft.count == 5000 && singlenft.minting_counter == 2)) {
-                      await approvetoken1.methods.approve(GLABA_NFT_2500, token1).send({
+                      await approvetoken1.methods.approve(GLABA_NFT_2500, totalMintingPriceToken_1).send({
                         from: acc,
                       })
 
-
-
-                      // await nftContractOf.methods.mint_with_BUSD_100(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_2500, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
                     } else if ((singlenft.count == 5000 && singlenft.minting_counter == 1) || (singlenft.count == 10000 && singlenft.minting_counter == 2)) {
-                      await approvetoken1.methods.approve(GLABA_NFT_5000, token1).send({
+                      await approvetoken1.methods.approve(GLABA_NFT_5000, totalMintingPriceToken_1).send({
                         from: acc,
                       })
 
-
-                      // await nftContractOf.methods.mint_with_BUSD_100(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_5000, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
                     }
 
-                    toast.success('Approve')
+               
+                    toast.success('Approve Confirmed BUSD Token')
 
-                    let hash = await nftContractOf.methods.mint_with_BUSD_100(value).send({
+                    let hash = await nftContractOf.methods.mint_with_BUSD_100(value,totalMintingPriceToken_1).send({
                       from: acc,
                     })
                     // setbtnFour('Mint With BUSD')
@@ -576,7 +557,7 @@ const CollectionNFT = () => {
           try {
             // setbtnFour('Please Wait While Processing')
             const web3 = window.web3
-            let approvetoken1 = new web3.eth.Contract(tokenAbi, tokenAddress)
+            let approvetoken1 = new web3.eth.Contract(LaRace_Governance_Token_ABI, LaRace_Governance_Token)
             // let approvetoken2 = new web3.eth.Contract(tokenAbi2, tokenAddress2)
             // let dummyvalue = BigInt(1000000000000000000000000000)
             // await approvetoken1.methods.approve(GLABA_NFT, dummyvalue).send({
@@ -615,10 +596,10 @@ const CollectionNFT = () => {
               // toast.error(`Maximum Limit is ${totalnft} `)
             } else {
               let token1 = await nftContractOf.methods.ValueinToken_single().call()
-              token1 = token1 + 1000
-              let token2 = await nftContractOf.methods.ValueinToken1().call()
-              token2 = token2 + 1000
-
+              token1 = web3.utils.fromWei(token1)
+              token1 = parseFloat(token1)
+              token1 = token1 + 0.05
+             
               let maxSupply = await nftContractOf.methods.maxsupply().call()
               let ttlSupply = await nftContractOf.methods.totalSupply().call()
               let paused = await nftContractOf.methods.paused().call()
@@ -629,20 +610,20 @@ const CollectionNFT = () => {
               let totalMintingPriceToken_1 = Number(value * mintingbnbPrice_Toke_1)
               // totalMintingPriceToken_1=(totalMintingPriceToken_1*20/100)+totalMintingPriceToken_1
 
-              console.log('Change_price', totalMintingPriceToken_1)
+              console.log('Change_price', token1)
 
               if (singlenft.minting_counter == 1) {
 
-                // token1 = await BigInt(value * token1)
+                token1 =  Number(value * token1)
 
 
               } else if (singlenft.minting_counter == 2) {
-                // token1 = await BigInt(value * token1 * 2)
+                token1 = Number(value * token1 * 2)
 
 
 
               }
-              totalMintingPriceToken_1 = web3.utils.toWei(totalMintingPriceToken_1.toString())
+              token1 = web3.utils.toWei(token1.toString())
 
               if (parseInt(ttlSupply) < parseInt(maxSupply)) {
                 if (paused == false) {
@@ -651,61 +632,27 @@ const CollectionNFT = () => {
                       await approvetoken1.methods.approve(GLABA_NFT, token1).send({
                         from: acc,
                       })
-
-
-
-                      // await nftContractOf.methods.mint_with_BUSD_100(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
                     } else if ((singlenft.count == 500 && singlenft.minting_counter == 1) || (singlenft.count == 1000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_500, token1).send({
                         from: acc,
                       })
-
-
-
-                      // await nftContractOf.methods.mint_with_BUSD_100(value).send({ from: acc })
-
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_500, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
                     } else if ((singlenft.count == 1000 && singlenft.minting_counter == 1) || (singlenft.count == 2000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_1000, token1).send({
                         from: acc,
                       })
 
-
-                      // await nftContractOf.methods.mint_with_BUSD_100(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_1000, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
                     } else if ((singlenft.count == 2500 && singlenft.minting_counter == 1) || (singlenft.count == 5000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_2500, token1).send({
                         from: acc,
                       })
-
-
-
-                      // await nftContractOf.methods.mint_with_BUSD_100(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_2500, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
                     } else if ((singlenft.count == 5000 && singlenft.minting_counter == 1) || (singlenft.count == 10000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_5000, token1).send({
                         from: acc,
                       })
-
-
-                      // await nftContractOf.methods.mint_with_BUSD_100(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_5000, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
                     }
+                    toast.success('Approve Confirmed LaRace Governance Token')
 
-                    toast.success('Approve')
-
-                    let hash = await nftContractOf.methods.mint_with_single(value).send({
+                    let hash = await nftContractOf.methods.mint_with_single(value,token1).send({
                       from: acc,
                     })
                     // setbtnFour('Mint With BUSD')
@@ -781,20 +728,9 @@ const CollectionNFT = () => {
           try {
             // setbtnFour('Please Wait While Processing')
             const web3 = window.web3
-            let approvetoken1 = new web3.eth.Contract(BUSDTokenAbi, BUSDTokenAddress)
-            let approvetoken2 = new web3.eth.Contract(tokenAbi2, tokenAddress2)
-            // let dummyvalue = BigInt(1000000000000000000000000000)
-            // await approvetoken1.methods.approve(GLABA_NFT, dummyvalue).send({
-            //   from: acc,
-            // })
-            // await approvetoken2.methods.approve(GLABA_NFT, dummyvalue).send({
-            //   from: acc,
-            // })
-            // let nftTokenOf_BUSDAndIncome = new web3.eth.Contract(GLABA_NFT, GLABA_NFT_ABI)
-
-            // let mintwithtoken = await nftTokenOf_BUSDAndIncome.methods.mint_with_token(value).send({ from: acc })
-
-            // let nftTokenOf_Wire = new web3.eth.Contract(WIRE_Token_ABI, WIRE_Token)
+            let approvetoken1 = new web3.eth.Contract(BUSD_Token_ABI, BUSD_Token)
+            let approvetoken2 = new web3.eth.Contract(WIRE_Token_ABI, WIRE_Token)
+            
             let nftContractOf
             let increment_each_data
             if ((singlenft.count == 100 && singlenft.minting_counter == 1) || (singlenft.count == 200 && singlenft.minting_counter == 2)) {
@@ -819,10 +755,14 @@ const CollectionNFT = () => {
 
               // toast.error(`Maximum Limit is ${totalnft} `)
             } else {
-              let token1 = await nftContractOf.methods.BUSDtobnb().call()
-              token1 = token1 + 1000
+              let token1 = await nftContractOf.methods.MinitngPricein_busd().call()
+              token1 = web3.utils.fromWei(token1)
+              token1 = parseFloat(token1)
+              token1 = token1 + 0.055
               let token2 = await nftContractOf.methods.ValueinToken1().call()
-              token2 = token2 + 1000
+              token2 = web3.utils.fromWei(token2)
+              token2 = parseFloat(token2)
+              token2 = token2 + 0.055
 
               let maxSupply = await nftContractOf.methods.maxsupply().call()
               let ttlSupply = await nftContractOf.methods.totalSupply().call()
@@ -838,16 +778,18 @@ const CollectionNFT = () => {
 
               if (singlenft.minting_counter == 1) {
 
-                // token1 = await BigInt(value * token1)
-                // token2 = await BigInt(value * token2)
+                token1 = Number(value * token1)
+                token2 = Number(value * token2)
 
               } else if (singlenft.minting_counter == 2) {
-                // token1 = await BigInt(value * token1 * 2)
-                // token2 = await BigInt(value * token2 * 2)
+                token1 = Number(value * token1 * 2)
+                token2 = Number(value * token2 * 2)
 
 
               }
-              totalMintingPriceToken_1 = web3.utils.toWei(totalMintingPriceToken_1.toString())
+              token1 = web3.utils.toWei(token1.toString())
+              token2 = web3.utils.toWei(token2.toString())
+
 
               if (parseInt(ttlSupply) < parseInt(maxSupply)) {
                 if (paused == false) {
@@ -856,73 +798,52 @@ const CollectionNFT = () => {
                       await approvetoken1.methods.approve(GLABA_NFT, token1).send({
                         from: acc,
                       })
+                      toast.success('Approve Confirmed BUSD Token')
                       await approvetoken2.methods.approve(GLABA_NFT, token2).send({
                         from: acc,
                       })
-
-
-                      // await nftContractOf.methods.mint_with_80_20(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
+                      toast.success('Approve Confirmed Wire Token')
                     } else if ((singlenft.count == 500 && singlenft.minting_counter == 1) || (singlenft.count == 1000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_500, token1).send({
                         from: acc,
                       })
+                      toast.success('Approve Confirmed BUSD Token')
                       await approvetoken2.methods.approve(GLABA_NFT_500, token2).send({
                         from: acc,
                       })
-
-
-                      // await nftContractOf.methods.mint_with_token(value).send({ from: acc })
-
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_500, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
+                      toast.success('Approve Confirmed Wire Token')
                     } else if ((singlenft.count == 1000 && singlenft.minting_counter == 1) || (singlenft.count == 2000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_1000, token1).send({
                         from: acc,
                       })
+                      toast.success('Approve Confirmed BUSD Token')
                       await approvetoken2.methods.approve(GLABA_NFT_1000, token1).send({
                         from: acc,
                       })
-
-
-                      // await nftContractOf.methods.mint_with_token(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_1000, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
+                      toast.success('Approve Confirmed Wire Token')
                     } else if ((singlenft.count == 2500 && singlenft.minting_counter == 1) || (singlenft.count == 5000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_2500, token1).send({
                         from: acc,
                       })
+                      toast.success('Approve Confirmed BUSD Token')
                       await approvetoken2.methods.approve(GLABA_NFT_2500, token2).send({
                         from: acc,
                       })
-
-
-                      // await nftContractOf.methods.mint_with_token(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_2500, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
+                      toast.success('Approve Confirmed Wire Token')
                     } else if ((singlenft.count == 5000 && singlenft.minting_counter == 1) || (singlenft.count == 10000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_5000, token1).send({
                         from: acc,
                       })
+                      toast.success('Approve Confirmed BUSD Token')
                       await approvetoken2.methods.approve(GLABA_NFT_5000, token2).send({
                         from: acc,
                       })
-
-
-                      // await nftContractOf.methods.mint_with_token(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_5000, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
+                      toast.success('Approve Confirmed Wire Token')
                     }
 
-                    toast.success('Approve')
+               
 
-                    let hash = await nftContractOf.methods.mint_with_80_20_BUSD(value).send({
+                    let hash = await nftContractOf.methods.mint_with_BUSD(value,token1,token2).send({
                       from: acc,
                     })
                     // setbtnFour('Mint With BUSD')
@@ -998,20 +919,9 @@ const CollectionNFT = () => {
           try {
             // setbtnFour('Please Wait While Processing')
             const web3 = window.web3
-            let approvetoken1 = new web3.eth.Contract(tokenAbi, tokenAddress)
+            let approvetoken1 = new web3.eth.Contract(BUSD_Token_ABI, BUSD_Token)
             let approvetoken2 = new web3.eth.Contract(tokenAbi2, tokenAddress2)
-            // let dummyvalue = BigInt(1000000000000000000000000000)
-            // await approvetoken1.methods.approve(GLABA_NFT, dummyvalue).send({
-            //   from: acc,
-            // })
-            // await approvetoken2.methods.approve(GLABA_NFT, dummyvalue).send({
-            //   from: acc,
-            // })
-            // let nftTokenOf_BUSDAndIncome = new web3.eth.Contract(GLABA_NFT, GLABA_NFT_ABI)
-
-            // let mintwithtoken = await nftTokenOf_BUSDAndIncome.methods.mint_with_token(value).send({ from: acc })
-
-            // let nftTokenOf_Wire = new web3.eth.Contract(WIRE_Token_ABI, WIRE_Token)
+           
             let nftContractOf
             let increment_each_data
             if ((singlenft.count == 100 && singlenft.minting_counter == 1) || (singlenft.count == 200 && singlenft.minting_counter == 2)) {
@@ -1036,10 +946,11 @@ const CollectionNFT = () => {
 
               // toast.error(`Maximum Limit is ${totalnft} `)
             } else {
-              let token1 = await nftContractOf.methods.ValueinToken().call()
-              token1 = token1 + 1000
-              let token2 = await nftContractOf.methods.ValueinToken1().call()
-              token2 = token2 + 1000
+              let token1 = await nftContractOf.methods.MinitngPricein_busd().call()
+              token1 = web3.utils.fromWei(token1)
+              token1 = parseFloat(token1)
+              token1 = token1 + 0.08
+            
 
               let maxSupply = await nftContractOf.methods.maxsupply().call()
               let ttlSupply = await nftContractOf.methods.totalSupply().call()
@@ -1055,16 +966,16 @@ const CollectionNFT = () => {
 
               if (singlenft.minting_counter == 1) {
 
-                // token1 = await BigInt(value * token1)
-                // token2 = await BigInt(value * token2)
+                token1 = Number(value * token1)
+               
 
               } else if (singlenft.minting_counter == 2) {
-                // token1 = await BigInt(value * token1 * 2)
-                // token2 = await BigInt(value * token2 * 2)
+                token1 =  Number(value * token1 * 2)
+            
 
 
               }
-              totalMintingPriceToken_1 = web3.utils.toWei(totalMintingPriceToken_1.toString())
+              token1 = web3.utils.toWei(token1.toString())
 
               if (parseInt(ttlSupply) < parseInt(maxSupply)) {
                 if (paused == false) {
@@ -1073,73 +984,34 @@ const CollectionNFT = () => {
                       await approvetoken1.methods.approve(GLABA_NFT, token1).send({
                         from: acc,
                       })
-                      await approvetoken2.methods.approve(GLABA_NFT, token2).send({
-                        from: acc,
-                      })
-
-
-                      await nftContractOf.methods.mint_with_token(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
+            
+                     
                     } else if ((singlenft.count == 500 && singlenft.minting_counter == 1) || (singlenft.count == 1000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_500, token1).send({
                         from: acc,
                       })
-                      await approvetoken2.methods.approve(GLABA_NFT_500, token2).send({
-                        from: acc,
-                      })
+                    
 
-
-                      await nftContractOf.methods.mint_with_token(value).send({ from: acc })
-
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_500, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
                     } else if ((singlenft.count == 1000 && singlenft.minting_counter == 1) || (singlenft.count == 2000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_1000, token1).send({
                         from: acc,
                       })
-                      await approvetoken2.methods.approve(GLABA_NFT_1000, token1).send({
-                        from: acc,
-                      })
-
-
-                      await nftContractOf.methods.mint_with_token(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_1000, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
+                    
                     } else if ((singlenft.count == 2500 && singlenft.minting_counter == 1) || (singlenft.count == 5000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_2500, token1).send({
                         from: acc,
                       })
-                      await approvetoken2.methods.approve(GLABA_NFT_2500, token2).send({
-                        from: acc,
-                      })
-
-
-                      await nftContractOf.methods.mint_with_token(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_2500, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
+                    
                     } else if ((singlenft.count == 5000 && singlenft.minting_counter == 1) || (singlenft.count == 10000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_5000, token1).send({
                         from: acc,
                       })
-                      await approvetoken2.methods.approve(GLABA_NFT_5000, token2).send({
-                        from: acc,
-                      })
-
-
-                      await nftContractOf.methods.mint_with_token(value).send({ from: acc })
-                      // await nftTokenOf_BUSD.methods.approve(GLABA_NFT_5000, totalMintingPriceToken_1).send({
-                      //   from: acc,
-                      // })
+                   
                     }
 
-                    toast.success('Approve')
+                    toast.success('Approve Confirmed BUSD Token')
 
-                    let hash = await nftContractOf.methods.mint_with_BUSD_100(value).send({
+                    let hash = await nftContractOf.methods.mint_with_BUSD(value,token1,"0").send({
                       from: acc,
                     })
                     // setbtnFour('Mint With BUSD')

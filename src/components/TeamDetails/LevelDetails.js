@@ -106,10 +106,13 @@ const LevelDetails = () => {
   return (
     <>
       <BgLayout>
+        <div className= {dataArray.length == 0 ? "responce_div":""} >
+
+
         <div className="BgLayout_Header">
           <h6>Level Details</h6>
         </div>
-        <div className="LevelDetailsSelect">
+        <div className="LevelDetailsSelect  ">
           <div className="LevelDetailsInputs">
             <span>Select Level</span>
             <Form.Select aria-label="Default select example" onChange={(e) => setLevelFilter(e.target.value)}>
@@ -146,6 +149,7 @@ const LevelDetails = () => {
         </div>
         <div className="Share_tableMain">
           <ShareTable columns={columns} Data={dataArray} />
+        </div>
         </div>
       </BgLayout>
     </>

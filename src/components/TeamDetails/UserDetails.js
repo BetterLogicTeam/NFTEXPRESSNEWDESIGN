@@ -5,6 +5,9 @@ import circulProfile from "../../assets/images/circulProfile.png";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { API } from "../../API/Api";
+import ProgressBar from 'react-customizable-progressbar'
+
+
 
 const UserDetails = () => {
   const userDetail = useSelector((state) => state.nft.userDetail);
@@ -25,7 +28,7 @@ const UserDetails = () => {
   const LastSkillFill = styled.div`
     background: rgba(255, 255, 255, 0.46);
     border-radius: 11px;
-    width: 50%;
+    width: ${() => ` ${dataArray?.nextpercentrewrd}%`};
     height: 35px;
   `;
   const LastSkillValue = styled.div`
@@ -79,9 +82,27 @@ const UserDetails = () => {
             <span>Completed</span>
             <span>Total</span>
           </div>
+          {/* <div className=" rounded-5" style={{ backgroundColor: "rgba(83, 80, 239, 0.16)" }}>
+            <div className="d-flex justify-content-between py-2 rounded-5 w-50 " style={{ backgroundColor: "rgba(255, 255, 255, 0.46)" }}>
 
-          <div className="userskilOne">
-            <div className="userskilFill">{dataArray?.totalnextrewardbusiness}</div>
+
+              <span className="ps-3 text-white">25000</span>
+              <span className="text-white pe-3">35000</span>
+
+            </div>
+          </div> */}
+          {/* <ProgressBar
+            progress={60}
+            radius={50}
+          /> */}
+
+          <div className="userskilOne" style={{ backgroundColor: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? 'rgba(255, 255, 255, 0.46)' : "rgba(83, 80, 239, 0.16)"}` }}>
+            {console.log('imagewith percent', `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? '100' : ""}%`)}
+            <div className="userskilFill" style={{
+              width: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? '100%' : `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100}%`}`,
+              opacity: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? '0.9' : "0.4"}`,
+              backgroundColor: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? 'transparent' : "rgba(255, 255, 255, 0.46)"}`
+            }}>{dataArray?.totalnextrewardbusiness}</div>
             <div className="userskilOneText">{dataArray?.Nextreqreward}</div>
           </div>
 
@@ -89,7 +110,9 @@ const UserDetails = () => {
             <h6>Leg 1</h6>
             <div className="LegOneSkillProgress">
               <div className="userskilOne">
-                <div className="userskilFill">{dataArray?.legbusiness1}</div>
+                <div className="userskilFill"
+
+                >{dataArray?.legbusiness1}</div>
                 {/* <div className="userskilOneText">Max. 800</div> */}
               </div>
             </div>

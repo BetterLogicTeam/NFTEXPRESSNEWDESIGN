@@ -356,3 +356,11 @@ height: 35px !important;
     margin-top: -185px;
     margin-left: 53px;
 } */
+
+.bootom_div{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 5px 0px 5px;
+    background-image: radial-gradient( circle farthest-corner at 83.7% 4.3%, rgb(173 0 171 / 72%) 0%, rgb(13 60 113) 90% );
+
+}

@@ -46,6 +46,7 @@ const SingleNFT = () => {
                   >
                     {value.imageUrl ? (
                       <Image
+
                         src={value?.imageUrl}
                         alt="Image description"
                         fluid={true}
