@@ -6,59 +6,18 @@ import { API } from "../../API/Api";
 const AllIncomeChat = () => {
 
   const [chartText, setChartText] = useState();
-
-
-  // const [userDetail, setUserDetail] = useState({})
   const userDetail = useSelector((state) => state.nft.userDetail);
-
-
-  // const DashboardAPI = async () => {
-
-  //   try {
-  //     const userDetail = useSelector((state) => state.nft.userDetail);
-  //     console.log("userDetail", userDetail);
-
-  //     // let res = await API.get(`/getDashboardValues?id=${user}`)
-  //     // let res = await API.get(`/getDashboardValues?id=778899`)
-
-  //     res = res.data.data[0]
-  //     setUserDetail(res)
-
-
-
-
-
-  //   } catch (e) {
-  //     console.log("Error While Fatch Dashboard API", e);
-  //   }
-  // }
-  // useEffect(() => {
-
-
-
-  //   DashboardAPI()
-
-
-
-
-  // }, []);
-
-
-
-
-
+  console.log("userDetail",userDetail);
   const data = [
     ["Task", "Hours per Day"],
-    ["ROI Income", userDetail.roiincomeNFT],
+    ["ROI Income", userDetail.roiincomeNFT ],
     ["Matching Income", userDetail.levelincome],
     ["Team Bonus", userDetail.binary],
     ["Starter-Bonus", userDetail.TeamBonus],
-    ["Referral Income ", userDetail.directIncome],
+    ["Referral Income ", userDetail.directIncome == 0 ? "1":userDetail.directIncome],
     ["Lag Token ", userDetail.roiincome],
     ["Reward Income", userDetail.rewardIncome],
     ["Withdrawl Bonous", userDetail.cto_income]
-
-
   ];
   const options = {
     chartArea: {

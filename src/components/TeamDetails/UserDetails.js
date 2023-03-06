@@ -110,7 +110,7 @@ const UserDetails = () => {
             <h6>Leg 1</h6>
             <div className="LegOneSkillProgress">
               <div className="userskilOne">
-                <div className="userskilFill"
+                <div className="userskilFill" style={{width:`${(dataArray?.legbusiness1/100)}%`}}
 
                 >{dataArray?.legbusiness1}</div>
                 {/* <div className="userskilOneText">Max. 800</div> */}
@@ -121,23 +121,23 @@ const UserDetails = () => {
             <h6>Leg 2</h6>
             <div className="LegOneSkillProgress">
               <div className="userskilOne">
-                <div className="userskilFill">{dataArray?.legbusiness2}</div>
+                <div className="userskilFill"style={{width:`${(dataArray?.legbusiness2/100)}%`}}>{dataArray?.legbusiness2}</div>
                 {/* <div className="userskilOneText">Max. 800</div> */}
               </div>
             </div>
           </div>
           <div className="LegOneSkill">
             <h6>others</h6>
-            <div className="LegOneSkillProgress">
-              <div className="userskilOne">
-                <div className="userskilFill">{dataArray?.legbusinessother}</div>
+            <div className="LegOneSkillProgress" >
+              <div className="userskilOne" >
+                <div className="userskilFill" style={{width:`${(dataArray?.legbusinessother/100)}%`}}>{dataArray?.legbusinessother}</div>
                 {/* <div className="userskilOneText">Max. 800</div> */}
               </div>
             </div>
           </div>
           <div className="lastSkill">
             <LastSkillFill></LastSkillFill>
-            <LastSkillValue> {dataArray?.nextpercentrewrd}% Rule</LastSkillValue>
+            <LastSkillValue> {dataArray?.nextpercentrewrd}% </LastSkillValue>
           </div>
         </div>
       </div>

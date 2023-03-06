@@ -87,7 +87,7 @@ const TeamBonus = () => {
     <>
       <BgLayout>
         <div className="BgLayout_Header">
-          <h6>Quick Starter Bonus</h6>
+          <h6>Team Bonus</h6>
         </div>
         <div className="Share_tableMain">
           <ShareTable columns={columns} Data={dataArray} />

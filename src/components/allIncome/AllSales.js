@@ -72,7 +72,7 @@ const AllSales = () => {
     <>
       <div className="mainflex">
         <div className="MatchingLevelMain firflex">
-          <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={500}>
+          <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={530}>
             {/* <div className="SalesMain"> */}
             {/* <SalesItems />
           <SalesItems /> */}
@@ -82,7 +82,7 @@ const AllSales = () => {
           <SalesItems /> */}
             {/* </div> */}
 
-            <div className="SalesMain_table  tableqa ">
+            <div className={dataArray.length=="0" ? "SalesMain_table tableqa" :"SalesMain_table" }>
               <h6>Sales by Country</h6>
               <table className="TableMain ">
                 <tr className="TableMainTitleNew">

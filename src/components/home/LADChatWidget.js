@@ -56,7 +56,7 @@ const LADChatWidget = ({ TotalAirdropToken, ReceivedAirdropToken }) => {
           <div className="">
             <h6>LAG Token</h6>
           </div>
-          <div className="">
+          <div className="LADChatText_total">
             <span>Total : {TotalAirdropToken}</span>
             <span>Received :  {ReceivedAirdropToken}</span>
           </div>

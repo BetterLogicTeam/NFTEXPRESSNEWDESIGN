@@ -7,7 +7,7 @@ const TotalEarningWidget = ({ withdrawl, netbalance, totalincome }) => {
         <h6>Total Earning</h6>
         <div className="TotalEarnChatMain">
           <div className="priceChart">
-            <span>${totalincome}</span>
+            <span className="priceChart_text">${totalincome}</span>
             <div className="slice">
               <div className="bar"></div>
               <div className="fill"></div>
