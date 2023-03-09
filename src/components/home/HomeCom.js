@@ -31,7 +31,7 @@ const HomeCom = () => {
     try {
 
       let res = await API.get(`/getDashboardValues?id=${user}`)
-      console.log('response time', res.data.data[0])
+      console.log('response time', res.data.data[0].address)
 
       res = res.data.data[0]
 

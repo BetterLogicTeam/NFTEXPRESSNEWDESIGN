@@ -41,15 +41,34 @@ import {
 } from '../../utilies/constant'
 import { loadWeb3 } from '../../apis/api'
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { API } from "../../API/Api";
 
 const CollectionNFT = () => {
   const singlenft = useSelector((state) => state.nft.SingleNFT);
   const userDetail = useSelector((state) => state.nft.userDetail);
   const user = useSelector((state) => state.UserAuth.userId);
-
+  
+  const [UserAddress, setUserAddress] = useState('')
+  let navigate = useNavigate()
   // let user
 
+
+  const dashboard_Api = async () => {
+    try {
+
+      let res = await API.get(`/getDashboardValues?id=${user}`)
+      console.log('response_time', res.data.data[0].address)
+
+      res = res.data.data[0]
+      setUserAddress(res.address)
+    } catch (e) {
+      console.log("dashboard_Api", e);
+    }
+  }
+
   useEffect(() => {
+    dashboard_Api()
     const sr = scrollreveal({
       origin: "left",
       distance: "10px",
@@ -154,10 +173,10 @@ const CollectionNFT = () => {
 
 
         console.log('res_Mint', own_Address == acc)
-        if (own_Address == '') {
-          // toast.error('Please Update Your Profile')
-          // navigate('/dashboard/Profile')
-        } else if (own_Address == true) {
+        if (UserAddress == '') {
+          toast.error('Please Update Your Profile')
+          navigate('/Profile')
+        } else if (UserAddress == acc) {
           try {
             // setbtnFour('Please Wait While Processing')
             const web3 = window.web3
@@ -375,10 +394,10 @@ const CollectionNFT = () => {
 
 
         console.log('res_Mint', own_Address == acc)
-        if (own_Address == '') {
-          // toast.error('Please Update Your Profile')
-          // navigate('/dashboard/Profile')
-        } else if (own_Address == true) {
+        if (UserAddress == '') {
+          toast.error('Please Update Your Profile')
+          navigate('/Profile')
+        } else if (UserAddress == acc) {
           try {
             // setbtnFour('Please Wait While Processing')
             const web3 = window.web3
@@ -446,12 +465,12 @@ const CollectionNFT = () => {
 
               }
               totalMintingPriceToken_1 = web3.utils.toWei(totalMintingPriceToken_1.toString())
-              
+
               if (parseInt(ttlSupply) < parseInt(maxSupply)) {
                 if (paused == false) {
                   if (value < parseInt(maxLimitprTransaction)) {
                     if ((singlenft.count == 100 && singlenft.minting_counter == 1) || (singlenft.count == 200 && singlenft.minting_counter == 2)) {
-                     
+
                       await approvetoken1.methods.approve(GLABA_NFT, totalMintingPriceToken_1).send({
                         from: acc,
                       })
@@ -478,10 +497,10 @@ const CollectionNFT = () => {
 
                     }
 
-               
+
                     toast.success('Approve Confirmed BUSD Token')
 
-                    let hash = await nftContractOf.methods.mint_with_BUSD_100(value,totalMintingPriceToken_1).send({
+                    let hash = await nftContractOf.methods.mint_with_BUSD_100(value, totalMintingPriceToken_1).send({
                       from: acc,
                     })
                     // setbtnFour('Mint With BUSD')
@@ -550,10 +569,10 @@ const CollectionNFT = () => {
 
 
         console.log('res_Mint', own_Address == acc)
-        if (own_Address == '') {
-          // toast.error('Please Update Your Profile')
-          // navigate('/dashboard/Profile')
-        } else if (own_Address == true) {
+        if (UserAddress == '') {
+          toast.error('Please Update Your Profile')
+          navigate('/Profile')
+        } else if (UserAddress == acc) {
           try {
             // setbtnFour('Please Wait While Processing')
             const web3 = window.web3
@@ -599,7 +618,7 @@ const CollectionNFT = () => {
               token1 = web3.utils.fromWei(token1)
               token1 = parseFloat(token1)
               token1 = token1 + 0.05
-             
+
               let maxSupply = await nftContractOf.methods.maxsupply().call()
               let ttlSupply = await nftContractOf.methods.totalSupply().call()
               let paused = await nftContractOf.methods.paused().call()
@@ -614,7 +633,7 @@ const CollectionNFT = () => {
 
               if (singlenft.minting_counter == 1) {
 
-                token1 =  Number(value * token1)
+                token1 = Number(value * token1)
 
 
               } else if (singlenft.minting_counter == 2) {
@@ -652,7 +671,7 @@ const CollectionNFT = () => {
                     }
                     toast.success('Approve Confirmed LaRace Governance Token')
 
-                    let hash = await nftContractOf.methods.mint_with_single(value,token1).send({
+                    let hash = await nftContractOf.methods.mint_with_single(value, token1).send({
                       from: acc,
                     })
                     // setbtnFour('Mint With BUSD')
@@ -721,16 +740,16 @@ const CollectionNFT = () => {
 
 
         console.log('res_Mint', own_Address == acc)
-        if (own_Address == '') {
-          // toast.error('Please Update Your Profile')
-          // navigate('/dashboard/Profile')
-        } else if (own_Address == true) {
+        if (UserAddress == '') {
+          toast.error('Please Update Your Profile')
+          navigate('/Profile')
+        } else if (UserAddress == acc) {
           try {
             // setbtnFour('Please Wait While Processing')
             const web3 = window.web3
             let approvetoken1 = new web3.eth.Contract(BUSD_Token_ABI, BUSD_Token)
             let approvetoken2 = new web3.eth.Contract(WIRE_Token_ABI, WIRE_Token)
-            
+
             let nftContractOf
             let increment_each_data
             if ((singlenft.count == 100 && singlenft.minting_counter == 1) || (singlenft.count == 200 && singlenft.minting_counter == 2)) {
@@ -841,9 +860,9 @@ const CollectionNFT = () => {
                       toast.success('Approve Confirmed Wire Token')
                     }
 
-               
 
-                    let hash = await nftContractOf.methods.mint_with_BUSD(value,token1,token2).send({
+
+                    let hash = await nftContractOf.methods.mint_with_BUSD(value, token1, token2).send({
                       from: acc,
                     })
                     // setbtnFour('Mint With BUSD')
@@ -912,16 +931,16 @@ const CollectionNFT = () => {
 
 
         console.log('res_Mint', own_Address == acc)
-        if (own_Address == '') {
-          // toast.error('Please Update Your Profile')
-          // navigate('/dashboard/Profile')
-        } else if (own_Address == true) {
+        if (UserAddress == '') {
+          toast.error('Please Update Your Profile')
+          navigate('/Profile')
+        } else if (UserAddress == acc) {
           try {
             // setbtnFour('Please Wait While Processing')
             const web3 = window.web3
             let approvetoken1 = new web3.eth.Contract(BUSD_Token_ABI, BUSD_Token)
             let approvetoken2 = new web3.eth.Contract(tokenAbi2, tokenAddress2)
-           
+
             let nftContractOf
             let increment_each_data
             if ((singlenft.count == 100 && singlenft.minting_counter == 1) || (singlenft.count == 200 && singlenft.minting_counter == 2)) {
@@ -950,7 +969,7 @@ const CollectionNFT = () => {
               token1 = web3.utils.fromWei(token1)
               token1 = parseFloat(token1)
               token1 = token1 + 0.08
-            
+
 
               let maxSupply = await nftContractOf.methods.maxsupply().call()
               let ttlSupply = await nftContractOf.methods.totalSupply().call()
@@ -967,11 +986,11 @@ const CollectionNFT = () => {
               if (singlenft.minting_counter == 1) {
 
                 token1 = Number(value * token1)
-               
+
 
               } else if (singlenft.minting_counter == 2) {
-                token1 =  Number(value * token1 * 2)
-            
+                token1 = Number(value * token1 * 2)
+
 
 
               }
@@ -984,34 +1003,34 @@ const CollectionNFT = () => {
                       await approvetoken1.methods.approve(GLABA_NFT, token1).send({
                         from: acc,
                       })
-            
-                     
+
+
                     } else if ((singlenft.count == 500 && singlenft.minting_counter == 1) || (singlenft.count == 1000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_500, token1).send({
                         from: acc,
                       })
-                    
+
 
                     } else if ((singlenft.count == 1000 && singlenft.minting_counter == 1) || (singlenft.count == 2000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_1000, token1).send({
                         from: acc,
                       })
-                    
+
                     } else if ((singlenft.count == 2500 && singlenft.minting_counter == 1) || (singlenft.count == 5000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_2500, token1).send({
                         from: acc,
                       })
-                    
+
                     } else if ((singlenft.count == 5000 && singlenft.minting_counter == 1) || (singlenft.count == 10000 && singlenft.minting_counter == 2)) {
                       await approvetoken1.methods.approve(GLABA_NFT_5000, token1).send({
                         from: acc,
                       })
-                   
+
                     }
 
                     toast.success('Approve Confirmed BUSD Token')
 
-                    let hash = await nftContractOf.methods.mint_with_BUSD(value,token1,"0").send({
+                    let hash = await nftContractOf.methods.mint_with_BUSD(value, token1, "0").send({
                       from: acc,
                     })
                     // setbtnFour('Mint With BUSD')
@@ -1319,6 +1338,7 @@ const CollectionNFT = () => {
 
 
   useEffect(() => {
+
     getVAlues()
 
   }, [singlenft, value])
