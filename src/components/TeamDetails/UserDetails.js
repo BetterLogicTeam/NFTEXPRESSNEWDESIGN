@@ -98,21 +98,21 @@ const UserDetails = () => {
 
           <div className="userskilOne" style={{ backgroundColor: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? 'rgba(255, 255, 255, 0.46)' : "rgba(83, 80, 239, 0.16)"}` }}>
             {console.log('imagewith percent', `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? '100' : ""}%`)}
-            <div className="userskilFill" style={{
+            <div className="userskilFill text-white" style={{
               width: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? '100%' : `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100}%`}`,
-              opacity: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? '0.9' : "0.4"}`,
+              opacity: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? '0.9' : "1"}`,
               backgroundColor: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? 'transparent' : "rgba(255, 255, 255, 0.46)"}`
             }}>{dataArray?.totalnextrewardbusiness}</div>
-            <div className="userskilOneText">{dataArray?.Nextreqreward}</div>
+            <div className="userskilOneText text-white">{dataArray?.Nextreqreward}</div>
           </div>
 
           <div className="LegOneSkill">
             <h6>Leg 1</h6>
-            <div className="LegOneSkillProgress">
-              <div className="userskilOne">
-                <div className="userskilFill" style={{width:`${(dataArray?.legbusiness1/100)}%`}}
+            <div className="LegOneSkillProgress" >
+              <div className="userskilOne" style={{ backgroundColor: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? 'rgba(255, 255, 255, 0.46)' : "rgba(83, 80, 239, 0.16)"}` }}>
+                <div className="userskilFill text-white" style={{width:`${(dataArray?.legbusiness1/100)}%`,opacity:"1" }}
 
-                >{dataArray?.legbusiness1}</div>
+                ><span className="ms-5 text-white">{dataArray?.legbusiness1} </span> </div>
                 {/* <div className="userskilOneText">Max. 800</div> */}
               </div>
             </div>
@@ -121,7 +121,7 @@ const UserDetails = () => {
             <h6>Leg 2</h6>
             <div className="LegOneSkillProgress">
               <div className="userskilOne">
-                <div className="userskilFill"style={{width:`${(dataArray?.legbusiness2/100)}%`}}>{dataArray?.legbusiness2}</div>
+                <div className="userskilFill text-white "style={{width:`${(dataArray?.legbusiness2/100)}%`,opacity:"1"}}><span className="ms-5">{dataArray?.legbusiness2}</span></div>
                 {/* <div className="userskilOneText">Max. 800</div> */}
               </div>
             </div>
@@ -130,7 +130,7 @@ const UserDetails = () => {
             <h6>others</h6>
             <div className="LegOneSkillProgress" >
               <div className="userskilOne" >
-                <div className="userskilFill" style={{width:`${(dataArray?.legbusinessother/100)}%`}}>{dataArray?.legbusinessother}</div>
+                <div className="userskilFill text-white " style={{width:`${(dataArray?.legbusinessother/100)}%`,opacity:"1"}}><span className="ms-5" style={{color:"#fff"}}>{dataArray?.legbusinessother} </span> </div>
                 {/* <div className="userskilOneText">Max. 800</div> */}
               </div>
             </div>

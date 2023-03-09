@@ -11,7 +11,7 @@ const TimeWidget = ({ timetoearn, timeToQualify }) => {
       // Render a completed state
       return <div style={{ color: "#fff" }}>
 
-        <div>
+        <div className="d-flex"> 
           <span>
             0 <p className="itec">Day</p>
           </span>
