@@ -102,7 +102,7 @@ const UserDetails = () => {
               width: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? '100%' : `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100}%`}`,
               opacity: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? '0.9' : "1"}`,
               backgroundColor: `${(dataArray?.totalnextrewardbusiness / dataArray?.Nextreqreward) * 100 >= 100 ? 'transparent' : "rgba(255, 255, 255, 0.46)"}`
-            }}>{dataArray?.totalnextrewardbusiness}</div>
+            }}><span className="ms-5 text-white">{dataArray?.totalnextrewardbusiness}</span></div>
             <div className="userskilOneText text-white">{dataArray?.Nextreqreward}</div>
           </div>
 

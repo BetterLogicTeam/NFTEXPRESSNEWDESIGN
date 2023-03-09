@@ -101,6 +101,8 @@ const MatchingLevelIncome = () => {
   return (
     <>
       <BgLayout>
+        <div className={dataArray.length>2 ? "" : "MatchingLevelMain_income"}>
+
         <div className="MatchingLevelMain">
           <div className="Matching_Header">
             <div className="Matching_Tit">
@@ -134,6 +136,7 @@ const MatchingLevelIncome = () => {
             </div>
           </div>
           <ShareTable columns={columns} Data={dataArray} />
+        </div>
         </div>
       </BgLayout>
     </>

@@ -39,7 +39,6 @@ const DirectLegBusiness = () => {
   const [dataArray, setdataArray] = useState([]);
   const referral_API = async () => {
     try {
-
       let responce = await API?.get(`/directlegbussiness_report?id=${user}`);
       responce = responce?.data?.data;
       let arr = [];
@@ -64,14 +63,18 @@ const DirectLegBusiness = () => {
 
   return (
     <>
-      <BgLayout>
-        <div className="BgLayout_Header">
-          <h6>Direct Leg Business</h6>
-        </div>
-        <div className="Share_tableMain">
-          <ShareTable columns={columns} Data={dataArray} />
-        </div>
-      </BgLayout>
+      <div className={dataArray.length > 2 ? "" : "MatchingLevelMain_income"}>
+        <BgLayout>
+          <div className="BgLayout_Header">
+            <h6>Direct Leg Business</h6>
+          </div>
+
+          <div className="Share_tableMain">
+            <ShareTable columns={columns} Data={dataArray} />
+          </div>
+        </BgLayout>
+      </div>
+      {/* <div className="bg_usser_main"></div> */}
     </>
   );
 };

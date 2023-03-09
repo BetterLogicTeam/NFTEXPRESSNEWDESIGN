@@ -218,6 +218,11 @@ cursor: pointer;
 
 /* all income  */
 
+
+.MatchingLevelMain_income{
+  height: 90vh !important;
+}
+
 .MatchingLevelMain {
   /* background: rgba(135, 147, 255, 0.17);
   -webkit-backdrop-filter: blur(15.5px);
@@ -1099,8 +1104,7 @@ height: 386px;
   width:"70%"
 }
 .LADChatText_total{
-  margin-left: -20px !important;
-
+  margin-left: -24px !important;
 }
 .LADChatText span {
   font-family: "sans-serif";
@@ -1175,7 +1179,7 @@ height: 386px;
   border-radius: 11px;
   margin-top: 20px;
   padding: 16px;
-  padding-bottom: 40px;
+  padding-bottom: 73px;
   background-image: radial-gradient( circle farthest-corner at 83.7% 4.3%, rgb(173 0 171 / 72%) 0%, rgb(13 60 113) 90% );
 }
 
@@ -1688,6 +1692,13 @@ height: 386px;
   .country_Img{
     display: none !important;
   }
+  .Matching_Inputs {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: space;
+    gap: 13px;
+  }
 }
 
 /* End tree chart  */
@@ -1938,6 +1949,10 @@ height: 386px;
 @media screen and (max-width: 600px) {
   .colMb {
     margin-bottom: 10px;
+  }
+  .LADChatText_total{
+   display: flex;
+   flex-direction: column;
   }
   .TableMain .Table_item .table_country h6:last-child,
   .TableMain .Table_item .table_sales h6:last-child,

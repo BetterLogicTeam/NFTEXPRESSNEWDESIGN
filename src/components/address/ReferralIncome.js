@@ -86,10 +86,16 @@ const ReferralIncome = () => {
         <div className="BgLayout_Header">
           <h6>Referral Income</h6>
         </div>
+  
+
         <div className="Share_tableMain">
           <ShareTable columns={columns} Data={dataArray} />
         </div>
+ 
       </BgLayout>
+      <div className="bg_usser_main"></div>
+
+      
       
     </>
   );
